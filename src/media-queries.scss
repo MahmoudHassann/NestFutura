@@ -1,0 +1,58 @@
+// media-queries.scss
+
+// Define breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 990px;
+$breakpoint-customlg: 989px;
+$breakpoint-xl: 1200px;
+
+// Media query mixins
+@mixin small {
+    @media (max-width: #{$breakpoint-sm}) {
+        @content;
+    }
+}
+
+@mixin medium {
+    @media (max-width: #{$breakpoint-md}) {
+        @content;
+    }
+}
+
+
+@mixin s-md {
+    @media (min-width: #{$breakpoint-sm}) and (max-width: #{$breakpoint-md - 1}) {
+        @content;
+    }
+}
+
+@mixin xs-lg {
+    @media (max-width: #{$breakpoint-lg - 1}) {
+        @content;
+    }
+}
+
+@mixin c-lg{
+    @media(max-width: #{$breakpoint-customlg}){
+        @content;
+    }
+}
+
+@mixin md-lg {
+    @media (min-width: #{$breakpoint-md}) and (max-width: #{$breakpoint-lg - 1}) {
+        @content;
+    }
+}
+
+@mixin large {
+    @media (min-width: #{$breakpoint-lg}) {
+        @content;
+    }
+}
+
+@mixin extra-large {
+    @media (min-width: #{$breakpoint-xl}) {
+        @content;
+    }
+}
