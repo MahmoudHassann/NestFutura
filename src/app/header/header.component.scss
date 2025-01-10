@@ -612,6 +612,12 @@
     .caption {
         font-size: 13px;
     }
+    .submenu-txt-desc{
+        @include c-lg{
+
+            display: none;
+        }
+    }
 
     .submenu-image-container {
         align-items: var(--content-position-vertical);
@@ -625,6 +631,7 @@
         text-align: var(--text-position);
         text-decoration: none;
 
+        
         .submenu-image {
             height: 100%;
             left: 0;
@@ -687,7 +694,9 @@
         color: $grey-dark-color;
         padding-bottom: 5px;
         margin-bottom: 20px;
-
+    }
+    .submenu-button{
+        margin-top: 20px;
     }
 
     .nav-item-link-list {
@@ -711,12 +720,11 @@
     .nav-item-submenu {
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 10px;
         padding: 30px 24px;
 
         @include c-lg {
-            background: linear-gradient(189deg, rgba(229, 240, 249, 0.15) 10%, rgba(69, 148, 209, 0.2) 88%);
-            ;
+            background: linear-gradient(189.09deg, #faf3e3 20.78%, #f5c562 88.2%);
             border-radius: 10px;
             margin-bottom: 15px;
             padding: 15px;
