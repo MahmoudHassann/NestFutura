@@ -507,6 +507,10 @@
             justify-self: center;
             width: 13rem;
             align-items: center;
+
+            @include small{
+                width: 10rem;
+            }
         }
 
         @include c-lg {
@@ -517,8 +521,8 @@
 
     .header-drawer-container {
         background: $primary-color;
-        height: 100vh;
-        height: 100dvh;
+        height: 90vh;
+        height: 90dvh;
         opacity: 0;
         overflow: hidden;
         pointer-events: none;

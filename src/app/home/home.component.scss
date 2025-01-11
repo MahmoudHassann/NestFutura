@@ -1,11 +1,15 @@
 @use '../../styles/media-queries.scss' as *;
 @use '../../styles/variables' as *;
 
+.main {
+    height: 90vh;
+}
+
 .text-content {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     padding: 5rem;
     text-align: center;
     display: flex;
@@ -15,11 +19,16 @@
     align-items: center;
     color: $primary-color;
 
-    @include c-lg{
+    @include c-lg {
         padding: 0;
     }
+
     @include medium {
         padding: 1rem;
+    }
+
+    @include small {
+        padding: 0;
     }
 
     .heading-content {
@@ -29,6 +38,19 @@
 
         span {
             color: $secondary-color;
+        }
+
+        h2 {
+            @include small {
+
+                font-size: 1.5rem;
+            }
+        }
+
+        .caption {
+            @include small {
+                font-size: 10px;
+            }
         }
     }
 }
@@ -52,13 +74,120 @@
             width: 100%;
         }
 
-        img{
+        img {
             position: relative;
             z-index: 0;
             height: 100%;
             -o-object-fit: cover;
             object-fit: cover;
             width: 100%;
+        }
+    }
+}
+
+.metrics {
+    padding-top: 27px;
+    padding-bottom: 27px;
+
+    @include c-md {
+        padding-top: 36px;
+        padding-bottom: 36px;
+    }
+
+    .metrics-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 8px;
+        width: 100%;
+
+        @include c-md {
+            display: flex;
+        }
+
+        .metrics-block {
+            background: linear-gradient(90deg, #fff -84.32%, #fee4ac 198.3%);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            justify-content: space-between;
+            padding: 14px;
+
+            @include c-md {
+                flex: 1;
+            }
+
+            .metric-value {
+                background: linear-gradient(90deg, $secondary-color, $dark-color);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+
+
+                font-size: 32px;
+
+                @include c-lg {
+                    font-size: 24px;
+                    margin: 0 0 12px;
+                }
+
+            }
+        }
+
+        .action-block {
+            background: linear-gradient(90deg, $secondary-color, $dark-color);
+            border-radius: 10px;
+            grid-column: span 2;
+            padding: 16px 20px;
+            position: relative;
+
+            a.action-block-link {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                height: 100%;
+                justify-content: space-between;
+                text-decoration: none;
+                color: $primary-color;
+
+                .metric-action-icon {
+                    width: 100%;
+
+                    img {
+                        height: fit-content;
+                        -o-object-fit: contain;
+                        object-fit: contain;
+                        width: 100%;
+                    }
+
+                    h5 {
+                        background:linear-gradient(90deg, $light-color, #fff);
+                        -webkit-background-clip: text;
+                        background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        font-weight: 900;
+                        @include md-lg{
+                            font-size: 1rem;
+                        }
+                    }
+                }
+
+                span {
+                    @include c-lg {
+                        font-size: 17px;
+                    }
+                }
+
+                .arrow-icon-metric-action {
+                    position: absolute;
+                    right: 24px;
+                    top: 24px;
+                }
+            }
+
+            @include c-md {
+                flex: 1.4;
+            }
         }
     }
 }

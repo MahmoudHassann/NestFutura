@@ -2,25 +2,32 @@
 @use '././styles/variables' as *;
 @use '././styles/media-queries.scss' as *;
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
 @font-face {
     font-family: 'Newtron';
     src: url('/fonts/Newtron ICG Alt.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-  }
+}
 
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-body{
+
+body {
     font-family: "Manrope", serif;
 }
 
 .caption {
-    font-size: 13px;
+    font-size: 14px;
+
+    @include c-lg {
+        font-size: 13px;
+    }
 }
+
 .btn {
     color: #fdfdfd;
     padding: 14px 56px;
@@ -35,11 +42,13 @@ body{
     text-decoration: none;
     white-space: nowrap;
     z-index: 1;
-    @include c-lg{
+
+    @include c-lg {
         max-width: 100%;
         width: 100%;
     }
-    @include medium{
+
+    @include medium {
         padding: 12px 32px;
     }
 }
@@ -115,19 +124,19 @@ body{
     transition: all 0.3s ease-out;
 }
 
-.caption{
+.caption {
     font-size: 14px;
     line-height: 1.8;
 
-    @include c-lg{
+    @include c-lg {
         font-size: 13px;
     }
 }
 
-.submenu-icon{
-    span{
-        svg{
-            @include c-lg{
+.submenu-icon {
+    span {
+        svg {
+            @include c-lg {
                 width: 30px;
                 height: 30px;
             }
@@ -142,13 +151,20 @@ body{
         object-fit: contain;
         width: 100%;
 
-        @include c-lg{
+        @include c-lg {
             width: 30px;
             height: 30px;
         }
     }
 }
 
-a{
+a {
     cursor: pointer;
+}
+
+img {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
