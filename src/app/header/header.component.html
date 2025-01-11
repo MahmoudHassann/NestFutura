@@ -1,25 +1,26 @@
 <nav class="navbar">
     <div class="nav-bg-blur"></div>
     <div class="container nav-container">
-        <button class="btn mobile-nav menu-drawer-btn" [ngStyle]="{'background':drawerOpen? '#cd9b2e' : '#eceff2'}" (click)="toggleDrawer()">
+        <button class="btn mobile-nav menu-drawer-btn" [ngStyle]="{'background':drawerOpen? '#cd9b2e' : '#eceff2'}"
+            (click)="toggleDrawer()">
             @if(!drawerOpen){
-                <span class="mobile-nav-icon icon-menu" [ngStyle]="{'opacity': drawerOpen ? 0 : 1}" >
-                    <svg width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 1H17" stroke="black" stroke-linecap="round" />
-                        <path d="M1 5H17" stroke="black" stroke-linecap="round" />
-                        <path d="M1 9H17" stroke="black" stroke-linecap="round" />
-                    </svg>
-                </span>
+            <span class="mobile-nav-icon icon-menu" [ngStyle]="{'opacity': drawerOpen ? 0 : 1}">
+                <svg width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1H17" stroke="black" stroke-linecap="round" />
+                    <path d="M1 5H17" stroke="black" stroke-linecap="round" />
+                    <path d="M1 9H17" stroke="black" stroke-linecap="round" />
+                </svg>
+            </span>
             }
             @if(drawerOpen){
-                <span class="mobile-nav-icon icon-close" [ngStyle]="{'opacity': drawerOpen ? 1 : 0}">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15 1L1 15M1 1L15 15" stroke="#FDFDFD" stroke-miterlimit="6.667" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </span>
+            <span class="mobile-nav-icon icon-close" [ngStyle]="{'opacity': drawerOpen ? 1 : 0}">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 1L1 15M1 1L15 15" stroke="#FDFDFD" stroke-miterlimit="6.667" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </span>
             }
-            
+
         </button>
 
         <div class="nav-menu menu-left">
@@ -525,21 +526,13 @@
         </div>
     </div>
     <!-- Header Drawer -->
-    <div class="header-drawer-container" [ngStyle]="{'opacity': drawerOpen ? 1 : 0,'pointer-events': drawerOpen? 'all':'none'}">
-        <div class="container header-drawer-content">
-            <div class="nav-item-container nav-item-megamenu-container">
-                <a href="" class="nav-item menu-mobile-click menu-mobile-open" (click)="handleMobileMenuClick($event)">
-                    <span class="nav-item-title">Products</span>
-                    <span class="nav-item-arrow">
-                        <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M1.3379 12.139L1.19459 11.9957L6.40788 6.7824L6.69072 6.49956L6.40788 6.21672L1.19459 1.00343L1.3379 0.860119L6.97734 6.49956L1.3379 12.139Z"
-                                fill="#1A1918" stroke="#656669" stroke-width="0.8" />
-                        </svg>
-                    </span>
-                </a>
-                <div class="container nav-item-megamenu">
-                    <a href="" class="nav-item menu-mobile-click menu-mobile-close" (click)="handleMobileMenuClick($event)">
+    <div class="container position-relative">
+        <div class="header-drawer-container"
+            [ngStyle]="{'opacity': drawerOpen ? 1 : 0,'pointer-events': drawerOpen? 'all':'none'}">
+            <div class="container header-drawer-content">
+                <div class="nav-item-container nav-item-megamenu-container">
+                    <a href="" class="nav-item menu-mobile-click menu-mobile-open"
+                        (click)="handleMobileMenuClick($event)">
                         <span class="nav-item-title">Products</span>
                         <span class="nav-item-arrow">
                             <svg width="8" height="13" viewBox="0 0 8 13" fill="none"
@@ -550,65 +543,79 @@
                             </svg>
                         </span>
                     </a>
-                    <div class="nav-item-megamenu-submenu">
-                        <div class="nav-item-submenu w-50">
-                            <div class="nav-item-submenu-title">Shop by solution</div>
-                            <div class="nav-item-submenu-border"></div>
-                            <div class="submenu-content" style="--grid:2; --size:40px;">
-                                <div class="submenu-txt">
-                                    @for (item of submenuItems; track $index) {
-                                    <a [href]="item.href" class="nav-item submenu-icon-txt">
-                                        <div class="submenu-icon">
-                                            <span [innerHTML]="item.iconSrc"></span>
-                                        </div>
-                                        <div class="submenu-txt-info">
-                                            <div class="submenu-txt-title">{{item.title}}</div>
-                                            <div class="submenu-txt-desc caption">{{item.description}}</div>
-                                        </div>
-                                    </a>
-                                    }
-                                </div>
-                                <div class="submenu-button">
-                                    <a href="all-products" class="btn btn-filled"> Shop all Products</a>
+                    <div class="container nav-item-megamenu">
+                        <a href="" class="nav-item menu-mobile-click menu-mobile-close"
+                            (click)="handleMobileMenuClick($event)">
+                            <span class="nav-item-title">Products</span>
+                            <span class="nav-item-arrow">
+                                <svg width="8" height="13" viewBox="0 0 8 13" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M1.3379 12.139L1.19459 11.9957L6.40788 6.7824L6.69072 6.49956L6.40788 6.21672L1.19459 1.00343L1.3379 0.860119L6.97734 6.49956L1.3379 12.139Z"
+                                        fill="#1A1918" stroke="#656669" stroke-width="0.8" />
+                                </svg>
+                            </span>
+                        </a>
+                        <div class="nav-item-megamenu-submenu">
+                            <div class="nav-item-submenu w-50">
+                                <div class="nav-item-submenu-title">Shop by solution</div>
+                                <div class="nav-item-submenu-border"></div>
+                                <div class="submenu-content" style="--grid:2; --size:40px;">
+                                    <div class="submenu-txt">
+                                        @for (item of submenuItems; track $index) {
+                                        <a [href]="item.href" class="nav-item submenu-icon-txt">
+                                            <div class="submenu-icon">
+                                                <span [innerHTML]="item.iconSrc"></span>
+                                            </div>
+                                            <div class="submenu-txt-info">
+                                                <div class="submenu-txt-title">{{item.title}}</div>
+                                                <div class="submenu-txt-desc caption hide-mobile">{{item.description}}
+                                                </div>
+                                            </div>
+                                        </a>
+                                        }
+                                    </div>
+                                    <div class="submenu-button">
+                                        <a href="all-products" class="btn btn-filled"> Shop all Products</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="nav-item-submenu w-25" style="background: #fdfdfd;">
-                            <div class="nav-item-submenu-border"></div>
-                            <div class="submenu-link-list-container" style="--grid:1">
-                                <ul class="nav-link-list submenu-link-list">
-                                    <li class="nav-item-link-list submenu-item-link-list">
-                                        <div class="nav-item-submenu-title">Shop by Product Type</div>
-                                        <ul class="nav-link-list submenu-link-list-cild caption">
-                                            @for (item of navItems; track $index) {
-                                            <li class="nav-item-link-list submenu-item-link-list-child">
-                                                <a [href]="item.href" class="nav-item">
-                                                    <span class="nav-item-icon" [innerHtml]="item.iconSvg"></span>
-                                                    <span class="nav-item-title">{{item.title}}</span>
-                                                </a>
-                                            </li>
-                                            }
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item-link-list submenu-item-link-list">
-                                        <div class="nav-item-submenu-title">Shop by Technology</div>
-                                        <ul class="nav-link-list submenu-link-list-cild caption">
-                                            @for (item of techItems; track $index) {
-                                            <li class="nav-item-link-list submenu-item-link-list-child">
-                                                <a [href]="item.href" class="nav-item">
-                                                    <span class="nav-item-icon" [innerHtml]="item.iconSvg"></span>
-                                                    <span class="nav-item-title">{{item.title}}</span>
-                                                </a>
-                                            </li>
-                                            }
-                                        </ul>
-                                    </li>
-                                </ul>
+                            <div class="nav-item-submenu w-25" style="background: #fdfdfd;">
+                                <div class="nav-item-submenu-border"></div>
+                                <div class="submenu-link-list-container" style="--grid:1">
+                                    <ul class="nav-link-list submenu-link-list">
+                                        <li class="nav-item-link-list submenu-item-link-list">
+                                            <div class="nav-item-submenu-title">Shop by Product Type</div>
+                                            <ul class="nav-link-list submenu-link-list-cild caption">
+                                                @for (item of navItems; track $index) {
+                                                <li class="nav-item-link-list submenu-item-link-list-child">
+                                                    <a [href]="item.href" class="nav-item">
+                                                        <span class="nav-item-icon" [innerHtml]="item.iconSvg"></span>
+                                                        <span class="nav-item-title">{{item.title}}</span>
+                                                    </a>
+                                                </li>
+                                                }
+                                            </ul>
+                                        </li>
+                                        <li class="nav-item-link-list submenu-item-link-list">
+                                            <div class="nav-item-submenu-title">Shop by Technology</div>
+                                            <ul class="nav-link-list submenu-link-list-cild caption">
+                                                @for (item of techItems; track $index) {
+                                                <li class="nav-item-link-list submenu-item-link-list-child">
+                                                    <a [href]="item.href" class="nav-item">
+                                                        <span class="nav-item-icon" [innerHtml]="item.iconSvg"></span>
+                                                        <span class="nav-item-title">{{item.title}}</span>
+                                                    </a>
+                                                </li>
+                                                }
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                        <div class="nav-item-submenu w-25 nav-item-flex" style="background: #fdfdfd;">
-                            <div class="nav-item-submenu-border"></div>
-                            <div class="submenu-image-container" style="
+                            <div class="nav-item-submenu w-25 nav-item-flex" style="background: #fdfdfd;">
+                                <div class="nav-item-submenu-border"></div>
+                                <div class="submenu-image-container" style="
                             --content-position-vertical: flex-end;
                             --content-position-horizontal: center;
                             --text-position: center;
@@ -617,47 +624,37 @@
                             --overlay-opacity: 0%;
                             
                         ">
-                                <div class="submenu-image">
-                                    <img src="https://www.shelly.com/cdn/shop/files/Promo-slot-Gen4-desktop_800x.jpg?v=1736342154"
-                                        alt="" loading="lazy" width="400" height="400">
+                                    <div class="submenu-image">
+                                        <img src="https://www.shelly.com/cdn/shop/files/Promo-slot-Gen4-desktop_800x.jpg?v=1736342154"
+                                            alt="" loading="lazy" width="400" height="400">
+                                    </div>
+                                    <div class="submenu-info">
+                                        <a href="" class="btn btn-outlined-white"> See New Products</a>
+                                    </div>
                                 </div>
-                                <div class="submenu-info">
-                                    <a href="" class="btn btn-outlined-white"> See New Products</a>
+                                <div class="submenu-link-list-container" style="--grid:1">
+                                    <ul class="nav-link-list submenu-link-list">
+                                        <li class="nav-item-link-list submenu-item-link-list">
+                                            <ul class="nav-link-list submenu-link-list-cild caption">
+                                                @for (item of newProducts; track $index) {
+                                                <li class="nav-item-link-list submenu-item-link-list-child">
+                                                    <a [href]="item.href" class="nav-item">
+                                                        <span class="nav-item-icon" [innerHtml]="item.iconSvg"></span>
+                                                        <span class="nav-item-title">{{item.title}}</span>
+                                                    </a>
+                                                </li>
+                                                }
+                                            </ul>
+                                        </li>
+                                    </ul>
                                 </div>
-                            </div>
-                            <div class="submenu-link-list-container" style="--grid:1">
-                                <ul class="nav-link-list submenu-link-list">
-                                    <li class="nav-item-link-list submenu-item-link-list">
-                                        <ul class="nav-link-list submenu-link-list-cild caption">
-                                            @for (item of newProducts; track $index) {
-                                            <li class="nav-item-link-list submenu-item-link-list-child">
-                                                <a [href]="item.href" class="nav-item">
-                                                    <span class="nav-item-icon" [innerHtml]="item.iconSvg"></span>
-                                                    <span class="nav-item-title">{{item.title}}</span>
-                                                </a>
-                                            </li>
-                                            }
-                                        </ul>
-                                    </li>
-                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="nav-item-container nav-item-megamenu-container">
-                <a href="" class="nav-item menu-mobile-click menu-mobile-open" (click)="handleMobileMenuClick($event)">
-                    <span class="nav-item-title">Solutions</span>
-                    <span class="nav-item-arrow">
-                        <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M1.3379 12.139L1.19459 11.9957L6.40788 6.7824L6.69072 6.49956L6.40788 6.21672L1.19459 1.00343L1.3379 0.860119L6.97734 6.49956L1.3379 12.139Z"
-                                fill="#1A1918" stroke="#656669" stroke-width="0.8" />
-                        </svg>
-                    </span>
-                </a>
-                <div class="container nav-item-megamenu">
-                    <a href="" class="nav-item menu-mobile-click menu-mobile-close" (click)="handleMobileMenuClick($event)">
+                <div class="nav-item-container nav-item-megamenu-container">
+                    <a href="" class="nav-item menu-mobile-click menu-mobile-open"
+                        (click)="handleMobileMenuClick($event)">
                         <span class="nav-item-title">Solutions</span>
                         <span class="nav-item-arrow">
                             <svg width="8" height="13" viewBox="0 0 8 13" fill="none"
@@ -668,112 +665,115 @@
                             </svg>
                         </span>
                     </a>
-                    <div class="nav-item-megamenu-submenu">
-                        <div class="nav-item-submenu w-50">
-                            <div class="nav-item-submenu-border"></div>
-                            <div class="submenu-link-list-container" style="--grid:2">
-                                <ul class="nav-link-list submenu-link-list">
-                                    <li class="nav-item-link-list submenu-item-link-list">
-                                        <div class="nav-item-submenu-title">Start Your Smart Home</div>
-                                        <ul class="nav-link-list submenu-link-list-cild caption">
-                                            @for (item of solutions_smart_home; track $index) {
-                                            <li class="nav-item-link-list submenu-item-link-list-child">
-                                                <a [href]="item.href" class="nav-item">
-                                                    <span class="nav-item-icon" [innerHtml]="item.iconSvg"></span>
-                                                    <span class="nav-item-title">{{item.title}}</span>
-                                                </a>
-                                            </li>
-                                            }
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item-link-list submenu-item-link-list">
-                                        <div class="nav-item-submenu-title">Smart Building & Facilities</div>
-                                        <ul class="nav-link-list submenu-link-list-cild caption">
-                                            @for (item of solutions_Smart_Building; track $index) {
-                                            <li class="nav-item-link-list submenu-item-link-list-child">
-                                                <a [href]="item.href" class="nav-item">
-                                                    <span class="nav-item-icon" [innerHtml]="item.iconSvg"></span>
-                                                    <span class="nav-item-title">{{item.title}}</span>
-                                                </a>
-                                            </li>
-                                            }
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item-link-list submenu-item-link-list">
-                                        <div class="nav-item-submenu-title">Use Cases And Applications</div>
-                                        <ul class="nav-link-list submenu-link-list-cild caption">
-                                            @for (item of solutions_Use_cases; track $index) {
-                                            <li class="nav-item-link-list submenu-item-link-list-child">
-                                                <a [href]="item.href" class="nav-item">
-                                                    <span class="nav-item-icon" [innerHtml]="item.iconSvg"></span>
-                                                    <span class="nav-item-title">{{item.title}}</span>
-                                                </a>
-                                            </li>
-                                            }
-                                        </ul>
-                                    </li>
-                                </ul>
+                    <div class="container nav-item-megamenu">
+                        <a href="" class="nav-item menu-mobile-click menu-mobile-close"
+                            (click)="handleMobileMenuClick($event)">
+                            <span class="nav-item-title">Solutions</span>
+                            <span class="nav-item-arrow">
+                                <svg width="8" height="13" viewBox="0 0 8 13" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M1.3379 12.139L1.19459 11.9957L6.40788 6.7824L6.69072 6.49956L6.40788 6.21672L1.19459 1.00343L1.3379 0.860119L6.97734 6.49956L1.3379 12.139Z"
+                                        fill="#1A1918" stroke="#656669" stroke-width="0.8" />
+                                </svg>
+                            </span>
+                        </a>
+                        <div class="nav-item-megamenu-submenu">
+                            <div class="nav-item-submenu w-50">
+                                <div class="nav-item-submenu-border"></div>
+                                <div class="submenu-link-list-container" style="--grid:2">
+                                    <ul class="nav-link-list submenu-link-list">
+                                        <li class="nav-item-link-list submenu-item-link-list">
+                                            <div class="nav-item-submenu-title">Start Your Smart Home</div>
+                                            <ul class="nav-link-list submenu-link-list-cild caption">
+                                                @for (item of solutions_smart_home; track $index) {
+                                                <li class="nav-item-link-list submenu-item-link-list-child">
+                                                    <a [href]="item.href" class="nav-item">
+                                                        <span class="nav-item-icon" [innerHtml]="item.iconSvg"></span>
+                                                        <span class="nav-item-title">{{item.title}}</span>
+                                                    </a>
+                                                </li>
+                                                }
+                                            </ul>
+                                        </li>
+                                        <li class="nav-item-link-list submenu-item-link-list">
+                                            <div class="nav-item-submenu-title">Smart Building & Facilities</div>
+                                            <ul class="nav-link-list submenu-link-list-cild caption">
+                                                @for (item of solutions_Smart_Building; track $index) {
+                                                <li class="nav-item-link-list submenu-item-link-list-child">
+                                                    <a [href]="item.href" class="nav-item">
+                                                        <span class="nav-item-icon" [innerHtml]="item.iconSvg"></span>
+                                                        <span class="nav-item-title">{{item.title}}</span>
+                                                    </a>
+                                                </li>
+                                                }
+                                            </ul>
+                                        </li>
+                                        <li class="nav-item-link-list submenu-item-link-list">
+                                            <div class="nav-item-submenu-title">Use Cases And Applications</div>
+                                            <ul class="nav-link-list submenu-link-list-cild caption">
+                                                @for (item of solutions_Use_cases; track $index) {
+                                                <li class="nav-item-link-list submenu-item-link-list-child">
+                                                    <a [href]="item.href" class="nav-item">
+                                                        <span class="nav-item-icon" [innerHtml]="item.iconSvg"></span>
+                                                        <span class="nav-item-title">{{item.title}}</span>
+                                                    </a>
+                                                </li>
+                                                }
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                        <div class="nav-item-submenu w-25" style="background: #fdfdfd;">
-                            <div class="nav-item-submenu-title">Smart Energy Management</div>
-                            <div class="nav-item-submenu-border"></div>
-                            <div class="submenu-link-list-container" style="--grid:1; --size:84px;">
-                                <div class="submenu-content">
-                                    <div class="submenu-txt">
-                                        @for (item of Smart_Energy; track $index) {
-                                        <a [href]="item.href" class="nav-item submenu-icon-txt">
-                                            <div class="submenu-icon">
-                                                <img [src]="item.imgSrc" loading="lazy" [alt]="item.imgAlt" width="80"
-                                                    height="80" />
-                                            </div>
-                                            <div class="submenu-txt-info">
-                                                <div class="submenu-txt-title">{{item.title}}</div>
-                                                <div class="submenu-txt-desc caption">{{item.description}}</div>
-                                            </div>
-                                        </a>
-                                        }
+                            <div class="nav-item-submenu w-25" style="background: #fdfdfd;">
+                                <div class="nav-item-submenu-title">Smart Energy Management</div>
+                                <div class="nav-item-submenu-border"></div>
+                                <div class="submenu-link-list-container" style="--grid:1; --size:84px;">
+                                    <div class="submenu-content">
+                                        <div class="submenu-txt">
+                                            @for (item of Smart_Energy; track $index) {
+                                            <a [href]="item.href" class="nav-item submenu-icon-txt">
+                                                <div class="submenu-icon">
+                                                    <img [src]="item.imgSrc" loading="lazy" [alt]="item.imgAlt"
+                                                        width="80" height="80" />
+                                                </div>
+                                                <div class="submenu-txt-info">
+                                                    <div class="submenu-txt-title">{{item.title}}</div>
+                                                    <div class="submenu-txt-desc caption">{{item.description}}</div>
+                                                </div>
+                                            </a>
+                                            }
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="nav-item-submenu w-25" style="background: #fdfdfd;">
-                            <div class="nav-item-submenu-border"></div>
-                            <div class="submenu-image-container" style="--grid:1; 
+                            <div class="nav-item-submenu w-25" style="background: #fdfdfd;">
+                                <div class="nav-item-submenu-border"></div>
+                                <div class="submenu-image-container" style="--grid:1; 
                             --content-position-vertical: flex-end;
                             --content-position-horizontal: flex-start;
                             --text-position: left;
                             --min-height: 100%;
                              --overlay-color: #121212; 
                             --overlay-opacity: 20%;">
-                                <div class="submenu-image">
-                                    <img src="https://www.shelly.com/cdn/shop/files/stock-photo-beautiful-houseplant-on-window-sill-and-modern-radiator-at-home-central-heating-system-2162693117-7-625x625_800x.jpg?v=1726557930"
-                                        alt="" loading="lazy" width="400" height="400">
-                                </div>
-                                <div class="submenu-img-info">
-                                    <h5 class="submenu-img-title">Smart Heating & Climate Control</h5>
-                                    <div class="submenu-img-desc caption">
-                                        <p>Controlling the temperature at home has never been easier!</p>
+                                    <div class="submenu-image">
+                                        <img src="https://www.shelly.com/cdn/shop/files/stock-photo-beautiful-houseplant-on-window-sill-and-modern-radiator-at-home-central-heating-system-2162693117-7-625x625_800x.jpg?v=1726557930"
+                                            alt="" loading="lazy" width="400" height="400">
+                                    </div>
+                                    <div class="submenu-img-info">
+                                        <h5 class="submenu-img-title">Smart Heating & Climate Control</h5>
+                                        <div class="submenu-img-desc caption">
+                                            <p>Controlling the temperature at home has never been easier!</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="nav-item-container nav-item-dropdown-container">
-                <a href="" class="nav-item menu-mobile-click menu-mobile-open" (click)="handleMobileMenuClick($event)">
-                    <span class="nav-item-title">NestFutura App</span>
-                    <span class="nav-item-arrow">
-                        <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M1.3379 12.139L1.19459 11.9957L6.40788 6.7824L6.69072 6.49956L6.40788 6.21672L1.19459 1.00343L1.3379 0.860119L6.97734 6.49956L1.3379 12.139Z"
-                                fill="#1A1918" stroke="#656669" stroke-width="0.8" />
-                        </svg>
-                    </span>
-                </a>
-                <div class="nav-item-dropdown-link-container">
-                    <a href="" class="nav-item menu-mobile-click menu-mobile-close" (click)="handleMobileMenuClick($event)">
+                <div class="nav-item-container nav-item-dropdown-container">
+                    <a href="" class="nav-item menu-mobile-click menu-mobile-open"
+                        (click)="handleMobileMenuClick($event)">
                         <span class="nav-item-title">NestFutura App</span>
                         <span class="nav-item-arrow">
                             <svg width="8" height="13" viewBox="0 0 8 13" fill="none"
@@ -784,36 +784,39 @@
                             </svg>
                         </span>
                     </a>
-                    <div class="nav-item-dropdown-link">
-                        <ul class="nav-link-list">
-                            <li class="nav-item-link-list">
-                                <a href="" class="nav-item">
-                                    <span class="nav-item-title">Shelly Smart Control</span>
-                                </a>
-                            </li>
-                            <li class="nav-item-link-list">
-                                <a href="" class="nav-item">
-                                    <span class="nav-item-title">Shelly Smart Control Premium</span>
-                                </a>
-                            </li>
-                        </ul>
+                    <div class="nav-item-dropdown-link-container">
+                        <a href="" class="nav-item menu-mobile-click menu-mobile-close"
+                            (click)="handleMobileMenuClick($event)">
+                            <span class="nav-item-title">NestFutura App</span>
+                            <span class="nav-item-arrow">
+                                <svg width="8" height="13" viewBox="0 0 8 13" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M1.3379 12.139L1.19459 11.9957L6.40788 6.7824L6.69072 6.49956L6.40788 6.21672L1.19459 1.00343L1.3379 0.860119L6.97734 6.49956L1.3379 12.139Z"
+                                        fill="#1A1918" stroke="#656669" stroke-width="0.8" />
+                                </svg>
+                            </span>
+                        </a>
+                        <div class="nav-item-dropdown-link">
+                            <ul class="nav-link-list">
+                                <li class="nav-item-link-list">
+                                    <a href="" class="nav-item">
+                                        <span class="nav-item-title">Shelly Smart Control</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item-link-list">
+                                    <a href="" class="nav-item">
+                                        <span class="nav-item-title">Shelly Smart Control Premium</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="nav-item-container nav-item-dropdown-container">
-                <a href="" class="nav-item menu-mobile-click menu-mobile-open" (click)="handleMobileMenuClick($event)">
-                    <span class="nav-item-title">Partners</span>
-                    <span class="nav-item-arrow">
-                        <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M1.3379 12.139L1.19459 11.9957L6.40788 6.7824L6.69072 6.49956L6.40788 6.21672L1.19459 1.00343L1.3379 0.860119L6.97734 6.49956L1.3379 12.139Z"
-                                fill="#1A1918" stroke="#656669" stroke-width="0.8" />
-                        </svg>
-                    </span>
-                </a>
-                <div class="nav-item-dropdown-link-container">
-                    <a href="" class="nav-item menu-mobile-click menu-mobile-close" (click)="handleMobileMenuClick($event)">
+                <div class="nav-item-container nav-item-dropdown-container">
+                    <a href="" class="nav-item menu-mobile-click menu-mobile-open"
+                        (click)="handleMobileMenuClick($event)">
                         <span class="nav-item-title">Partners</span>
                         <span class="nav-item-arrow">
                             <svg width="8" height="13" viewBox="0 0 8 13" fill="none"
@@ -824,41 +827,45 @@
                             </svg>
                         </span>
                     </a>
-                    <div class="nav-item-dropdown-link">
-                        <ul class="nav-link-list">
-                            <li class="nav-item-link-list">
-                                <a href="" class="nav-item">
-                                    <span class="nav-item-title">Official resellers</span>
-                                </a>
-                            </li>
-                            <li class="nav-item-link-list">
-                                <a href="" class="nav-item">
-                                    <span class="nav-item-title">Verified installers</span>
-                                </a>
-                            </li>
-                        </ul>
+                    <div class="nav-item-dropdown-link-container">
+                        <a href="" class="nav-item menu-mobile-click menu-mobile-close"
+                            (click)="handleMobileMenuClick($event)">
+                            <span class="nav-item-title">Partners</span>
+                            <span class="nav-item-arrow">
+                                <svg width="8" height="13" viewBox="0 0 8 13" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M1.3379 12.139L1.19459 11.9957L6.40788 6.7824L6.69072 6.49956L6.40788 6.21672L1.19459 1.00343L1.3379 0.860119L6.97734 6.49956L1.3379 12.139Z"
+                                        fill="#1A1918" stroke="#656669" stroke-width="0.8" />
+                                </svg>
+                            </span>
+                        </a>
+                        <div class="nav-item-dropdown-link">
+                            <ul class="nav-link-list">
+                                <li class="nav-item-link-list">
+                                    <a href="" class="nav-item">
+                                        <span class="nav-item-title">Official resellers</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item-link-list">
+                                    <a href="" class="nav-item">
+                                        <span class="nav-item-title">Verified installers</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="nav-item-container nav-item-link-container">
-                <a href="" class="nav-item menu-mobile-click menu-mobile-open" (click)="handleMobileMenuClick($event)">
-                    <span class="nav-item-title">Corporate</span>
-                </a>
-            </div>
-            <div class="nav-item-container nav-item-megamenu-container">
-                <a href="" class="nav-item menu-mobile-click menu-mobile-open" (click)="handleMobileMenuClick($event)">
-                    <span class="nav-item-title">Help & Resources</span>
-                    <span class="nav-item-arrow">
-                        <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M1.3379 12.139L1.19459 11.9957L6.40788 6.7824L6.69072 6.49956L6.40788 6.21672L1.19459 1.00343L1.3379 0.860119L6.97734 6.49956L1.3379 12.139Z"
-                                fill="#1A1918" stroke="#656669" stroke-width="0.8" />
-                        </svg>
-                    </span>
-                </a>
-                <div class="container nav-item-megamenu">
-                    <a href="" class="nav-item menu-mobile-click menu-mobile-close" (click)="handleMobileMenuClick($event)">
+                <div class="nav-item-container nav-item-link-container">
+                    <a href="" class="nav-item menu-mobile-click menu-mobile-open"
+                        (click)="handleMobileMenuClick($event)">
+                        <span class="nav-item-title">Corporate</span>
+                    </a>
+                </div>
+                <div class="nav-item-container nav-item-megamenu-container">
+                    <a href="" class="nav-item menu-mobile-click menu-mobile-open"
+                        (click)="handleMobileMenuClick($event)">
                         <span class="nav-item-title">Help & Resources</span>
                         <span class="nav-item-arrow">
                             <svg width="8" height="13" viewBox="0 0 8 13" fill="none"
@@ -869,76 +876,90 @@
                             </svg>
                         </span>
                     </a>
-                    <div class="nav-item-megamenu-submenu">
-                        <div class="nav-item-submenu w-50">
-                            <div class="nav-item-submenu-border"></div>
-                            <div class="submenu-link-list-container" style="--grid:2">
-                                <ul class="nav-link-list submenu-link-list">
-                                    <li class="nav-item-link-list submenu-item-link-list">
-                                        <div class="nav-item-submenu-title">Support</div>
-                                        <ul class="nav-link-list submenu-link-list-cild caption">
-                                            @for (item of support; track $index) {
-                                            <li class="nav-item-link-list submenu-item-link-list-child">
-                                                <a [href]="item.href" class="nav-item">
-                                                    <span class="nav-item-icon" [innerHtml]="item.iconSvg"></span>
-                                                    <span class="nav-item-title">{{item.title}}</span>
-                                                </a>
-                                            </li>
-                                            }
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item-link-list submenu-item-link-list">
-                                        <div class="nav-item-submenu-title">Resources</div>
-                                        <ul class="nav-link-list submenu-link-list-cild caption">
-                                            @for (item of resources; track $index) {
-                                            <li class="nav-item-link-list submenu-item-link-list-child">
-                                                <a [href]="item.href" class="nav-item">
-                                                    <span class="nav-item-icon" [innerHtml]="item.iconSvg"></span>
-                                                    <span class="nav-item-title">{{item.title}}</span>
-                                                </a>
-                                            </li>
-                                            }
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item-link-list submenu-item-link-list">
-                                        <div class="nav-item-submenu-title">Kmowledge Base</div>
-                                        <ul class="nav-link-list submenu-link-list-cild caption">
-                                            @for (item of knowledge_base; track $index) {
-                                            <li class="nav-item-link-list submenu-item-link-list-child">
-                                                <a [href]="item.href" class="nav-item">
-                                                    <span class="nav-item-icon" [innerHtml]="item.iconSvg"></span>
-                                                    <span class="nav-item-title">{{item.title}}</span>
-                                                </a>
-                                            </li>
-                                            }
-                                        </ul>
-                                    </li>
-                                </ul>
+                    <div class="container nav-item-megamenu">
+                        <a href="" class="nav-item menu-mobile-click menu-mobile-close"
+                            (click)="handleMobileMenuClick($event)">
+                            <span class="nav-item-title">Help & Resources</span>
+                            <span class="nav-item-arrow">
+                                <svg width="8" height="13" viewBox="0 0 8 13" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M1.3379 12.139L1.19459 11.9957L6.40788 6.7824L6.69072 6.49956L6.40788 6.21672L1.19459 1.00343L1.3379 0.860119L6.97734 6.49956L1.3379 12.139Z"
+                                        fill="#1A1918" stroke="#656669" stroke-width="0.8" />
+                                </svg>
+                            </span>
+                        </a>
+                        <div class="nav-item-megamenu-submenu">
+                            <div class="nav-item-submenu w-50">
+                                <div class="nav-item-submenu-border"></div>
+                                <div class="submenu-link-list-container" style="--grid:2">
+                                    <ul class="nav-link-list submenu-link-list">
+                                        <li class="nav-item-link-list submenu-item-link-list">
+                                            <div class="nav-item-submenu-title">Support</div>
+                                            <ul class="nav-link-list submenu-link-list-cild caption">
+                                                @for (item of support; track $index) {
+                                                <li class="nav-item-link-list submenu-item-link-list-child">
+                                                    <a [href]="item.href" class="nav-item">
+                                                        <span class="nav-item-icon" [innerHtml]="item.iconSvg"></span>
+                                                        <span class="nav-item-title">{{item.title}}</span>
+                                                    </a>
+                                                </li>
+                                                }
+                                            </ul>
+                                        </li>
+                                        <li class="nav-item-link-list submenu-item-link-list">
+                                            <div class="nav-item-submenu-title">Resources</div>
+                                            <ul class="nav-link-list submenu-link-list-cild caption">
+                                                @for (item of resources; track $index) {
+                                                <li class="nav-item-link-list submenu-item-link-list-child">
+                                                    <a [href]="item.href" class="nav-item">
+                                                        <span class="nav-item-icon" [innerHtml]="item.iconSvg"></span>
+                                                        <span class="nav-item-title">{{item.title}}</span>
+                                                    </a>
+                                                </li>
+                                                }
+                                            </ul>
+                                        </li>
+                                        <li class="nav-item-link-list submenu-item-link-list">
+                                            <div class="nav-item-submenu-title">Kmowledge Base</div>
+                                            <ul class="nav-link-list submenu-link-list-cild caption">
+                                                @for (item of knowledge_base; track $index) {
+                                                <li class="nav-item-link-list submenu-item-link-list-child">
+                                                    <a [href]="item.href" class="nav-item">
+                                                        <span class="nav-item-icon" [innerHtml]="item.iconSvg"></span>
+                                                        <span class="nav-item-title">{{item.title}}</span>
+                                                    </a>
+                                                </li>
+                                                }
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                        <div class="nav-item-submenu w-25" style="background: #fdfdfd;">
-                            <div class="submenu-link-list-container" style="--grid:1; --size:84px; --size-mobile:80px;">
-                                <div class="submenu-content">
-                                    <div class="submenu-txt">
-                                        @for (item of Guide; track $index) {
-                                        <a [href]="item.href" class="nav-item submenu-icon-txt">
-                                            <div class="submenu-icon">
-                                                <img [src]="item.imgSrc" loading="lazy" [alt]="item.imgAlt" width="80"
-                                                    height="80" />
-                                            </div>
-                                            <div class="submenu-txt-info">
-                                                <div class="submenu-txt-title">{{item.title}}</div>
-                                                <div class="submenu-txt-desc caption">{{item.description}}</div>
-                                            </div>
-                                        </a>
-                                        }
+                            <div class="nav-item-submenu w-25" style="background: #fdfdfd;">
+                                <div class="submenu-link-list-container"
+                                    style="--grid:1; --size:84px; --size-mobile:80px;">
+                                    <div class="submenu-content">
+                                        <div class="submenu-txt">
+                                            @for (item of Guide; track $index) {
+                                            <a [href]="item.href" class="nav-item submenu-icon-txt">
+                                                <div class="submenu-icon">
+                                                    <img [src]="item.imgSrc" loading="lazy" [alt]="item.imgAlt"
+                                                        width="80" height="80" />
+                                                </div>
+                                                <div class="submenu-txt-info">
+                                                    <div class="submenu-txt-title">{{item.title}}</div>
+                                                    <div class="submenu-txt-desc caption">{{item.description}}</div>
+                                                </div>
+                                            </a>
+                                            }
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="nav-item-submenu w-25 nav-item-flex" style="background: #fdfdfd;">
-                            <div class="nav-item-submenu-border"></div>
-                            <div class="submenu-image-container" style="--grid:1; 
+                            <div class="nav-item-submenu w-25 nav-item-flex" style="background: #fdfdfd;">
+                                <div class="nav-item-submenu-border"></div>
+                                <div class="submenu-image-container" style="--grid:1; 
                             --content-position-vertical: center;
                              --content-position-horizontal: flex-start;
                             --text-position: left;
@@ -946,29 +967,30 @@
                             --overlay-color: #121212; 
                             --overlay-opacity: 50%;
                             --text-color: #ffffff;">
-                                <div class="submenu-image">
-                                    <img src="https://www.shelly.com/cdn/shop/files/Shelly-compatible-voice-assistants-alexa-siri-google_80dcb5bf-7a73-44f8-94a8-acde45b232a9_800x.jpg?v=1727687139"
-                                        alt="" loading="lazy" width="400" height="400">
-                                </div>
-                                <div class="submenu-img-info">
-                                    <h5 class="submenu-img-title">Full compatibility</h5>
-                                    <div class="submenu-img-desc caption">
-                                        <p>Shelly devices are compatible with Alexa, Google Home, Android, and iOS,
-                                            allowing voice control through your assistant!</p>
+                                    <div class="submenu-image">
+                                        <img src="https://www.shelly.com/cdn/shop/files/Shelly-compatible-voice-assistants-alexa-siri-google_80dcb5bf-7a73-44f8-94a8-acde45b232a9_800x.jpg?v=1727687139"
+                                            alt="" loading="lazy" width="400" height="400">
                                     </div>
-                                </div>
+                                    <div class="submenu-img-info">
+                                        <h5 class="submenu-img-title">Full compatibility</h5>
+                                        <div class="submenu-img-desc caption">
+                                            <p>Shelly devices are compatible with Alexa, Google Home, Android, and iOS,
+                                                allowing voice control through your assistant!</p>
+                                        </div>
+                                    </div>
 
-                            </div>
-                            <div class="submenu-image-button">
-                                <a href="" class="btn btn-filled">
-                                    Contact Us
-                                </a>
+                                </div>
+                                <div class="submenu-image-button">
+                                    <a href="" class="btn btn-filled">
+                                        Contact Us
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
 </nav>

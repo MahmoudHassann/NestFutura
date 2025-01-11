@@ -215,32 +215,7 @@
                                         justify-content: flex-start;
                                         text-decoration: none;
 
-                                        .submenu-icon {
-                                            align-items: center;
-                                            border-radius: 10px;
-                                            display: flex;
-                                            justify-content: center;
-                                            margin-top: 6px;
-                                            overflow: hidden;
 
-                                            span {
-                                                aspect-ratio: 1 / 1;
-                                                max-width: 40px;
-                                                object-fit: contain;
-                                                width: 100%;
-                                            }
-
-                                            img {
-                                                aspect-ratio: 1 / 1;
-                                                max-width: var(--size);
-                                                object-fit: contain;
-                                                width: 100%;
-
-                                                @include c-lg {
-                                                    max-width: var(--size-mobile);
-                                                }
-                                            }
-                                        }
 
                                         .submenu-txt-info {
                                             .submenu-txt-desc {
@@ -422,11 +397,13 @@
                         .nav-item-megamenu {
                             opacity: 1;
                             pointer-events: all;
+                            z-index: 3;
                         }
 
                         .nav-item-dropdown-link-container {
                             opacity: 1;
                             pointer-events: all;
+                            z-index: 3;
                         }
                     }
                 }
@@ -546,7 +523,12 @@
         overflow: hidden;
         pointer-events: none;
         position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
+        z-index: 3;
+        border-radius: 10px;
+        margin-top: 2px;
 
 
         .nav-item.menu-mobile-click {
@@ -596,7 +578,37 @@
         margin: 0;
         padding: 0;
     }
+
+    .submenu-icon {
+        align-items: center;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        margin-top: 6px;
+        overflow: hidden;
+
+        span {
+            aspect-ratio: 1 / 1;
+            max-width: 40px;
+            object-fit: contain;
+            width: 100%;
+        }
+
+        img {
+            aspect-ratio: 1 / 1;
+            max-width: var(--size);
+            object-fit: contain;
+            width: 100%;
+
+            @include c-lg {
+                max-width: var(--size-mobile);
+            }
+        }
+    }
 }
+
+
+
 
 .menu-mobile-open.active {
     background: #f5f5f5;
@@ -609,13 +621,21 @@
     transform: translate(0) !important;
     padding: 0 15px;
 
-    .caption {
-        font-size: 13px;
-    }
-    .submenu-txt-desc{
-        @include c-lg{
 
+
+    .submenu-txt-info {
+        .submenu-txt-desc {
+            color: $grey-dark-color;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .hide-mobile {
             display: none;
+        }
+
+        &:hover {
+            color: $secondary-color;
         }
     }
 
@@ -631,7 +651,7 @@
         text-align: var(--text-position);
         text-decoration: none;
 
-        
+
         .submenu-image {
             height: 100%;
             left: 0;
@@ -695,7 +715,8 @@
         padding-bottom: 5px;
         margin-bottom: 20px;
     }
-    .submenu-button{
+
+    .submenu-button {
         margin-top: 20px;
     }
 
@@ -713,7 +734,7 @@
         }
     }
 
-    .nav-item-submenu.nav-item-flex{
+    .nav-item-submenu.nav-item-flex {
         flex-direction: column-reverse;
     }
 
