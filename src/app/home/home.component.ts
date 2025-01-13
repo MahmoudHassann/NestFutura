@@ -9,7 +9,7 @@ import { Component, ElementRef, Inject, OnInit, PLATFORM_ID, Renderer2 } from '@
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit {
-
+  isPopupVisible = false;
   metrics = [
     { value: 3000000, caption: 'Households', type: 'million' },
     { value: 18000000, caption: 'Households', type: 'million' },
@@ -90,4 +90,17 @@ export class HomeComponent implements OnInit {
       }
     }, stepTime);
   }
+
+  
+
+    showVideoPopup(video: HTMLVideoElement): void {
+        this.isPopupVisible = true;
+        video.play();
+    }
+
+    hideVideoPopup(video: HTMLVideoElement): void {
+      
+      this.isPopupVisible = false;
+      video.pause();
+    }
 }

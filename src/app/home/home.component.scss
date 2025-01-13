@@ -161,12 +161,13 @@
                     }
 
                     h5 {
-                        background:linear-gradient(90deg, $light-color, #fff);
+                        background: linear-gradient(90deg, $light-color, #fff);
                         -webkit-background-clip: text;
                         background-clip: text;
                         -webkit-text-fill-color: transparent;
                         font-weight: 900;
-                        @include md-lg{
+
+                        @include md-lg {
                             font-size: 1rem;
                         }
                     }
@@ -189,5 +190,152 @@
                 flex: 1.4;
             }
         }
+    }
+}
+
+.why {
+    padding-top: 36px;
+    padding-bottom: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .subheadline {
+        color: $secondary-color;
+
+        @include c-lg {
+            font-size: 15px;
+        }
+    }
+
+    h2 {
+        max-width: 970px;
+        margin-bottom: 14px;
+        margin-top: 14px;
+        font-size: 64px;
+
+        @include small {
+            max-width: 100%;
+        }
+
+        @include c-lg {
+            margin-bottom: 12px;
+            margin-top: 12px;
+            font-size: 38px;
+        }
+    }
+
+    span.bg-grediant {
+        background: linear-gradient(90deg, $secondary-color, $dark-color);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+.background-relative-container {
+    overflow: hidden;
+    position: relative;
+
+    .play-button-icon {
+        display: none;
+        height: 50px;
+        left: 50%;
+        pointer-events: none;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 50px;
+        z-index: 2;
+
+        @include c-lg {
+            display: block;
+        }
+    }
+
+    .video-section {
+        border-radius: 14px;
+
+        .template {
+            padding-top: 0px;
+            padding-bottom: 27px;
+
+            @include c-md {
+                padding-top: 0px;
+                padding-bottom: 36px;
+            }
+
+            .video-container {
+                max-width: 1078px;
+                border-radius: 14px;
+                margin: 0 auto;
+                overflow: hidden;
+                position: relative;
+                width: 78%;
+
+                @include c-lg {
+                    height: auto;
+                    width: 100%;
+                }
+
+                .video-section-poster {
+                    cursor: url('/img/type_play.svg') 50 50, pointer;
+                    height: 100%;
+                }
+
+                .video-popup {
+                    align-items: center;
+                    background: #fff;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                    height: 100%;
+                    justify-content: center;
+                    left: 0;
+                    opacity: 0;
+                    pointer-events: none;
+                    position: fixed;
+                    top: 0;
+                    transition: all 0.3s ease-out;
+                    width: 100%;
+                    z-index: 110;
+
+                    .video-popup-close-btn svg {
+                        cursor: pointer;
+                        height: 32px;
+                        width: 32px;
+                    }
+
+                    .popup-video-container {
+                        height: 70%;
+                        overflow: hidden;
+                        position: relative;
+                        width: 70%;
+
+                        @include c-lg {
+                            height: fit-content;
+                            width: 80%;
+                        }
+
+                        video {
+                            height: fit-content;
+                            position: relative;
+                        }
+
+                        .video-vid {
+                            height: 100%;
+                            left: 0;
+                            -o-object-fit: cover;
+                            object-fit: cover;
+                            top: 0;
+                            width: 100%;
+                            z-index: 0;
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }
