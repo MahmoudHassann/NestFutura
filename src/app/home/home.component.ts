@@ -1,10 +1,11 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Component, ElementRef, Inject, OnInit, PLATFORM_ID, Renderer2 } from '@angular/core';
+import { ProductSliderComponent } from '../product-slider/product-slider.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [ProductSliderComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
