@@ -66,7 +66,7 @@ export class ProductSliderComponent implements AfterViewInit, OnInit {
         status: 'Out of stock',
         discount: false,
         properties: ['LED strips', 'Power measurement', 'Dimming', 'Color'],
-        description: 'Professional RGBWW LED controller with power measurement capabilities.',
+        description: 'Smart dimming controller for seamless remote control of dimmable lights and drivers. It can be used with or without a neutral wire. Equipped with our own Shelly chip.',
         connectivity: [
           {
             type: 'wifi', icon: this.sanitizeSvg(`<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -137,7 +137,7 @@ export class ProductSliderComponent implements AfterViewInit, OnInit {
         status: 'Out of stock',
         discount: true,
         properties: ['LED strips', 'Power measurement', 'Dimming', 'Color'],
-        description: 'Professional RGBWW LED controller with power measurement capabilities.',
+        description: 'Smart dimming controller for seamless remote control of dimmable lights and drivers. It can be used with or without a neutral wire. Equipped with our own Shelly chip.',
         connectivity: [
           {
             type: 'wifi', icon: this.sanitizeSvg(`<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -207,7 +207,7 @@ export class ProductSliderComponent implements AfterViewInit, OnInit {
         status: 'Out of stock',
         discount: false,
         properties: ['LED strips', 'Power measurement', 'Dimming', 'Color'],
-        description: 'Professional RGBWW LED controller with power measurement capabilities.',
+        description: 'Smart dimming controller for seamless remote control of dimmable lights and drivers. It can be used with or without a neutral wire. Equipped with our own Shelly chip.',
         connectivity: [
           {
             type: 'wifi', icon: this.sanitizeSvg(`<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -273,7 +273,7 @@ export class ProductSliderComponent implements AfterViewInit, OnInit {
         status: 'new',
         discount: true,
         properties: ['LED strips', 'Power measurement', 'Dimming', 'Color'],
-        description: 'Professional RGBWW LED controller with power measurement capabilities.',
+        description: 'Smart dimming controller for seamless remote control of dimmable lights and drivers. It can be used with or without a neutral wire. Equipped with our own Shelly chip.',
         connectivity: [
           {
             type: 'wifi', icon: this.sanitizeSvg(`<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -343,7 +343,7 @@ export class ProductSliderComponent implements AfterViewInit, OnInit {
         status: 'new',
         discount: false,
         properties: ['LED strips', 'Power measurement', 'Dimming', 'Color'],
-        description: 'Professional RGBWW LED controller with power measurement capabilities.',
+        description: 'Smart dimming controller for seamless remote control of dimmable lights and drivers. It can be used with or without a neutral wire. Equipped with our own Shelly chip.',
         connectivity: [
           {
             type: 'wifi', icon: this.sanitizeSvg(`<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -415,8 +415,6 @@ export class ProductSliderComponent implements AfterViewInit, OnInit {
     if (isPlatformBrowser(this.platformId)) {
 
       const swiperEl = this.swiperRef.nativeElement;
-      /*  const prevButton = swiperEl.querySelector('.swiper-button-prev');
-       const nextButton = swiperEl.querySelector('.swiper-button-next'); */
       Object.assign(swiperEl, {
         slidesPerView: 2.2,
         spaceBetween: 22,

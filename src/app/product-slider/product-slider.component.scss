@@ -380,7 +380,11 @@ swiper-container::part(container) {
     justify-content: center;
     align-items: center;
     --swiper-navigation-size: 20px;
-    // --swiper-navigation-sides-offset:46%
+    top: 15%;
+    @include c-lg {
+        top: 50%;
+    }
+
 
 }
 
@@ -469,14 +473,6 @@ swiper-container::part(container) {
     left: calc(100% - 100px);
 }
 
-.swiper-button-next,
-.swiper-button-prev {
-    @include c-lg {
-        top: 50%;
-    }
-
-    top: 15%;
-}
 
 /* Add hover effects (optional) */
 .swiper-button-prev:hover,

@@ -1,0 +1,32 @@
+<section class="cards-container" #cardsContainer>
+    <div class="cards" [class.is-mobile]="isMobileView">
+      <div
+        *ngFor="let card of cards; index as i"
+        class="card"
+        [class.expanded]="!isMobileView && card.isHovered"
+        [class.active]="getCardState(i).isActive"
+        [class.minimized]="getCardState(i).isMinimized"
+        [style.height.px]="getCardState(i).height"
+        (mouseenter)="onCardHover(card)"
+      >
+        <div class="background-container">
+          <div class="cover"></div>
+          <img [src]="card.backgroundImage" [alt]="card.title" class="background-image">
+        </div>
+        <div class="content">
+          <div class="icon">
+            <fa-icon [icon]="card.icon" size="2x" class="card-icon"></fa-icon>
+          </div>
+          <div class="text-content">
+            <h2>{{ card.title }}</h2>
+            <div class="caption">{{ card.description }}</div>
+            <a href="#" class="btn btn-outlined-white">Learn more</a>
+          </div>
+        </div>
+        <div class="active-icon">
+          <fa-icon [icon]="card.icon" size="2x" class="card-icon"></fa-icon>
+        </div>
+      </div>
+    </div>
+  </section>
+  

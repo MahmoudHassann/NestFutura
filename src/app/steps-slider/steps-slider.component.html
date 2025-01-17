@@ -1,0 +1,101 @@
+<section class="steps-section position-relative">
+    <div class="bg">
+      <div class="bg-snippet"></div>
+    </div>
+  
+    <div class="Desktop-View d-none d-md-block">
+      <div class="section">
+        <div class="sidebar-container">
+          <div class="sidebar">
+            <div class="steps">
+              @for (step of steps; track $index; let i = $index; let last = $last) {
+              <div class="step" [class.step-active]="currentStep === i">
+                {{ (i + 1).toString().padStart(2, '0') }}
+              </div>
+  
+              @if (!last) {
+              <div class="pagination-steps-line-container">
+                <div class="pagination-steps-line" [style.height.%]="getLineProgress(i)"></div>
+              </div>
+              }
+              }
+            </div>
+          </div>
+  
+          <div class="steps-container">
+            @for (step of steps; track $index; let i = $index) {
+            <div class="step-container" #stepRef>
+              <div class="step-text-container">
+                <div class="step-counter-header">
+                  <div class="step-counter-icon">
+                    <fa-icon [icon]="shoppingBagIcon"></fa-icon>
+                  </div>
+                  <span>Step {{(i + 1).toString().padStart(2, '0')}}</span>
+                </div>
+                <h2>{{step.title}}</h2>
+                <div class="caption">{{step.description}}</div>
+                <a [href]="step.buttonLink" class="btn btn-outlined-white">
+                  {{step.buttonText}}
+                </a>
+              </div>
+            </div>
+            }
+          </div>
+  
+          <div class="scroll-height">
+            <div class="img-container">
+              <div class="images">
+                <div class="relative-step-container">
+                  @for (step of steps; track $index; let i = $index) {
+                  <div class="step-image-container" [class.active]="currentStep === i"
+                    [style.transform]="getImageTransform(i)" [style.z-index]="steps.length - i">
+                    <img [src]="step.image" [alt]="'Step ' + (i + 1)">
+                  </div>
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Swiper for Mobile View -->
+    <div class="Mobile-View d-md-none">
+      <swiper-container #swiperRef  
+        init="false"
+      >
+        @for (step of steps; track $index; let i = $index) {
+          <swiper-slide>
+            <div class="step-content" style="color: #fdfdfd;">
+              <div class="step-image">
+                <img [src]="step.image" [alt]="'Step ' + (i + 1)">
+              </div>
+              <div class="step-text">
+                <div class="step-counter-header">
+                  <div class="step-counter-icon">
+                    <fa-icon [icon]="shoppingBagIcon"></fa-icon>
+                  </div>
+                  <span>Step {{(i + 1).toString().padStart(2, '0')}}</span>
+                </div>
+                <h2>{{step.title}}</h2>
+                <div class="caption">{{step.description}}</div>
+                <a [href]="step.buttonLink" class="btn btn-outlined-white">
+                  {{step.buttonText}}
+                </a>
+              </div>
+            </div>
+          </swiper-slide>
+        }
+      </swiper-container>
+  
+      <!-- <div class="swiper-pagination flex justify-center gap-2 mt-4">
+        @for (step of steps; track $index; let i = $index) {
+          <div 
+            class="pagination-dot" 
+            [class.active]="currentStep === i"
+            (click)="goToSlide(i)"
+          ></div>
+        }
+      </div> -->
+    </div>
+  </section>

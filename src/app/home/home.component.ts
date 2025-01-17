@@ -1,11 +1,13 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Component, ElementRef, Inject, OnInit, PLATFORM_ID, Renderer2 } from '@angular/core';
 import { ProductSliderComponent } from '../product-slider/product-slider.component';
+import { SolutionSliderComponent } from '../solution-slider/solution-slider.component';
+import { StepsSliderComponent } from '../steps-slider/steps-slider.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ProductSliderComponent],
+  imports: [ProductSliderComponent,SolutionSliderComponent,StepsSliderComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
