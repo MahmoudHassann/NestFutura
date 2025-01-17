@@ -155,17 +155,13 @@ swiper-container {
     justify-content: space-between;
     padding: 15px;
 
+    @include c-lg {
+
+        padding: 10px;
+
+    }
+
     .card-badge {
-        /* align-self: flex-start;
-        display: flex;
-        gap: 10px;
-        overflow: auto;
-        white-space: nowrap;
-        width: 100%;
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-        text-align: right;
- */
         align-self: flex-end;
         justify-self: flex-start;
 
@@ -173,20 +169,7 @@ swiper-container {
 
 
 
-    .badge {
-        background-color: #f9f9f9;
-        width: max-content;
-        align-items: center;
-        border: 1px solid $secondary-color;
-        border-radius: 9999px;
-        color: $secondary-color;
-        display: inline-flex;
-        font-size: 13px;
-        gap: 4px;
-        justify-content: center;
-        padding: 2px 8px;
-        transition: all 0.3s ease-out;
-    }
+
 
 
 }
@@ -237,6 +220,11 @@ swiper-container {
         -o-object-fit: contain;
         object-fit: contain;
         width: 100%;
+    }
+
+    @include c-lg {
+        height: 20px;
+        width: 20px;
     }
 }
 
@@ -351,7 +339,7 @@ swiper-container {
     position: relative;
     width: 100%;
 
-   
+
 }
 
 .product-card-typicaly-used-for {
@@ -371,6 +359,208 @@ swiper-container {
     max-width: 10px;
     width: 100%;
 }
+
 ::part(container) {
     overflow: visible !important;
-  }
+}
+
+swiper-container::part(container) {
+    display: flex;
+}
+
+
+.swiper-button-prev,
+.swiper-button-next {
+    color: #cd9b2e;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #cd9b2e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    --swiper-navigation-size: 20px;
+    // --swiper-navigation-sides-offset:46%
+
+}
+
+.slides-controls {
+    display: flex;
+    align-items: center;
+
+    .btn {
+        display: block;
+        border: 1px solid $secondary-color;
+        color: $secondary-color;
+        padding: 12px 48px;
+    }
+
+    @include c-lg {
+        .btn {
+            display: none;
+
+        }
+
+    }
+}
+
+.slider-buttons {
+    padding: 10px;
+    position: relative;
+    gap: 26px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.products-filter {
+    margin-bottom: 30px;
+    overflow: auto;
+    scrollbar-color: transparent transparent;
+    scrollbar-width: none;
+
+    .product-filter-badge {
+        align-items: center;
+        display: flex;
+        gap: 12px;
+        justify-content: flex-start;
+        position: relative;
+        width: max-content;
+
+        .filter-badge {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+        }
+
+        button {
+            appearance: none;
+            background: none;
+            border: none;
+            color: inherit;
+            cursor: pointer;
+            font-size: inherit;
+            font-weight: inherit;
+            margin: 0;
+            padding: 0;
+        }
+
+        .badge {
+            padding: 8px 16px;
+            border-color: #d2d9de;
+            color: #656669;
+            background: transparent;
+
+            &:hover {
+                color: $secondary-color;
+                border-color: $secondary-color;
+            }
+        }
+
+        .badge.active {
+            color: $secondary-color;
+            border-color: $secondary-color;
+        }
+    }
+}
+
+.swiper-button-prev,
+.swiper-rtl .swiper-button-next {
+    left: calc(100% - 100px);
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    @include c-lg {
+        top: 50%;
+    }
+
+    top: 15%;
+}
+
+/* Add hover effects (optional) */
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+    background-color: #fee4ac61;
+}
+
+
+variant-selects {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.variant-selection {
+    display: flex;
+    flex: unset;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0;
+    max-width: unset;
+    min-width: unset;
+}
+
+.variant-form {
+    display: flex;
+    flex: unset;
+    margin: 0;
+    max-width: unset;
+    min-width: unset;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.variant-button {
+    border-radius: 9999px;
+    color: #353638;
+    margin: 0;
+    padding: 8px 16px;
+    background-color: transparent;
+    border: .8px solid #eceff2;
+    border-radius: 100px;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 6px;
+    margin-right: 6px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    transition: all 0.3s ease-out;
+
+    @include c-lg {
+        padding: 5px 13px;
+        font-size: 13px;
+    }
+
+    &:hover {
+        border-color: #353638;
+    }
+}
+
+.variant-button.selected {
+    border-color: #353638;
+}
+
+.badge {
+    background-color: #f9f9f9;
+    width: max-content;
+    align-items: center;
+    border: 1px solid $secondary-color;
+    border-radius: 9999px;
+    color: $secondary-color;
+    display: inline-flex;
+    font-size: 13px;
+    gap: 4px;
+    justify-content: center;
+    padding: 2px 8px;
+    transition: all 0.3s ease-out;
+
+    @include c-lg {
+        font-size: 10px;
+        padding: 3px 6px;
+    }
+}

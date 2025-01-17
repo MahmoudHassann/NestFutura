@@ -56,57 +56,59 @@
             class="bg-grediant">comfortable living</span></h2>
 </section>
 
-    <div class="background-relative-container">
-        <div class="play-button-icon"><svg width="42" height="42" viewBox="0 0 42 42" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <mask id="mask0_5572_1324" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="42"
-                    height="42">
-                    <path d="M0 3.8147e-06H42V42H0V3.8147e-06Z" fill="white"></path>
-                </mask>
-                <g mask="url(#mask0_5572_1324)">
-                    <path
-                        d="M40.7695 21C40.7695 31.9184 31.9184 40.7695 21 40.7695C10.0816 40.7695 1.23047 31.9184 1.23047 21C1.23047 10.0816 10.0816 1.23047 21 1.23047C31.9184 1.23047 40.7695 10.0816 40.7695 21Z"
-                        stroke="#FFFEFC" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
-                    <path
-                        d="M18.7514 14.3733C18.4869 14.1822 18.1172 14.3712 18.1172 14.6975V27.2177C18.1172 27.544 18.4869 27.733 18.7514 27.542L27.4192 21.2819C27.6403 21.1222 27.6403 20.793 27.4192 20.6334L18.7514 14.3733Z"
-                        fill="white" stroke="#FFFEFC" stroke-miterlimit="10" stroke-linecap="round"
-                        stroke-linejoin="round"></path>
-                </g>
-            </svg></div>
+<div class="background-relative-container">
+    <div class="play-button-icon"><svg width="42" height="42" viewBox="0 0 42 42" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <mask id="mask0_5572_1324" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="42"
+                height="42">
+                <path d="M0 3.8147e-06H42V42H0V3.8147e-06Z" fill="white"></path>
+            </mask>
+            <g mask="url(#mask0_5572_1324)">
+                <path
+                    d="M40.7695 21C40.7695 31.9184 31.9184 40.7695 21 40.7695C10.0816 40.7695 1.23047 31.9184 1.23047 21C1.23047 10.0816 10.0816 1.23047 21 1.23047C31.9184 1.23047 40.7695 10.0816 40.7695 21Z"
+                    stroke="#FFFEFC" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path
+                    d="M18.7514 14.3733C18.4869 14.1822 18.1172 14.3712 18.1172 14.6975V27.2177C18.1172 27.544 18.4869 27.733 18.7514 27.542L27.4192 21.2819C27.6403 21.1222 27.6403 20.793 27.4192 20.6334L18.7514 14.3733Z"
+                    fill="white" stroke="#FFFEFC" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+            </g>
+        </svg></div>
 
-        <div class="video-section">
-            <div class="container template">
-                <div class="video-container" >
-                    <div class="video-section-poster" (click)="showVideoPopup(videoElement)">
-                        <img src="https://www.shelly.com/cdn/shop/files/shelly-brand-video-homepage-thumbnail_1100x.jpg?v=1727958873"
-                            loading="lazy" alt="thumbnail-video-poster">
+    <div class="video-section">
+        <div class="container template">
+            <div class="video-container">
+                <div class="video-section-poster" (click)="showVideoPopup(videoElement)">
+                    <img src="https://www.shelly.com/cdn/shop/files/shelly-brand-video-homepage-thumbnail_1100x.jpg?v=1727958873"
+                        loading="lazy" alt="thumbnail-video-poster">
+                </div>
+
+                <div class="video-popup" [style.opacity]="isPopupVisible ? '1' : '0'"
+                    [style.pointerEvents]="isPopupVisible ? 'all' : 'none'">
+                    <div class="video-popup-close-btn" (click)="hideVideoPopup(videoElement)">
+                        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="18" cy="18" r="17.5" fill="#FDFDFD" stroke="#4594D1"></circle>
+                            <mask id="mask0_1866_21600" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="7" y="7"
+                                width="22" height="22">
+                                <rect x="7.875" y="7.875" width="20.228" height="20.228" fill="#D9D9D9"></rect>
+                            </mask>
+                            <g mask="">
+                                <path
+                                    d="M13.267 23.5974L12.3789 22.7092L17.0988 17.9894L12.3789 13.2695L13.267 12.3813L17.9869 17.1012L22.7068 12.3813L23.5949 13.2695L18.8751 17.9894L23.5949 22.7092L22.7068 23.5974L17.9869 18.8775L13.267 23.5974Z"
+                                    fill="#4594D1"></path>
+                            </g>
+                        </svg>
                     </div>
-
-                    <div class="video-popup" [style.opacity]="isPopupVisible ? '1' : '0'" [style.pointerEvents]="isPopupVisible ? 'all' : 'none'">
-                        <div class="video-popup-close-btn" (click)="hideVideoPopup(videoElement)">
-                            <svg width="36" height="36" viewBox="0 0 36 36" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="18" cy="18" r="17.5" fill="#FDFDFD" stroke="#4594D1"></circle>
-                                <mask id="mask0_1866_21600" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="7"
-                                    y="7" width="22" height="22">
-                                    <rect x="7.875" y="7.875" width="20.228" height="20.228" fill="#D9D9D9"></rect>
-                                </mask>
-                                <g mask="">
-                                    <path
-                                        d="M13.267 23.5974L12.3789 22.7092L17.0988 17.9894L12.3789 13.2695L13.267 12.3813L17.9869 17.1012L22.7068 12.3813L23.5949 13.2695L18.8751 17.9894L23.5949 22.7092L22.7068 23.5974L17.9869 18.8775L13.267 23.5974Z"
-                                        fill="#4594D1"></path>
-                                </g>
-                            </svg>
-                        </div>
-                        <div class="popup-video-container">
-                            <video #videoElement
-                                src="//www.shelly.com/cdn/shop/videos/c/vp/f645bd10b37044feb94c53b59f30b826/f645bd10b37044feb94c53b59f30b826.HD-1080p-3.3Mbps-35769727.mp4?v=0"
-                                poster="https://www.shelly.com/cdn/shop/files/preview_images/f645bd10b37044feb94c53b59f30b826.thumbnail.0000000000_small.jpg?v=1727958676"
-                                playsInline="true" controls="controls" class="video-vid" ></video>
-                        </div>
+                    <div class="popup-video-container">
+                        <video #videoElement
+                            src="//www.shelly.com/cdn/shop/videos/c/vp/f645bd10b37044feb94c53b59f30b826/f645bd10b37044feb94c53b59f30b826.HD-1080p-3.3Mbps-35769727.mp4?v=0"
+                            poster="https://www.shelly.com/cdn/shop/files/preview_images/f645bd10b37044feb94c53b59f30b826.thumbnail.0000000000_small.jpg?v=1727958676"
+                            playsInline="true" controls="controls" class="video-vid"></video>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <app-product-slider></app-product-slider>
+</div>
+<div class="container-fluid product-slider-container" style="overflow: hidden;">
+    <app-product-slider style="overflow: visible;"></app-product-slider>
+</div>

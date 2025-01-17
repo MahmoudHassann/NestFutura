@@ -339,3 +339,9 @@
 
     }
 }
+
+.product-slider-container{
+    @include large{
+        padding: 0 5rem;
+    }
+}
