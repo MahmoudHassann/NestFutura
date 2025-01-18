@@ -1,3 +1,4 @@
+<div class="container-fluid product-slider-container" style="overflow: hidden;">
 <div class="products-slider-header">
     <div class="products-slider">
         <h2 class="heading-text">Products</h2>
@@ -41,7 +42,8 @@
                         </div>
                         <div class="card-contnet">
                             <div class="card-badge card-badge-custom top right">
-                                <div class="badge">
+                                <div class="badge" [style.color]="product.status === 'Out of stock' ? '#121519' : '#cd9b2e'" 
+                                [style.borderColor]="product.status === 'Out of stock' ? '#121519' : '#cd9b2e'">
                                     <div class="badge-text">{{product.status}}</div>
                                 </div>
                             </div>
@@ -136,3 +138,8 @@
     </swiper-slide>
     }
 </swiper-container>
+
+    <div class="products-btn-mobile mt-4 text-center">
+        <a href="" class="btn btn-outlined-white">Shop all Products</a>
+    </div>
+</div>

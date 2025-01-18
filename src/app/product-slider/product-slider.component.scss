@@ -560,3 +560,20 @@ variant-selects {
         padding: 3px 6px;
     }
 }
+
+.products-btn-mobile{
+    .btn{
+        border: 1px solid $secondary-color;
+        color: $secondary-color;
+        max-width: max-content;
+    }
+
+    @include large{
+        display: none;
+    }
+}
+.product-slider-container{
+    @include large{
+        padding: 0 5rem;
+    }
+}
