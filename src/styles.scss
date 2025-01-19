@@ -96,6 +96,19 @@ body {
 .btn:hover:before {
     opacity: 0;
 }
+.btn-filled-light{
+    color: #121519;
+    
+    &::before{
+        background: linear-gradient(90deg, #fff, #fee4ac);;
+    }
+    &::after{
+        background: linear-gradient(90deg, $secondary-color, $dark-color);
+    }
+    &:hover{
+        color: #fee4ac;
+    }
+}
 
 .btn.btn-filled {
     color: $primary-color;

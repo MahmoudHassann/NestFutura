@@ -1,3 +1,7 @@
+@use '../../styles/variables' as *;
+@use '../../styles/media-queries.scss' as *;
+
+
 .bg {
     height: 100%;
     left: 0;
@@ -15,14 +19,14 @@
     position: absolute;
     top: 0;
     width: 100%;
-    background: linear-gradient(90deg, #0d1720, #14222f 35%, #132634);
+    background: linear-gradient(90deg, #312916, #392d11 35%, #534115);
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .Desktop-View {
     margin: 0 auto;
-    padding: 0 5rem;
+    padding: 0 2rem;
     color: #fdfdfd;
 }
 
@@ -93,6 +97,19 @@ div.step-active {
     margin-right: 20px;
     max-width: 395px;
     width: 100%;
+
+    h2 {
+        font-size: 42px;
+    }
+
+    a.btn {
+        font-size: 16px;
+        font-weight: 700;
+        height: fit-content;
+        margin-top: 30px;
+        padding: 14px 56px;
+
+    }
 }
 
 .step-count-header {
@@ -150,7 +167,6 @@ div.step-active {
     align-items: center;
     display: flex;
     justify-content: center;
-    width: 100%;
 }
 
 .step-image-container {
@@ -164,10 +180,14 @@ div.step-active {
 
 
 .step-counter-header {
-    display: flex;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 20px;
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+
+    @include c-lg {
+        margin-bottom: 14px;
+    }
 }
 
 .step-counter-icon {
@@ -179,44 +199,77 @@ div.step-active {
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.1);
 }
+
 .step-image-container.active {
     height: 459px;
-  }
+}
 
-  /* mobile-view */
-  :host {
+/* mobile-view */
+
+
+.Mobile-View {
+    padding-top: 27px;
+    padding-bottom: 27px;
+}
+
+.step-content {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 14px;
+}
+
+.step-image {
+    height: 322px;
+    width: 100%;
+}
+
+.step-image img {
+    border-radius: 18px;
     display: block;
-  }
-
-  .steps-swiper {
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
     width: 100%;
-    height: auto;
-  }
+}
 
-  .step-content {
-    padding: 1rem;
-  }
-
-  .step-image img {
+.step-text {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    max-width: 395px;
     width: 100%;
-    height: auto;
-    border-radius: 0.5rem;
-  }
 
-  .step-text {
-    margin-top: 1rem;
-  }
+    a.btn {
+        height: fit-content;
+        width: fit-content;
 
-  .pagination-dot {
+        @include medium {
+            padding: 13px 40px;
+        }
+
+        @include c-lg {
+            margin-top: 20px;
+        }
+    }
+
+    .caption {
+        line-height: 1.2;
+    }
+}
+
+
+.pagination-dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
     background-color: #ccc;
     cursor: pointer;
     transition: background-color 0.3s;
-  }
+}
 
-  .pagination-dot.active {
+.pagination-dot.active {
     background-color: #000;
-  }
-  
+}

@@ -3,7 +3,7 @@
       <div class="bg-snippet"></div>
     </div>
   
-    <div class="Desktop-View d-none d-md-block">
+    <div class="Desktop-View d-none d-lg-block">
       <div class="section">
         <div class="sidebar-container">
           <div class="sidebar">
@@ -34,7 +34,7 @@
                 </div>
                 <h2>{{step.title}}</h2>
                 <div class="caption">{{step.description}}</div>
-                <a [href]="step.buttonLink" class="btn btn-outlined-white">
+                <a [href]="step.buttonLink" class="btn btn-filled-light">
                   {{step.buttonText}}
                 </a>
               </div>
@@ -60,7 +60,7 @@
       </div>
     </div>
     <!-- Swiper for Mobile View -->
-    <div class="Mobile-View d-md-none">
+    <div class="Mobile-View d-lg-none">
       <swiper-container #swiperRef  
         init="false"
       >
@@ -68,18 +68,18 @@
           <swiper-slide>
             <div class="step-content" style="color: #fdfdfd;">
               <div class="step-image">
-                <img [src]="step.image" [alt]="'Step ' + (i + 1)">
+                <img [src]="step.image" [alt]="'Step ' + (i + 1)" width="900" height="900" loading="lazy">
               </div>
               <div class="step-text">
                 <div class="step-counter-header">
                   <div class="step-counter-icon">
                     <fa-icon [icon]="shoppingBagIcon"></fa-icon>
                   </div>
-                  <span>Step {{(i + 1).toString().padStart(2, '0')}}</span>
+                  <span class="caption">Step {{(i + 1).toString().padStart(2, '0')}}</span>
                 </div>
                 <h2>{{step.title}}</h2>
                 <div class="caption">{{step.description}}</div>
-                <a [href]="step.buttonLink" class="btn btn-outlined-white">
+                <a [href]="step.buttonLink" class="btn btn-filled-light">
                   {{step.buttonText}}
                 </a>
               </div>

@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, Inject, Input, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, Inject, Input, OnInit, PLATFORM_ID, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Swiper } from 'swiper';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
@@ -35,7 +35,8 @@ interface Product {
   imports: [],
   templateUrl: './product-slider.component.html',
   styleUrl: './product-slider.component.scss',
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  encapsulation: ViewEncapsulation.Emulated,
 })
 export class ProductSliderComponent implements AfterViewInit, OnInit {
   @ViewChild('swiperRef') swiperRef!: ElementRef;

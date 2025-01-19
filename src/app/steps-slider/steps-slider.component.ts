@@ -80,11 +80,7 @@ export class StepsSliderComponent {
       this.checkScroll();
       const swiperEl = this.swiperRef.nativeElement;
       Object.assign(swiperEl, {
-        slidesPerView: 3,
-        spaceBetween: 20,
-        effect: 'fade',
-        fadeEffect: { crossFade: true },
-        loop: true,
+        slidesPerView: 1.1,
         on: {
           init(){
 
