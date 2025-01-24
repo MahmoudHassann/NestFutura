@@ -1,0 +1,109 @@
+<div class="product-card" (mouseenter)="hoveredProduct = product" (mouseleave)="hoveredProduct = null">
+    <div class="card-wrapper">
+        <div class="card" style="--ratio-percent: 100%;">
+            <a href="" class="card-inner rate" style="--ratio-percent: 100%;">
+                <div class="card-media has-custom-secondary-img">
+                    <div class="media">
+                        <picture><img [src]="product.images.default" [alt]="product.name" loading="lazy"
+                                class="card-media-featured" width="300" height="300">
+                        </picture>
+                        <picture><img [src]="product.images.hover" [alt]="product.name" loading="lazy"
+                                class="card-media-secondary" width="300" height="300">
+                        </picture>
+                    </div>
+                </div>
+                <div class="card-contnet">
+                    <div class="card-badge card-badge-custom top right">
+                        <div class="badge"
+                            [style.color]="product.status === 'Out of stock' ? '#121519' : '#cd9b2e'"
+                            [style.borderColor]="product.status === 'Out of stock' ? '#121519' : '#cd9b2e'">
+                            <div class="badge-text">{{product.status}}</div>
+                        </div>
+                    </div>
+                    <div class="card-feature-icons-container">
+                        @for (feature of product.connectivity; track $index) {
+                        <div class="card-feature-icon" [innerHTML]="feature.icon">
+                        </div>
+                        }
+                    </div>
+                </div>
+            </a>
+            <div class="card-contnet">
+                <div class="product-card-price-container-title-and-price">
+                    <h3 class="card-heading">
+                        <a href="" class="card-link">{{ getProductDisplayName(product) }} </a>
+                    </h3>
+                    <div class="product-card-price-container">
+                        <div class="price">
+                            <div class="price-container">
+                                @if(!product.discount){
+                                <ng-container>
+                                    <div class="price-regular">
+                                        <span class="visually-hidden visually-hidden-inline">Regular
+                                            Price</span>
+                                        <span class="price-item">{{product.totalprice}}</span>
+                                    </div>
+                                </ng-container>
+                                }
+                                @else {
+                                <ng-container>
+                                    <div class="product-sale">
+                                        <span class="visually-hidden visually-hidden-inline">sale
+                                            Price</span>
+                                        <span class="price-item">{{product.totalprice}}</span>
+                                        <span class="visually-hidden visually-hidden-inline">Regular
+                                            Price</span>
+                                    </div>
+                                </ng-container>
+                                }
+
+                            </div>
+                            <div class="product-card-description-container">
+                                <div class="product-card-description caption">
+                                    {{product.description}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card-content-container">
+                    <div class="product-card-typicaly-used-for">
+                        @for (property of product.properties; track $index) {
+                        <div class="badge">
+                            <div class="badge-icon"><svg width="10" height="7" viewBox="0 0 10 7"
+                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M3.77486 6.91906L0.924805 4.069L1.63732 3.35648L3.77486 5.49403L8.36246 0.906433L9.07497 1.61895L3.77486 6.91906Z"
+                                        fill="#cd9b2e"></path>
+                                </svg></div>
+
+                            <div class="badge-text">{{property}}</div>
+                        </div>
+                        }
+                    </div>
+                        @if (product.variants && product.variants.length > 0) {
+                        <div class="variant-selection"
+                            [class.color-selection]="product.variantType === 'color'">
+                            @for (variant of product.variants; track variant.id) {
+                            @if (product.variantType === 'color') {
+                            <button [class.selected]="isVariantSelected(product, variant)"
+                                (click)="selectVariant(product, variant)" class="color-button"
+                                [style.background-color]="variant.color" [attr.aria-label]="variant.name">
+                                @if (isVariantSelected(product, variant)) {
+                                <div class="check-mark"></div>
+                                }
+                            </button>
+                            } @else {
+                            <button [class.selected]="isVariantSelected(product, variant)"
+                                (click)="selectVariant(product, variant)" class="variant-button">
+                                {{ variant.name }}
+                            </button>
+                            }
+                            }
+                        </div>
+                        }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

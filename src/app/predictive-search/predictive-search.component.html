@@ -1,0 +1,58 @@
+<div class="container">
+    <form (ngSubmit)="onSearch()" class="search">
+        <div class="field">
+            <input class="search-input field-input has-icon form-control" (focus)="onFocus()" (blur)="onBlur()" name="search" [(ngModel)]="searchInput"
+                type="search" placeholder="Search" (input)="onInputChange($event)" id="search-input" role="combobox"
+                autocomplete="list" autocapitalize="off" spellcheck="false">
+            <button class="field-icon" type="submit">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M7.20047 13.3183C3.83136 13.3183 1.10016 10.5871 1.10016 7.21799C1.10016 3.84888 3.83136 1.11768 7.20047 1.11768C10.5696 1.11768 13.3008 3.84888 13.3008 7.21799C13.3008 10.5871 10.5696 13.3183 7.20047 13.3183Z"
+                        stroke="#121519" stroke-width="1.4" stroke-miterlimit="10" stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                    <path d="M14.8828 15.1376L11.567 11.8218" stroke="#121519" stroke-width="1.4" stroke-miterlimit="10"
+                        stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+            </button>
+            <button class="search-close caption">Cancel</button>
+            <div class="predictive-search-default" [ngClass]="{'focus': isFocused}">
+                <div class="predictive-search-content">
+                    @if(showPopularSearches){
+                    <div class="predictive-search-results">
+                        <div class="predictive-search-result-group">
+                            <div class="predictive-search-heading">Popular searches</div>
+                            <ul class="predictive-results-list">
+                                @for (search of popularSearches; track $index) {
+                                <li class="predictive-search-list-item" (click)="onPopularSearchSelect(search)">
+                                    <div class="predictive-search-item">
+                                        <div class="badge" style="padding: 8px 16px;">
+                                            <div class="badge-text">{{search}}</div>
+                                        </div>
+                                    </div>
+                                </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    }
+                    <div class="predictive-search-results">
+                        <div class="predictive-search-result-group">
+                            <div class="predictive-search-heading">Popular Products</div>
+                            <ul class="predictive-results-list product-list">
+                                @for (product of filteredProducts; track $index) {
+                                <li class="predictive-search-list-item">
+                                    @if(products){
+                                    <app-product-card [product]="product" [products]="filteredProducts"
+                                        [selectedVariants]="selectedVariants"
+                                        (variantSelected)="onVariantSelected($event)"></app-product-card>
+                                    }
+                                </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

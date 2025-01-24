@@ -4,9 +4,10 @@
 .navbar {
     display: block;
     margin-top: 15px;
-    position: static;
+    position: fixed;
     transition: all 0.3s ease-out;
     width: 100%;
+    z-index: 999;
 
     .nav-bg-blur {
         backdrop-filter: blur(3px);
@@ -25,6 +26,12 @@
         z-index: -1;
     }
 
+    .page-width {
+        margin: 0 auto;
+        max-width: 1600px;
+        padding: 0 1.5rem;
+    }
+
     .nav-container {
         background: $primary-color;
         border-radius: 10px;
@@ -36,6 +43,30 @@
         padding: 12px 24px;
         transition: all 0.3s ease-out;
         align-items: center;
+
+        app-predictive-search {
+            left: 50%;
+            opacity: 0;
+            padding: 0 74px;
+            pointer-events: none;
+            position: absolute;
+            transform: translate(-50%);
+            transition: all 0.3s ease-out;
+            width: 100%;
+            z-index: 1;
+
+            @include c-lg{
+                padding: 0 24px;
+            }
+        }
+        app-predictive-search.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .mobile-nav.active{
+            opacity: 0;
+            pointer-events: none;
+        }
 
         .mobile-nav {
             align-items: center;
@@ -82,6 +113,10 @@
             }
         }
 
+        .nav-menu.active, .nav-logo.active{
+            opacity: 0;
+            pointer-events: none;
+        }
         .nav-menu {
             align-items: center;
             display: flex;
@@ -508,8 +543,12 @@
             width: 13rem;
             align-items: center;
 
-            @include small{
+            @include small {
                 width: 10rem;
+            }
+
+            @media(max-width:400px) {
+                width: 7rem;
             }
         }
 
