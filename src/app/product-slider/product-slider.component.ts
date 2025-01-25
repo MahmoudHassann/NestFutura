@@ -3,32 +3,9 @@ import { AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, Inject, I
 import { Swiper } from 'swiper';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ProductCardComponent } from '../product-card/product-card.component';
+import { Variant } from '../interface/variant';
+import { Product } from '../interface/product';
 
-interface Variant {
-  id: string;
-  name: string;
-  color?: string;
-  image?: string;
-}
-interface Product {
-  name: string;
-  price: string;
-  totalprice: string;
-  images: {
-    default: string;
-    hover: string;
-    white?: string;
-    black?: string;
-    brown?: string;
-  };
-  discount: boolean;
-  status: string;
-  properties: string[];
-  description: string;
-  connectivity: { type: string; icon: SafeHtml }[];
-  variants?: Variant[];
-  variantType?: 'color' | 'regular';
-}
 
 @Component({
   selector: 'app-product-slider',

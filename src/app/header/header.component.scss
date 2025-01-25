@@ -10,6 +10,7 @@
     z-index: 999;
 
     .nav-bg-blur {
+        content: "";
         backdrop-filter: blur(3px);
         background: rgba(0, 0, 0, .5);
         display: block;
@@ -24,6 +25,14 @@
         transition: all 0.3s ease-out;
         width: 100%;
         z-index: -1;
+    }
+    .nav-bg-blur.active{
+        @include large{
+            opacity: 1;
+        pointer-events: all;
+        height: calc(100vh + 0px);
+        top: -20%;
+        }
     }
 
     .page-width {

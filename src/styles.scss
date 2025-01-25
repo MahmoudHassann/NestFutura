@@ -96,16 +96,20 @@ body {
 .btn:hover:before {
     opacity: 0;
 }
-.btn-filled-light{
+
+.btn-filled-light {
     color: #121519;
-    
-    &::before{
-        background: linear-gradient(90deg, #fff, #fee4ac);;
+
+    &::before {
+        background: linear-gradient(90deg, #fff, #fee4ac);
+        ;
     }
-    &::after{
+
+    &::after {
         background: linear-gradient(90deg, $secondary-color, $dark-color);
     }
-    &:hover{
+
+    &:hover {
         color: #fee4ac;
     }
 }
@@ -180,4 +184,121 @@ img {
     display: flex;
     justify-content: center;
     width: 100%;
+
+}
+
+::part(container) {
+    overflow: visible !important;
+}
+
+swiper-container::part(container) {
+    display: flex;
+}
+
+
+.swiper-button-prev,
+.swiper-button-next {
+    color: #cd9b2e;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #cd9b2e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    --swiper-navigation-size: 20px;
+    top: 15%;
+
+    @include c-lg {
+        top: 50%;
+    }
+
+
+}
+.swiper-button-prev,
+.swiper-rtl .swiper-button-next {
+    left: calc(100% - 100px);
+}
+
+
+/* Add hover effects (optional) */
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+    background-color: #fee4ac61;
+}
+
+.slides-controls {
+    display: flex;
+    align-items: center;
+
+    .btn {
+        display: block;
+        border: 1px solid $secondary-color;
+        color: $secondary-color;
+        padding: 12px 48px;
+    }
+
+    @include c-lg {
+        .btn {
+            display: none;
+
+        }
+
+    }
+}
+
+.slider-buttons {
+    padding: 10px;
+    position: relative;
+    gap: 26px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+swiper-container {
+    aspect-ratio: 1 / 0;
+    display: flex;
+}
+
+.col-content-arrow {
+    border: 1px solid $primary-color;
+    bottom: 26px;
+    padding: 15px;
+    position: absolute;
+    right: 26px;
+    fill: hsla(0, 0%, 100%, .1);
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    border-radius: 50%;
+    box-shadow: 0px 0px 6px 0px hsla(0, 0%, 100%, .6);
+    cursor: pointer;
+    filter: drop-shadow(0px 0px 6px hsla(0, 0%, 100%, .6));
+    height: 54px;
+    width: 54px;
+
+    @include c-lg {
+        height: 55px;
+        width: 55px;
+        padding: 10px;
+    }
+
+    .arrow-icon {
+        align-items: center;
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        transition: all 0.3s ease-out;
+        width: 100%;
+
+        svg {
+            height: 17px;
+            width: 17px;
+
+            @include c-lg {
+                height: 12px;
+                width: 12px;
+            }
+        }
+    }
 }

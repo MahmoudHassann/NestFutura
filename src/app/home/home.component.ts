@@ -1,18 +1,25 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, ElementRef, Inject, OnInit, PLATFORM_ID, Renderer2 } from '@angular/core';
+import { AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, Inject, OnInit, PLATFORM_ID, Renderer2, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ProductSliderComponent } from '../product-slider/product-slider.component';
 import { SolutionSliderComponent } from '../solution-slider/solution-slider.component';
 import { StepsSliderComponent } from '../steps-slider/steps-slider.component';
+import { ProjectCardComponent } from '../project-card/project-card.component';
+import { Project } from '../interface/project';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ProductSliderComponent,SolutionSliderComponent,StepsSliderComponent],
+  imports: [ProductSliderComponent,SolutionSliderComponent,StepsSliderComponent,ProjectCardComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    encapsulation: ViewEncapsulation.Emulated,
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
   isPopupVisible = false;
+  project :Project[] = [];
+  projects :Project[] = [];
+  @ViewChild('swiperRef') swiperRef!: ElementRef;
   metrics = [
     { value: 3000000, caption: 'Households', type: 'million' },
     { value: 18000000, caption: 'Households', type: 'million' },
@@ -23,6 +30,34 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.project = [
+      {
+        name:"Smart Electric Car Charger",
+        author:"Mark Boyle 🇬🇧",
+        desc:"I automated my EV charger using a Shelly 1 to control charging times based on my night-time tariff, optimizing energy use for my Nissan Leaf.",
+        img:"https://www.shelly.com/cdn/shop/articles/shelly-ev-charger_500x.webp?v=1726740958"
+      },
+      {
+        name:"Smart Electric Car Charger",
+        author:"Mark Boyle 🇬🇧",
+        desc:"I automated my EV charger using a Shelly 1 to control charging times based on my night-time tariff, optimizing energy use for my Nissan Leaf.",
+        img:"https://www.shelly.com/cdn/shop/articles/shelly-ev-charger_500x.webp?v=1726740958"
+      },
+      {
+        name:"Smart Electric Car Charger",
+        author:"Mark Boyle 🇬🇧",
+        desc:"I automated my EV charger using a Shelly 1 to control charging times based on my night-time tariff, optimizing energy use for my Nissan Leaf.",
+        img:"https://www.shelly.com/cdn/shop/articles/shelly-ev-charger_500x.webp?v=1726740958"
+      },
+      {
+        name:"Smart Electric Car Charger",
+        author:"Mark Boyle 🇬🇧",
+        desc:"I automated my EV charger using a Shelly 1 to control charging times based on my night-time tariff, optimizing energy use for my Nissan Leaf.",
+        img:"https://www.shelly.com/cdn/shop/articles/shelly-ev-charger_500x.webp?v=1726740958"
+      },
+    ]
+    this.projects = [...this.project]
     if (isPlatformBrowser(this.platformId)) {
       const metricsSection = this.el.nativeElement.querySelector('.metrics');
       const metricElements = this.el.nativeElement.querySelectorAll('.metric-value');
@@ -53,6 +88,33 @@ export class HomeComponent implements OnInit {
           this.animateNumbers(el, 0, endValue, 2000, type);
         });
       }
+    }
+  }
+  ngAfterViewInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+
+      const swiperEl = this.swiperRef.nativeElement;
+      Object.assign(swiperEl, {
+        slidesPerView: 'auto',
+        spaceBetween: 12,
+        loop: false,
+        breakpoints: {
+          989: {
+            spaceBetween: 22
+          }
+        },
+        observer: true,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        on: {
+          init() {
+
+          }
+        }
+      });
+      swiperEl.initialize();
     }
   }
 

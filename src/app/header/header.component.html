@@ -1,5 +1,5 @@
 <nav class="navbar">
-    <div class="nav-bg-blur"></div>
+    <div class="nav-bg-blur" [class.active]="predictiveSearch"></div>
     <div class="page-width">
     <div class="container nav-container">
         <button class="btn mobile-nav menu-drawer-btn" [class.active]="predictiveSearch" [ngStyle]="{'background':drawerOpen? '#cd9b2e' : '#eceff2'}"
@@ -24,7 +24,7 @@
 
         </button>
 
-        <app-predictive-search [class.active]="predictiveSearch"></app-predictive-search>
+        <app-predictive-search [class.active]="predictiveSearch" (focusStateChange)="onPredictiveSearchFocus($event)"></app-predictive-search>
 
         <div class="nav-menu menu-left" [class.active]="predictiveSearch">
             <div class="nav-item-container nav-item-megamenu-container">
@@ -607,7 +607,11 @@
 
            
 
-
+            <div class="nav-item-container nav-item-link-container">
+                <a href="" class="nav-item menu-mobile-click menu-mobile-open">
+                    <span class="nav-item-title">Projects</span>
+                </a>
+            </div>
         </div>
         <a href="/" class="nav-logo" [class.active]="predictiveSearch">
             <img src="/img/logo.png" alt="logo image" class="img-fluid">

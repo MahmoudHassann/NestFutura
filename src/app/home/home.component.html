@@ -114,8 +114,8 @@
 <div class="featured-grid-section">
     <div class="featured-grid container">
         <div class="featured-grid-item">
-            <div class="feature-grid-item-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 28 28" height="28" width="28">
+            <div class="feature-grid-item-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 28 28"
+                    height="28" width="28">
                     <path fill="#cd9b2e" d="M2.78516 5.01577L25.7694 28L26.7851 26.9842L3.80093 4L2.78516 5.01577Z"
                         clip-rule="evenodd" fill-rule="evenodd" />
                     <path fill="#cd9b2e"
@@ -133,8 +133,8 @@
             </div>
         </div>
         <div class="featured-grid-item">
-            <div class="feature-grid-item-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 28 28" height="28" width="28">
+            <div class="feature-grid-item-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 28 28"
+                    height="28" width="28">
                     <path fill="#cd9b2e" d="M2.78516 5.01577L25.7694 28L26.7851 26.9842L3.80093 4L2.78516 5.01577Z"
                         clip-rule="evenodd" fill-rule="evenodd" />
                     <path fill="#cd9b2e"
@@ -152,8 +152,8 @@
             </div>
         </div>
         <div class="featured-grid-item">
-            <div class="feature-grid-item-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 28 28" height="28" width="28">
+            <div class="feature-grid-item-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 28 28"
+                    height="28" width="28">
                     <path fill="#cd9b2e" d="M2.78516 5.01577L25.7694 28L26.7851 26.9842L3.80093 4L2.78516 5.01577Z"
                         clip-rule="evenodd" fill-rule="evenodd" />
                     <path fill="#cd9b2e"
@@ -171,8 +171,8 @@
             </div>
         </div>
         <div class="featured-grid-item">
-            <div class="feature-grid-item-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 28 28" height="28" width="28">
+            <div class="feature-grid-item-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 28 28"
+                    height="28" width="28">
                     <path fill="#cd9b2e" d="M2.78516 5.01577L25.7694 28L26.7851 26.9842L3.80093 4L2.78516 5.01577Z"
                         clip-rule="evenodd" fill-rule="evenodd" />
                     <path fill="#cd9b2e"
@@ -191,7 +191,70 @@
         </div>
     </div>
 </div>
+
 <app-solution-slider></app-solution-slider>
 
-<app-steps-slider></app-steps-slider>
+<div class="project-section">
+    <div class="page-width" style="overflow: hidden;">
+        <div class="projects-slider-header">
+            <div class="projects-slider">
+                <h2 class="heading-text">Successful customer projects from around the world</h2>
+            </div>
+            <div class="slides-controls">
+                <a href="" class="btn btn-outlined-white">Discover all Projects</a>
+                <div class="slider-buttons">
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+        </div>
+        <swiper-container #swiperRef init="false">
+            @for (project of projects; track $index) {
+            <swiper-slide style="margin-right: 12px;">
+                <app-project-card [project]="project"></app-project-card>
+            </swiper-slide>
+            }
+        </swiper-container>
+        <div class="projects-btn-mobile mt-4 text-center">
+            <a href="" class="btn btn-outlined-white">Discover all Projects</a>
+        </div>
+    </div>
+</div>
 
+<div class="container py-5">
+    <div class="two-col-section">
+        <h2>Start your automation journey with Shelly</h2>
+    </div>
+    <div class="two-col-container">
+        <a href="" class="col-content">
+            <span class="col-content-title"><h3>Smart Home Automation</h3></span>
+            <span class="col-content-arrow">
+                <div class="arrow-icon">
+                    <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11.9977 2.93992L11.9977 13.3178L13.2709 13.3126V0.770872H0.729128L0.723977 2.04408L11.1018 2.04408L0.281209 12.8647L1.17705 13.7605L11.9977 2.93992Z" fill="#FDFDFD"></path>
+                      </svg>
+                </div>
+            </span>
+            <div class="bg-two-col">
+                <div class="bg-grediant"></div>
+                <img src="https://www.shelly.com/cdn/shop/files/homepage-section-Smart-Home-Automation_1200x.jpg?v=1728643141" alt="">
+            </div>
+        </a>
+        <a href="" class="col-content">
+            <span class="col-content-title"><h3>Smart Home Automation</h3></span>
+            <span class="col-content-arrow">
+                <div class="arrow-icon">
+                    <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11.9977 2.93992L11.9977 13.3178L13.2709 13.3126V0.770872H0.729128L0.723977 2.04408L11.1018 2.04408L0.281209 12.8647L1.17705 13.7605L11.9977 2.93992Z" fill="#FDFDFD"></path>
+                      </svg>
+                </div>
+            </span>
+            <div class="bg-two-col">
+                <div class="bg-grediant"></div>
+                <img src="https://www.shelly.com/cdn/shop/files/homepage-section-Smart-Home-Automation_1200x.jpg?v=1728643141" alt="">
+            </div>
+        </a>
+    </div>
+</div>
+
+<app-steps-slider></app-steps-slider>

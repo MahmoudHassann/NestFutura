@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
 import { ProductCardComponent } from '../product-card/product-card.component';
 import { Product } from '../interface/product';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -20,7 +20,12 @@ export class PredictiveSearchComponent implements OnInit {
   showProductSuggestions: boolean = false;
   selectedVariants = new Map<string, Variant>();
   products !: Product[]
-  constructor(private sanitizer: DomSanitizer) {
+  @Output() focusStateChange = new EventEmitter<boolean>();
+  @ViewChild('search', { static: false }) searchInputElement!: ElementRef<HTMLInputElement>;
+  @ViewChild('searchContainer', { static: false }) searchContainer!: ElementRef;
+  private outsideClickListener!: () => void;
+  
+  constructor(private sanitizer: DomSanitizer,private renderer: Renderer2) {
 
   }
   popularSearches: string[] = [
@@ -32,6 +37,7 @@ export class PredictiveSearchComponent implements OnInit {
   ];
 
   ngOnInit(): void {
+    this.outsideClickListener = this.renderer.listen('document', 'mousedown', this.handleOutsideClick.bind(this));
     this.products = [
       {
         name: 'Shelly Dimmer Gen3',
@@ -205,15 +211,32 @@ export class PredictiveSearchComponent implements OnInit {
     ];
   }
 
+  ngOnDestroy(): void {
+    // Remove the global click listener
+    if (this.outsideClickListener) {
+      this.outsideClickListener();
+    }
+  }
+
   isFocused: boolean = false;
 
   onFocus(): void {
     this.isFocused = true;
+    this.focusStateChange.emit(true);
+  }
+  focusInput(): void {
+    this.searchInputElement.nativeElement.focus();
   }
 
-  onBlur(): void {
+  /* onBlur(event: FocusEvent): void {
+    const relatedTarget = event.relatedTarget as HTMLElement;
+    if (this.searchContainer.nativeElement.contains(relatedTarget)) {
+      // Click is within the container, do not close the predictive search
+      return;
+    }
     this.isFocused = false;
-  }
+    this.focusStateChange.emit(false);
+  } */
   private sanitizeSvg(svg: string): SafeHtml {
     return this.sanitizer.bypassSecurityTrustHtml(svg);
   }
@@ -246,6 +269,19 @@ export class PredictiveSearchComponent implements OnInit {
     this.showPopularSearches = false;
     this.showProductSuggestions = true;
     this.filterProducts(search);
+  }
+
+  handleOutsideClick(event: MouseEvent): void {
+    const target = event.target as HTMLElement;
+
+    if (this.searchContainer && this.searchContainer.nativeElement.contains(target)) {
+      // Click is inside the search container, do not close
+      return;
+    }
+
+    // Click is outside the search container
+    this.isFocused = false;
+    this.focusStateChange.emit(false)
   }
 
   filterProducts(query: string) {

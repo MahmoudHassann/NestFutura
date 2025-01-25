@@ -21,10 +21,7 @@
     }
 }
 
-swiper-container {
-    aspect-ratio: 1 / 0;
-    display: flex;
-}
+
 
 .card-wrapper {
     color: inherit;
@@ -360,62 +357,7 @@ swiper-container {
     width: 100%;
 }
 
-::part(container) {
-    overflow: visible !important;
-}
 
-swiper-container::part(container) {
-    display: flex;
-}
-
-
-.swiper-button-prev,
-.swiper-button-next {
-    color: #cd9b2e;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 1px solid #cd9b2e;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    --swiper-navigation-size: 20px;
-    top: 15%;
-    @include c-lg {
-        top: 50%;
-    }
-
-
-}
-
-.slides-controls {
-    display: flex;
-    align-items: center;
-
-    .btn {
-        display: block;
-        border: 1px solid $secondary-color;
-        color: $secondary-color;
-        padding: 12px 48px;
-    }
-
-    @include c-lg {
-        .btn {
-            display: none;
-
-        }
-
-    }
-}
-
-.slider-buttons {
-    padding: 10px;
-    position: relative;
-    gap: 26px;
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-}
 
 .products-filter {
     margin-bottom: 30px;
@@ -468,17 +410,7 @@ swiper-container::part(container) {
     }
 }
 
-.swiper-button-prev,
-.swiper-rtl .swiper-button-next {
-    left: calc(100% - 100px);
-}
 
-
-/* Add hover effects (optional) */
-.swiper-button-prev:hover,
-.swiper-button-next:hover {
-    background-color: #fee4ac61;
-}
 
 
 variant-selects {

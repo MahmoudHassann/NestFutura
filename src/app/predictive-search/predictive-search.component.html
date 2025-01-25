@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container" #searchContainer>
     <form (ngSubmit)="onSearch()" class="search">
         <div class="field">
-            <input class="search-input field-input has-icon form-control" (focus)="onFocus()" (blur)="onBlur()" name="search" [(ngModel)]="searchInput"
-                type="search" placeholder="Search" (input)="onInputChange($event)" id="search-input" role="combobox"
-                autocomplete="list" autocapitalize="off" spellcheck="false">
+            <input #search class="search-input field-input has-icon form-control" (focus)="onFocus()" name="search"
+                [(ngModel)]="searchInput" type="search" placeholder="Search" (input)="onInputChange($event)"
+                id="search-input" role="combobox" autocomplete="list" autocapitalize="off" spellcheck="false">
             <button class="field-icon" type="submit">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -14,11 +14,11 @@
                         stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
             </button>
-            <button class="search-close caption">Cancel</button>
-            <div class="predictive-search-default" [ngClass]="{'focus': isFocused}">
+            <button class="search-close caption" (click)="focusStateChange.emit(false)">Cancel</button>
+            <div class="predictive-search-default" [class.focus]='isFocused'>
                 <div class="predictive-search-content">
-                    @if(showPopularSearches){
                     <div class="predictive-search-results">
+                        @if(showPopularSearches){
                         <div class="predictive-search-result-group">
                             <div class="predictive-search-heading">Popular searches</div>
                             <ul class="predictive-results-list">
@@ -33,9 +33,7 @@
                                 }
                             </ul>
                         </div>
-                    </div>
-                    }
-                    <div class="predictive-search-results">
+                        }
                         <div class="predictive-search-result-group">
                             <div class="predictive-search-heading">Popular Products</div>
                             <ul class="predictive-results-list product-list">

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { PredictiveSearchComponent } from '../predictive-search/predictive-search.component';
 
 export interface SubmenuItem {
@@ -54,6 +54,9 @@ export class HeaderComponent implements OnInit {
     if (!this.eRef.nativeElement.contains(event.target)) {
       this.predictiveSearch = false;
     }
+  }
+  onPredictiveSearchFocus(focus: boolean) {
+    this.predictiveSearch = focus;
   }
   ngOnInit(): void {
     this.Smart_Energy = [
@@ -315,13 +318,15 @@ export class HeaderComponent implements OnInit {
 
 
 
-
+  @ViewChild(PredictiveSearchComponent, { static: false })
+  predictiveSearchComponent!: PredictiveSearchComponent;
   toggleDrawer() {
     this.drawerOpen = !this.drawerOpen;
   }
 
   toggleSearch(){
     this.predictiveSearch = !this.predictiveSearch
+    this.predictiveSearchComponent.focusInput();
   }
 
   handleMobileMenuClick(event: Event) {

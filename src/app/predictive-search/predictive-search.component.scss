@@ -93,10 +93,11 @@ button {
     padding: 0;
 }
 
-.focus{
-    opacity: 1!important;
-    pointer-events: all!important;
+.focus {
+    opacity: 1 !important;
+    pointer-events: all !important;
 }
+
 .predictive-search-default {
     background: $primary-color;
     border-radius: 10px;
@@ -136,6 +137,12 @@ button {
 
     @include c-lg {
         flex-direction: column-reverse;
+    }
+
+    .predictive-search-result-group:first-child:not(:has(.product-list)) {
+        @include c-md {
+            flex: 0 0 20rem;
+        }
     }
 
     .predictive-search-result-group {
@@ -219,40 +226,21 @@ button {
     }
 }
 
-.card-wrapper {
-    text-decoration: none;
-    color: inherit;
-    height: 100%;
-    position: relative;
+::ng-deep .product-card-typicaly-used-for {
+    display: none !important;
 }
 
-.cardd {
-    .card-inner {
-        background: #f9f9f9;
-        border-radius: 10px;
-        overflow: hidden;
-        text-decoration: none;
-        z-index: 0;
-        box-sizing: border-box;
-        position: relative;
-        margin-bottom: 0;
-        width: 100%;
+::ng-deep .card{
+    .card-inner{
+        margin-bottom: 0!important;
+        background: #f9f9f9!important;
+    }  
+    /* .card-contnet:has(.card-heading){
+        background-color: #fdfdfd!important;
+    } */
+    .card-contnet{
+        padding: 10px 5px!important;
+        gap: 10px!important;
     }
-}
+} 
 
-.ratio {
-    align-items: stretch;
-    display: flex;
-    position: relative;
-
-    &::before {
-        content: "";
-        height: 0;
-        padding-bottom: 100%;
-        width: 0;
-    }
-}
-
-::ng-deep .product-card-typicaly-used-for{
-    display: none!important;
-}
