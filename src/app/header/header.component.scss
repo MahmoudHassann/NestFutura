@@ -4,10 +4,11 @@
 .navbar {
     display: block;
     margin-top: 15px;
-    position: fixed;
+    position: sticky;
+    top: 0;
     transition: all 0.3s ease-out;
     width: 100%;
-    z-index: 999;
+    z-index: 109;
 
     .nav-bg-blur {
         content: "";

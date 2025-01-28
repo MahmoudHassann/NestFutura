@@ -40,7 +40,7 @@
                                 @for (product of filteredProducts; track $index) {
                                 <li class="predictive-search-list-item">
                                     @if(products){
-                                    <app-product-card [product]="product" [products]="filteredProducts"
+                                    <app-product-card [product]="product"
                                         [selectedVariants]="selectedVariants"
                                         (variantSelected)="onVariantSelected($event)"></app-product-card>
                                     }

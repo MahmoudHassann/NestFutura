@@ -302,3 +302,31 @@ swiper-container {
         }
     }
 }
+
+.badge {
+    background-color: #f9f9f9;
+    width: max-content;
+    align-items: center;
+    border: 1px solid $secondary-color;
+    border-radius: 9999px;
+    color: $secondary-color;
+    display: inline-flex;
+    font-size: 13px;
+    gap: 4px;
+    justify-content: center;
+    padding: 2px 8px;
+    transition: all 0.3s ease-out;
+
+    @include c-lg {
+        font-size: 10px;
+        padding: 3px 6px;
+    }
+}
+
+.badge-icon {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    max-width: 10px;
+    width: 100%;
+}

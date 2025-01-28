@@ -13,7 +13,7 @@ import { Variant } from '../interface/variant';
 export class ProductCardComponent implements OnInit {
   @Input() product!: Product;
   @Input() selectedVariants: Map<string, Variant> = new Map();
-  @Input() products: Product[] = [];
+  /* @Input() products: Product[] = []; */
   @Input() selectedProperty: string = '';
   
   @Output() variantSelected = new EventEmitter<any>();

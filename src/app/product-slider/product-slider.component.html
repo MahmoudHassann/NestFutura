@@ -27,7 +27,7 @@
  
        @for (product of filteredProducts; track $index) {
         <swiper-slide style="width: 316.222px; margin-right: 22px;">
-            <app-product-card [product]="product" [products]="filteredProducts" [selectedVariants]="selectedVariants"
+            <app-product-card [product]="product" [selectedVariants]="selectedVariants"
                 (variantSelected)="onVariantSelected($event)"></app-product-card>
         </swiper-slide>
     }

@@ -1,0 +1,193 @@
+<form id="sortForm" class="vertical-form caption">
+    <div class="mobile-opener large-hide">
+        <div class="open">
+            <div class="badge">
+                <div class="badge-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M0.439949 0.626302C0.472596 0.558533 0.523691 0.501342 0.587368 0.461296C0.651046 0.42125 0.724726 0.399971 0.799949 0.399902H11.2871C11.3624 0.400009 11.4361 0.421351 11.4998 0.461475C11.5635 0.501598 11.6146 0.558875 11.6471 0.626723C11.6797 0.694571 11.6925 0.770237 11.684 0.845024C11.6755 0.919812 11.6461 0.990686 11.5991 1.0495L7.82315 5.7695V8.9415C7.82305 8.99934 7.81042 9.05647 7.78611 9.10895C7.7618 9.16144 7.7264 9.20802 7.68235 9.2455L4.92235 11.5919C4.86415 11.6412 4.79309 11.6727 4.71754 11.683C4.64199 11.6932 4.56509 11.6816 4.49591 11.6496C4.42672 11.6175 4.36813 11.5664 4.32703 11.5022C4.28594 11.438 4.26405 11.3633 4.26395 11.2871V5.7695L0.487949 1.0495C0.440899 0.990645 0.411431 0.919694 0.402939 0.844822C0.394447 0.76995 0.407276 0.694202 0.439949 0.626302ZM1.63195 1.1999L4.97595 5.3799C5.03275 5.45071 5.06379 5.53873 5.06395 5.6295V10.4215L7.02395 8.7559V5.6295C7.02388 5.53882 7.05463 5.45081 7.11115 5.3799L10.4551 1.1999H1.63195Z"
+                            fill="#FDFDFD"></path>
+                    </svg></div>
+                <div class="badge-text">Filters</div>
+            </div>
+        </div>
+    </div>
+    <div class="counter-products">
+        <div class="product-count-txt">
+            <h5>99 Products</h5>
+        </div>
+    </div>
+    <div class="col-2 dropdown">
+        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <span style="color: #000;">Sort by:</span> {{ selectedOption }}
+            <fa-icon [icon]="faAngleDown"></fa-icon>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            @for (option of sortOptions; track $index) {
+            <li (click)="selectOption(option, $event)">
+                <a class="dropdown-item" href="javascript:void(0);">
+                    {{ option }}
+                </a>
+            </li>
+            }
+        </ul>
+    </div>
+</form>
+<div class="container content-container">
+    <aside>
+        <div class="filters-side hide-md">
+            <form class="filter-form">
+                <div class="wrapper">
+                    <div class="button-clearall">
+                        <div class="btn-vertical-filter">
+                            <div class="btn-remove caption">
+                                <button class="btn btn-sm btn-filled p-2">ClearAll</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="filters-container">
+                    <div class="filter-items">
+                        <div class="card d-flex justify-content-center">
+                            <p-accordion [value]="['0','1','2']" [multiple]="true">
+                                <p-accordion-panel value="0">
+                                    <p-accordion-header>Product Type</p-accordion-header>
+                                    <p-accordion-content>
+                                        <ul>
+                                            <li class="list">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="flexCheckChecked">
+                                                    <label class="form-check-label" for="flexCheckChecked">
+                                                        Checked checkbox
+                                                    </label>
+                                                    <span class="filter-item-count">53</span>
+                                                </div>
+                                            </li>
+                                            <li class="list">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="flexCheckChecked">
+                                                    <label class="form-check-label" for="flexCheckChecked">
+                                                        Checked checkbox
+                                                    </label>
+                                                    <span class="filter-item-count">53</span>
+                                                </div>
+                                            </li>
+                                            <li class="list">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="flexCheckChecked">
+                                                    <label class="form-check-label" for="flexCheckChecked">
+                                                        Accessories & Merchandise
+                                                    </label>
+                                                    <span class="filter-item-count">
+                                                        <span>53</span>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </p-accordion-content>
+                                </p-accordion-panel>
+                                <p-accordion-panel value="1">
+                                    <p-accordion-header>Product Type</p-accordion-header>
+                                    <p-accordion-content>
+                                        <ul>
+                                            <li class="list">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="flexCheckChecked">
+                                                    <label class="form-check-label" for="flexCheckChecked">
+                                                        Checked checkbox
+                                                    </label>
+                                                    <span class="filter-item-count">53</span>
+                                                </div>
+                                            </li>
+                                            <li class="list">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="flexCheckChecked">
+                                                    <label class="form-check-label" for="flexCheckChecked">
+                                                        Checked checkbox
+                                                    </label>
+                                                    <span class="filter-item-count">53</span>
+                                                </div>
+                                            </li>
+                                            <li class="list">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="flexCheckChecked">
+                                                    <label class="form-check-label" for="flexCheckChecked">
+                                                        Accessories & Merchandise
+                                                    </label>
+                                                    <span class="filter-item-count">
+                                                        <span>53</span>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </p-accordion-content>
+                                </p-accordion-panel>
+                                <p-accordion-panel value="2">
+                                    <p-accordion-header>Product Type</p-accordion-header>
+                                    <p-accordion-content>
+                                        <ul>
+                                            <li class="list">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="flexCheckChecked">
+                                                    <label class="form-check-label" for="flexCheckChecked">
+                                                        Checked checkbox
+                                                    </label>
+                                                    <span class="filter-item-count">53</span>
+                                                </div>
+                                            </li>
+                                            <li class="list">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="flexCheckChecked">
+                                                    <label class="form-check-label" for="flexCheckChecked">
+                                                        Checked checkbox
+                                                    </label>
+                                                    <span class="filter-item-count">53</span>
+                                                </div>
+                                            </li>
+                                            <li class="list">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="flexCheckChecked">
+                                                    <label class="form-check-label" for="flexCheckChecked">
+                                                        Accessories & Merchandise
+                                                    </label>
+                                                    <span class="filter-item-count">
+                                                        <span>53</span>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </p-accordion-content>
+                                </p-accordion-panel>
+                            </p-accordion>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </aside>
+
+    <div class="product-grid-container">
+        <div class="collection">
+            <ul class="product-grid">
+                @for (product of products; track $index) {
+                    <li pAnimateOnScroll [style.animation-delay]="$index * 200 + 'ms'" enterClass="animate-fadein" class="grid-item animate-duration-1000">
+                        <app-product-card [product]="product" [selectedVariants]="selectedVariants"
+                            (variantSelected)="onVariantSelected($event)"></app-product-card>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
