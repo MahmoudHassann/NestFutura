@@ -1,0 +1,77 @@
+@use '../../styles/variables' as *;
+@use '../../styles/media-queries.scss' as *;
+
+.image-viewer {
+    display: flex;
+    height: 100%;
+  }
+  
+  .main-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+    @include c-lg{
+        width: 100%;
+    }
+  }
+  
+  .thumbnails {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  
+  .thumbnails img {
+    width: 80px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
+    background-color: #f0f4f7;
+    border-radius: 10px;
+
+  }
+  
+  .thumbnails img.active-thumb {
+    border-color: $secondary-color;
+  }
+  
+  .fullscreen-image {
+    width: 100%;
+    background-color: #f0f4f7;
+    border-radius: 14px;
+    overflow: hidden !important;
+    display: block;
+    position: relative;
+  
+    img {
+      max-width: 100%;
+      height: 60vh;
+      cursor: pointer;
+      object-fit: cover;
+      -o-object-position: center center;
+      object-position: center center;
+      transition: opacity .4s cubic-bezier(.25,.46,.45,.94);
+  
+      &:hover {
+        transform: scale(1.05);
+      }
+      @include c-lg{
+        height: auto;
+      }
+    }
+  }
+  
+  @media (max-width: 989px) {
+    .main-content {
+      flex-direction: column-reverse;
+    }
+  
+    .thumbnails {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }

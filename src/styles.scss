@@ -20,13 +20,23 @@ body {
     font-family: "Manrope", serif;
 }
 
+.no-scroll {
+    overflow: hidden;
+}
+
 .caption {
     font-size: 14px;
+    line-height: 1.8;
+    font-weight: 600;
 
     @include c-lg {
         font-size: 13px;
     }
+    @include large {
+        line-height: 1.2;
+    }
 }
+
 
 .btn {
     color: #fdfdfd;

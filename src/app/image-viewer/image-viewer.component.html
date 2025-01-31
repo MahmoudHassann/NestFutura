@@ -1,0 +1,13 @@
+<div class="image-viewer">
+    <div class="main-content">
+        <div class="thumbnails" cdkDropList (cdkDropListDropped)="drop($event)">
+            <img *ngFor="let image of images; let i = index" (click)="setActiveIndex(i)" cdkDrag [src]="image"
+                [alt]="'Image ' + (i + 1)" [class.active-thumb]="i === activeIndex()" loading="lazy" width="80"
+                height="80" />
+        </div>
+        <div class="fullscreen-image" (click)="openFullscreen()">
+            <img [src]="images[activeIndex()]" [alt]="'Image ' + (activeIndex() + 1)" loading="lazy" width="1946" sizes="(min-width: 1600px) 975px, (min-width: 990px) calc(65.0vw - 10rem), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw / 1 - 4rem)"
+                height="1946" />
+        </div>
+    </div>
+</div>

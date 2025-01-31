@@ -1,6 +1,6 @@
 <form id="sortForm" class="vertical-form caption">
     <div class="mobile-opener large-hide">
-        <div class="open">
+        <div class="open" (click)="openfilter()">
             <div class="badge">
                 <div class="badge-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
@@ -36,13 +36,14 @@
 </form>
 <div class="container content-container">
     <aside>
-        <div class="filters-side hide-md">
+        <div class="filters-side"  [class.hide-md]="!showFilter">
             <form class="filter-form">
                 <div class="wrapper">
                     <div class="button-clearall">
                         <div class="btn-vertical-filter">
                             <div class="btn-remove caption">
-                                <button class="btn btn-sm btn-filled p-2">ClearAll</button>
+                                <button class="btn btn-sm btn-outlined-white p-2">ClearAll</button>
+                                <button class="btn btn-sm btn-filled p-2" [class.hide-md]="!showFilter">Apply</button>
                             </div>
                         </div>
                     </div>

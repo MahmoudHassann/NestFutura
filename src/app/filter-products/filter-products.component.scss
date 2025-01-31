@@ -162,11 +162,26 @@
     display: block;
     margin-bottom: 12px;
 
+    @include c-lg {
+        background: $primary-color;
+        height: 100vh;
+        height: 100dvh;
+        left: 0;
+        max-width: 100%;
+        overflow: auto;
+        position: fixed;
+        top: 0;
+        transition: all 0.3s ease-out;
+        width: 100%;
+        z-index: 10;
+    }
+
     &.hide-md {
         @include c-lg {
             display: none;
         }
     }
+
 
     .filter-form {
         @include large {
@@ -192,6 +207,9 @@
                     align-items: flex-start;
                     margin: 0;
                 }
+                @include c-lg{
+                    padding: 10px;
+                }
 
                 .btn-vertical-filter {
                     display: flex;
@@ -203,13 +221,41 @@
                         display: flex;
                         padding-top: 0;
                         justify-content: center;
+
+                        @include c-lg {
+                            width: 100%;
+                            gap: 10px
+                        }
+
+                        .btn-filled {
+                            &.hide-md {
+                                display: none;
+                            }
+                        }
+
+                        .btn-outlined-white {
+                            border: 1px solid $secondary-color;
+                            color: $secondary-color;
+                        }
                     }
                 }
+            }
+
+            @include c-lg {
+                position: absolute;
+                bottom: 0;
+                overflow: visible;
+                width: 100%;
             }
         }
 
         .card {
-            padding: 5px 5px
+            padding: 5px 5px;
+
+            @include c-lg {
+                width: 100vw;
+                height: 100vh;
+            }
         }
 
         ::ng-deep.p-accordioncontent-content {
@@ -232,6 +278,10 @@
 
         .filters-container {
             padding: 1.25rem 0;
+
+            @include c-lg{
+                padding: 0;
+            }
 
             .filter-items {
                 display: flex;
@@ -321,24 +371,26 @@
 .animate-fadein {
     animation: fadeIn 0.7s ease forwards;
     opacity: 0;
-  }
+}
 
 
-  @keyframes fadeIn {
+@keyframes fadeIn {
     from {
-      opacity: 0;
-      transform: translateY(20px);
+        opacity: 0;
+        transform: translateY(20px);
     }
+
     to {
-      opacity: 1;
-      transform: translateY(0);
+        opacity: 1;
+        transform: translateY(0);
     }
-  }
+}
 
 
-  .grid-item {
+.grid-item {
     will-change: opacity, transform;
-  }
+}
+
 
 @media screen and (min-width: 990px) and (max-width: 1250px) {
     .collection .product-grid .grid-item {
@@ -363,6 +415,6 @@
 
 @media screen and (max-width: 989px) {
     .collection .product-grid .grid-item {
-        width: calc(50% - 12px / 2)!important;
+        width: calc(50% - 12px / 2) !important;
     }
 }

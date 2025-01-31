@@ -57,6 +57,11 @@ $breakpoint-xl: 1200px;
         @content;
     }
 }
+@mixin m-xl {
+    @media (max-width: #{$breakpoint-xl}) {
+        @content;
+    }
+}
 @mixin c-md {
     @media (min-width: #{$breakpoint-custom-md}) {
         @content;

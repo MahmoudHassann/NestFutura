@@ -7,6 +7,7 @@ import { Product } from '../interface/product';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Variant } from '../interface/variant';
 import { AnimateOnScrollModule,AnimateOnScroll  } from 'primeng/animateonscroll';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,7 +18,7 @@ import { AnimateOnScrollModule,AnimateOnScroll  } from 'primeng/animateonscroll'
   styleUrl: './filter-products.component.scss'
 })
 export class FilterProductsComponent implements OnInit {
-
+  showFilter:boolean = false
   faAngleDown = faAngleDown;
   sortOptions: string[] = [
     'most accurate',
@@ -34,7 +35,7 @@ export class FilterProductsComponent implements OnInit {
     event.preventDefault();
     this.selectedOption = option;
   }
-  constructor(private sanitizer: DomSanitizer){
+  constructor(private sanitizer: DomSanitizer,private _router:Router){
 
   }
   
@@ -47,6 +48,7 @@ export class FilterProductsComponent implements OnInit {
 
     this.products = [
       {
+        id:'1',
         name: 'Shelly Dimmer Gen3',
         price: '€46.75',
         totalprice: '€46.75',
@@ -361,4 +363,14 @@ export class FilterProductsComponent implements OnInit {
       console.log('Variant selected:', event);
       this.selectedVariants.set(event.product.name, event.variant);
     }
+
+    openfilter(){
+      this.showFilter = !this.showFilter;
+      if (this.showFilter) {
+        document.body.classList.add('no-scroll');
+      } else {
+        document.body.classList.remove('no-scroll');
+      }
+    }
+
 }
