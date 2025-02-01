@@ -6,10 +6,11 @@ import { ProductService } from '../product.service';
 import { firstValueFrom } from 'rxjs';
 import { ImageViewerComponent } from '../image-viewer/image-viewer.component';
 import { TooltipModule } from 'primeng/tooltip';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-product-details',
-  imports: [RouterLink,RouterLinkActive,ImageViewerComponent,TooltipModule],
+  imports: [RouterLink,RouterLinkActive,ImageViewerComponent,TooltipModule,FormsModule],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss'
 })
@@ -44,6 +45,17 @@ export class ProductDetailsComponent {
       }
     } */
   }
+  quantity: number = 1;
+
+increaseQuantity(): void {
+  this.quantity++;
+}
+
+decreaseQuantity(): void {
+  if (this.quantity > 1) {
+    this.quantity--;
+  }
+}
 
   private async loadProduct(id: string) {
     try {
