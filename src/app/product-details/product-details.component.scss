@@ -9,6 +9,9 @@
     @include large {
         padding: 0 5rem;
     }
+    @include medium{
+        padding: 0 1rem;
+    }
 
 }
 
@@ -674,8 +677,9 @@
                 font-weight: 600;
                 line-height: 1.5;
                 font-size: 16px;
-                &:hover{
-                    svg{
+
+                &:hover {
+                    svg {
                         transform: rotate(0);
                     }
                 }
@@ -862,4 +866,462 @@ button {
         }
     }
 
+}
+
+
+.local-navigation {
+    .fixed-bar {
+        left: 0;
+        position: fixed;
+        top: 0;
+        transition: all 0.3s ease-out;
+        width: 100%;
+        z-index: 999;
+    }
+
+    .fixed-bar:not(.mobile-buy-button) {
+        transform: translateY(-100%);
+    }
+
+    &.shown {
+        .fixed-bar:not(.mobile-buy-button) {
+            transform: translateY(0);
+        }
+    }
+
+    .navigation {
+        display: block;
+        margin-top: 15px;
+        position: static;
+        transition: all 0.3s ease-out;
+        width: 100%;
+
+        @include c-lg {
+            background-color: #ecf1f5;
+            margin: 0;
+        }
+    }
+
+    .navigation-container {
+        padding: 10px;
+        background: $primary-color;
+        border-radius: 10px;
+        display: flex;
+        gap: 0;
+        height: 60px;
+        transition: all 0.3s ease-out;
+        align-items: center;
+        justify-content: space-between;
+
+        @include c-lg {
+            height: unset;
+            padding: 10px 0 2px;
+            background-color: transparent;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        .section-nav-container {
+            align-items: center;
+            display: flex;
+            gap: 30px;
+            overflow: hidden;
+            width: 100%;
+
+            @include c-lg {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 6px;
+                justify-content: center;
+                max-width: calc(100% + 3rem);
+                width: 100%;
+            }
+
+            .product-title {
+                flex-shrink: 0;
+                margin: 0;
+                text-decoration: none;
+                transition: all 0.3s ease-out;
+                color: #121519;
+
+                &:hover {
+                    color: $secondary-color;
+                }
+
+
+                @include c-lg {
+                    font-size: 17px;
+                }
+            }
+
+            .badge {
+                padding: 6px 14px;
+
+                @include c-lg {
+                    padding: 6px 14px;
+                }
+            }
+        }
+    }
+
+    .buy-button-container {
+        flex-shrink: 0;
+
+        .btn {
+            padding: 10px 30px;
+        }
+
+        @include c-lg {
+            display: none;
+        }
+    }
+}
+
+.features-bg-wrapper {
+    margin-top: 150px;
+    padding: 100px 0;
+    position: relative;
+
+    @include c-lg {
+        padding-bottom: 50px;
+        padding-top: 124px;
+    }
+
+    .features-image {
+        display: flex;
+        height: -moz-fit-content;
+        height: fit-content;
+        left: 50%;
+        margin-bottom: -100px;
+        margin-top: -275px;
+        max-width: 350px;
+        position: sticky;
+        top: calc(65px + 16px);
+        transform: translateX(-50%);
+        width: 100%;
+        aspect-ratio: 1;
+
+        @include c-lg {
+            left: 50%;
+            margin-top: -100px;
+            max-width: 200px;
+            position: absolute;
+            top: 0;
+            transform: translateX(-50%);
+        }
+
+        img {
+            width: 120%;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            height: auto;
+            -o-object-fit: cover;
+            object-fit: cover;
+        }
+    }
+
+    .features-section {
+        column-gap: 550px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        padding-top: 80px;
+        row-gap: 28px;
+
+        @include m-xl {
+            column-gap: 400px;
+        }
+
+        @include c-lg {
+            gap: 8px;
+            padding-top: 0;
+        }
+
+        .feature {
+            background: linear-gradient(260.14deg, hsla(0, 0%, 100%, .07) 1.87%, rgba(45, 32, 3, .1) 97.39%);
+            border: .2px solid $light-color;
+            color: $primary-color;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 18px 22px;
+            position: relative;
+
+            @include c-lg {
+                gap: 4px;
+            }
+
+            svg {
+                height: 35px;
+                margin-bottom: 10px;
+                width: 35px;
+
+                @include c-lg {
+                    height: 26px;
+                    width: 26px;
+                }
+            }
+
+            h6 {
+                font-size: 18px;
+
+                &:is(h6, span) {
+                    color: $primary-color;
+                    word-break: break-word;
+                }
+
+                @include c-lg {
+                    margin: 0;
+                    font-size: 15px;
+                    color: #121519;
+                }
+            }
+        }
+    }
+}
+
+.features-section>* {
+    flex: 1;
+}
+
+.background-snippet {
+    background: linear-gradient(90deg, #312916, #392d11 35%, #534115);
+    height: 100%;
+    left: 0;
+    min-height: 777px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    min-height: 0;
+    z-index: -1;
+}
+
+swiper-container {
+    margin-top: 30px;
+    aspect-ratio: 1 / 0;
+    display: flex;
+}
+
+swiper-slide {
+    margin-right: 22px;
+    height: 400px;
+    overflow: hidden;
+    width: -moz-fit-content;
+    width: fit-content;
+    transform: unset;
+    backface-visibility: unset;
+}
+
+.successful-customers-header {
+    padding-top: 27px;
+    padding-bottom: 27px;
+    display: flex;
+    justify-content: space-between;
+
+    @include c-md {
+        padding-top: 36px;
+        padding-bottom: 36px;
+    }
+
+    .successful-customer-heading {
+        gap: 0;
+        display: flex;
+        flex-direction: column;
+        max-width: 600px;
+    }
+
+    .succesful-customers-navigation-container {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        justify-content: space-between;
+    }
+}
+
+.slider-buttons {
+    display: flex;
+    gap: 24px;
+    height: -moz-fit-content;
+    height: fit-content;
+    justify-content: flex-end;
+}
+
+::ng-deep.project-slide {
+    @include large{
+        width: 506px !important;
+    }
+}
+
+::ng-deep.slide-link {
+    align-items: center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    border-bottom: .8px solid #d2d9de;
+    box-shadow: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-align: inherit;
+}
+
+.card-grid-solution-outer-container {
+    position: relative;
+
+    .background-snippet {
+        height: 100%;
+        left: 0;
+        min-height: unset;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        background: linear-gradient(90deg, #fff -31.22%, #f9e8c5 109.76%);
+    }
+}
+
+.card-features-section {
+    padding-top: 63px;
+    padding-bottom: 60px;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+
+    @include c-md {
+        padding-top: 84px;
+        padding-bottom: 80px;
+    }
+
+    .card-grid-solution-heading {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .solution-heading-center {
+        align-items: center;
+        text-align: center;
+    }
+
+    h2 {
+        color: #121519;
+        font-weight: 500;
+        max-width: 700px;
+        line-height: 1.2;
+        font-size: 42px;
+
+        @include c-lg {
+            max-width: 570px;
+            font-size: 28px;
+            margin: 0 0 12px;
+        }
+    }
+
+    .card-grid-solutions-container {
+        align-items: stretch;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+        margin-top: 30px;
+
+        @include c-lg {
+            overflow: auto;
+        }
+
+        @include large {
+            margin-left: auto;
+            margin-right: auto;
+            max-width: calc(340px* 4);
+        }
+
+        .solution-card {
+            background: $primary-color;
+            color: $primary-color;
+            border: 1px solid $primary-color;
+            display: flex;
+            flex-direction: column;
+            border-radius: 18px;
+            height: 100%;
+            overflow: hidden;
+            padding: 8px;
+            position: relative;
+            text-align: left;
+
+            @include c-lg {
+                width: 266px;
+            }
+
+            @include large {
+                flex-basis: calc((100% - (4 - 1) * 12px) / 4);
+                height: auto;
+            }
+
+            .anchor-no-style {
+                color: inherit;
+                height: 100%;
+                text-decoration: inherit;
+
+                .solution-card-image {
+                    border-radius: 18px;
+                    height: 380px;
+                    overflow: hidden;
+                    position: relative;
+                    width: 100%;
+
+                    @include c-lg {
+                        height: 273px;
+                    }
+
+                    img {
+                        height: 100%;
+                        -o-object-fit: cover;
+                        object-fit: cover;
+                        width: 100%;
+
+                        @include large {
+                            object-position: 50.0% 50.0%;
+                        }
+                        @include c-lg {
+                            object-position: 50.0% 50.0%;
+                        }
+                    }
+                }
+
+                .solution-card-heading {
+                    margin-bottom: auto;
+                    margin-top: 24px;
+                    padding: 0 10px;
+
+                    h5 {
+                        color: #121519;
+                        font-weight: 700;
+                        max-width: 100%;
+                        font-size: 24px;
+                        line-height: 1.2;
+
+                        @include c-lg {
+                            font-size: 18px;
+                            margin: 0 0 12px;
+                        }
+                    }
+
+                    .caption {
+                        color: #121519;
+                        font-weight: 500;
+                        line-height: 1.5;
+                        margin: 0;
+
+                        @include c-lg {
+                            max-width: 100%;
+                            font-size: 13px;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

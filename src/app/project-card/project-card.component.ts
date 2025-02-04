@@ -11,5 +11,6 @@ import { Project } from '../interface/project';
 export class ProjectCardComponent {
 
   @Input() project!: Project;
+  @Input() showArrow: boolean = false;
 
 }

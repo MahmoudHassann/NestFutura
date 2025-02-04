@@ -1,11 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, shareReplay } from 'rxjs';
+import { BehaviorSubject, Observable, shareReplay } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
+  private navVisibleSubject = new BehaviorSubject<boolean>(false);
+  navVisible$ = this.navVisibleSubject.asObservable();
+
+  updateNavVisibility(isVisible: boolean) {
+    this.navVisibleSubject.next(isVisible);
+  }
 
   private cache = new Map<string, Observable<any>>();
 

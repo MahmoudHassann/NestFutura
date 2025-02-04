@@ -7,6 +7,9 @@
             img {
                 scale: 1.05;
             }
+            svg{
+                transform: rotate(45deg);
+            }
         }
     }
 }
@@ -122,4 +125,58 @@
         width: 100%;
         z-index: -1;
     }
+}
+
+.two-col-entry-arrow {
+    position: absolute;
+    right: 16px;
+    top: 13px;
+    display: block;
+    margin-left: auto;
+    padding: 16px;
+    border: 1px solid $primary-color;
+    bottom: 26px;
+    fill: hsla(0, 0%, 100%, .1);
+    ;
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    border-radius: 50%;
+    box-shadow: 0px 0px 6px 0px hsla(0, 0%, 100%, .6);
+    cursor: pointer;
+    filter: drop-shadow(0px 0px 6px hsla(0, 0%, 100%, .6));
+    height: 54px;
+    width: 54px;
+
+    @include c-lg {
+        padding: 0;
+        position: absolute;
+        right: -4px;
+        top: -7px;
+        height: 55px;
+        width: 55px;
+    }
+    @include medium{
+        display: none;
+    }
+}
+
+.two-col-arrow-icon-container {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    transition: all 0.3s ease-out;
+    width: 100%;
+
+    svg {
+        height: 14px;
+        transition: all 0.3s ease-out;
+        width: 14px;
+
+        @include c-lg {
+            height: 12px;
+            width: 12px;
+        }
+    }
+   
 }
