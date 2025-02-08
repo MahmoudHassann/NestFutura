@@ -25,6 +25,7 @@ import {
   faLock,
   faWarehouse
 } from '@fortawesome/free-solid-svg-icons';
+import { RouterLink } from '@angular/router';
 
 
 interface Card {
@@ -44,7 +45,7 @@ interface CardState {
 @Component({
   selector: 'app-solution-slider',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule, FontAwesomeModule,RouterLink],
   templateUrl: './solution-slider.component.html',
   styleUrl: './solution-slider.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

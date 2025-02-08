@@ -156,6 +156,7 @@ addToCart(product: any) {
   this.cartService.addToCart(product);
 }
 
+
   private async loadProduct(id: string) {
     try {
       // Using firstValueFrom instead of toPromise

@@ -413,7 +413,6 @@
                                 </svg>
                             </button>
                         </div>
-                        <!-- <div class="add-cart-form"></div> -->
                     </div>
                 </div>
                 <div class="key-features">
@@ -629,8 +628,8 @@
                             </div>
                         </a>
                     </div>
-                    <div class="buy-button-container">
-                        <a href="" class="btn btn-filled">Add To Cart</a>
+                    <div class="buy-button-container" (click)="addToCart(product)">
+                        <a class="btn btn-filled">Add To Cart</a>
                     </div>
                 </div>
             </div>
