@@ -6,6 +6,7 @@ $breakpoint-md: 768px;
 $breakpoint-lg: 990px;
 $breakpoint-customlg: 989px;
 $breakpoint-custom-md: 786px;
+$breakpoint-scustom-md: 750px;
 $breakpoint-xl: 1200px;
 
 // Media query mixins
@@ -20,16 +21,8 @@ $breakpoint-xl: 1200px;
         @content;
     }
 }
-
-
-@mixin s-md {
-    @media (min-width: #{$breakpoint-sm}) and (max-width: #{$breakpoint-md - 1}) {
-        @content;
-    }
-}
-
-@mixin xs-lg {
-    @media (max-width: #{$breakpoint-lg - 1}) {
+@mixin cmedium {
+    @media (max-width: #{$breakpoint-scustom-md}) {
         @content;
     }
 }
@@ -52,11 +45,6 @@ $breakpoint-xl: 1200px;
     }
 }
 
-@mixin extra-large {
-    @media (min-width: #{$breakpoint-xl}) {
-        @content;
-    }
-}
 @mixin m-xl {
     @media (max-width: #{$breakpoint-xl}) {
         @content;
@@ -64,6 +52,11 @@ $breakpoint-xl: 1200px;
 }
 @mixin c-md {
     @media (min-width: #{$breakpoint-custom-md}) {
+        @content;
+    }
+}
+@mixin cc-md {
+    @media (min-width: #{$breakpoint-scustom-md}) {
         @content;
     }
 }

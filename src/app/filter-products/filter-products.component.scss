@@ -159,6 +159,10 @@
 }
 
 .filters-side {
+    position: sticky;
+    top: 0;
+    height: 100vh; // Full height of the viewport
+    overflow-y: auto;
     display: block;
     margin-bottom: 12px;
 

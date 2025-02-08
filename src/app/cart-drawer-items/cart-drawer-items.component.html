@@ -1,0 +1,175 @@
+<form action="/cart" id="cart-drawer-form" class="drawer-contents cart-drawer-form">
+    <div class="cart-contents">
+        <div class="cart-drawer-items-wrapper">
+            <table class="cart-items" role="table">
+                <thead role="rowgroup">
+                    <tr role="row">
+                        <th role="columnheader" scope="col" class="caption-with-letter-spacing"></th>
+                    </tr>
+                </thead>
+                <tbody role="rowgroup">
+                    <tr class="cart-item" id="item-1" role="row">
+                        <td class="cart-item-media" role="cell" headers="col-product-image">
+                            <a href="" class="cart-item-link"></a>
+                            <img class="cart-item-image"
+                                src="https://www.shelly.com/cdn/shop/files/Shelly-1-Gen3-main-image.png?v=1727260149&width=300"
+                                alt="" loading="lazy" width="150" height="150">
+                        </td>
+                        <td class="cart-item-details" role="cell" headers="col-product">
+                            <a href="" class="cart-item-name">Shelly 1 Gen3</a>
+                            <dl>
+                                <div class="product-option">
+                                    <dt>Pack:</dt>
+                                    <dd>single</dd>
+                                </div>
+                            </dl>
+                            <p class="product-option"></p>
+                        </td>
+                        <td class="cart-item-totals" role="cell" headers="col-product-price">
+                            <div class="cart-item-price-wrapper">
+                                <span class="price">€2.119,88</span>
+                            </div>
+                        </td>
+                        <td class="cart-item-quantity" role="cell" headers="col-product-quantity">
+                            <div class="cart-item-quantity-wrapper">
+                                <div class="product-quantity">
+
+                                    <div class="quantity">
+                                        <button class="quantity-button" name="minus" type="button"
+                                            (click)="decreaseQuantity()" [class.disabled]="quantity == 1">
+                                            <span class="visually-hidden">Decrease qunatity</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                                viewBox="0 0 22 22" fill="none">
+                                                <mask id="mask0_1869_19757" style="mask-type:alpha"
+                                                    maskUnits="userSpaceOnUse" x="0" y="0" width="22" height="22">
+                                                    <rect x="0.333008" y="0.5" width="21" height="21" fill="#D9D9D9">
+                                                    </rect>
+                                                </mask>
+                                                <g mask="url(#mask0_1869_19757)">
+                                                    <path d="M6.45801 11.438V10.563H15.208V11.438H6.45801Z"
+                                                        fill="#1A1918">
+                                                    </path>
+                                                </g>
+                                            </svg>
+                                        </button>
+                                        <input type="text" class="quantity-input" [(ngModel)]="quantity" type="number"
+                                            name="quantity" min="1" step="1" value="1">
+                                        <button class="quantity-button" name="plus" type="button"
+                                            (click)="increaseQuantity()">
+                                            <span class="visually-hidden">Increase qunatity</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                                viewBox="0 0 22 22" fill="none">
+                                                <mask id="mask0_1869_19763" style="mask-type:alpha"
+                                                    maskUnits="userSpaceOnUse" x="0" y="0" width="22" height="22">
+                                                    <rect x="0.666016" y="0.5" width="21" height="21" fill="#D9D9D9">
+                                                    </rect>
+                                                </mask>
+                                                <g mask="url(#mask0_1869_19763)">
+                                                    <path
+                                                        d="M11.1484 11.4375H6.33594V10.5625H11.1484V5.75H12.0234V10.5625H16.8359V11.4375H12.0234V16.25H11.1484V11.4375Z"
+                                                        fill="#1A1918"></path>
+                                                </g>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="cart-drawer-remove">
+                                    <button class="cart-remove-btn button" type="button">
+                                        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M13.3594 2.92969C12.7122 2.92969 12.1875 3.45437 12.1875 4.10156V13.2422C12.1875 13.8894 11.6628 14.4141 11.0156 14.4141H3.98438C3.33718 14.4141 2.8125 13.8894 2.8125 13.2422V4.10156C2.8125 3.45437 2.28782 2.92969 1.64062 2.92969" stroke="#656669" stroke-width="0.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M1.64062 2.92969H13.3594" stroke="#656669" stroke-width="0.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M5.15625 5.27344V12.0703" stroke="#656669" stroke-width="0.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M7.5 5.27344V12.0703" stroke="#656669" stroke-width="0.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M9.84375 5.27344V12.0703" stroke="#656669" stroke-width="0.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M9.84375 2.92969H5.15625V1.75781C5.15625 1.11062 5.68093 0.585938 6.32812 0.585938H8.67188C9.31907 0.585938 9.84375 1.11062 9.84375 1.75781V2.92969Z" stroke="#656669" stroke-width="0.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                          </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="cart-item" id="item-1" role="row">
+                        <td class="cart-item-media" role="cell" headers="col-product-image">
+                            <a href="" class="cart-item-link"></a>
+                            <img class="cart-item-image"
+                                src="https://www.shelly.com/cdn/shop/files/Shelly-1-Gen3-main-image.png?v=1727260149&width=300"
+                                alt="" loading="lazy" width="150" height="150">
+                        </td>
+                        <td class="cart-item-details" role="cell" headers="col-product">
+                            <a href="" class="cart-item-name">Shelly 1 Gen3</a>
+                            <dl>
+                                <div class="product-option">
+                                    <dt>Pack:</dt>
+                                    <dd>single</dd>
+                                </div>
+                            </dl>
+                            <p class="product-option"></p>
+                        </td>
+                        <td class="cart-item-totals" role="cell" headers="col-product-price">
+                            <div class="cart-item-price-wrapper">
+                                <span class="price">€2.119,88</span>
+                            </div>
+                        </td>
+                        <td class="cart-item-quantity" role="cell" headers="col-product-quantity">
+                            <div class="cart-item-quantity-wrapper">
+                                <div class="product-quantity">
+
+                                    <div class="quantity">
+                                        <button class="quantity-button" name="minus" type="button"
+                                            (click)="decreaseQuantity()" [class.disabled]="quantity == 1">
+                                            <span class="visually-hidden">Decrease qunatity</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                                viewBox="0 0 22 22" fill="none">
+                                                <mask id="mask0_1869_19757" style="mask-type:alpha"
+                                                    maskUnits="userSpaceOnUse" x="0" y="0" width="22" height="22">
+                                                    <rect x="0.333008" y="0.5" width="21" height="21" fill="#D9D9D9">
+                                                    </rect>
+                                                </mask>
+                                                <g mask="url(#mask0_1869_19757)">
+                                                    <path d="M6.45801 11.438V10.563H15.208V11.438H6.45801Z"
+                                                        fill="#1A1918">
+                                                    </path>
+                                                </g>
+                                            </svg>
+                                        </button>
+                                        <input type="text" class="quantity-input" [(ngModel)]="quantity" type="number"
+                                            name="quantity" min="1" step="1" value="1">
+                                        <button class="quantity-button" name="plus" type="button"
+                                            (click)="increaseQuantity()">
+                                            <span class="visually-hidden">Increase qunatity</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                                viewBox="0 0 22 22" fill="none">
+                                                <mask id="mask0_1869_19763" style="mask-type:alpha"
+                                                    maskUnits="userSpaceOnUse" x="0" y="0" width="22" height="22">
+                                                    <rect x="0.666016" y="0.5" width="21" height="21" fill="#D9D9D9">
+                                                    </rect>
+                                                </mask>
+                                                <g mask="url(#mask0_1869_19763)">
+                                                    <path
+                                                        d="M11.1484 11.4375H6.33594V10.5625H11.1484V5.75H12.0234V10.5625H16.8359V11.4375H12.0234V16.25H11.1484V11.4375Z"
+                                                        fill="#1A1918"></path>
+                                                </g>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="cart-drawer-remove">
+                                    <button class="cart-remove-btn button" type="button">
+                                        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M13.3594 2.92969C12.7122 2.92969 12.1875 3.45437 12.1875 4.10156V13.2422C12.1875 13.8894 11.6628 14.4141 11.0156 14.4141H3.98438C3.33718 14.4141 2.8125 13.8894 2.8125 13.2422V4.10156C2.8125 3.45437 2.28782 2.92969 1.64062 2.92969" stroke="#656669" stroke-width="0.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M1.64062 2.92969H13.3594" stroke="#656669" stroke-width="0.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M5.15625 5.27344V12.0703" stroke="#656669" stroke-width="0.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M7.5 5.27344V12.0703" stroke="#656669" stroke-width="0.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M9.84375 5.27344V12.0703" stroke="#656669" stroke-width="0.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M9.84375 2.92969H5.15625V1.75781C5.15625 1.11062 5.68093 0.585938 6.32812 0.585938H8.67188C9.31907 0.585938 9.84375 1.11062 9.84375 1.75781V2.92969Z" stroke="#656669" stroke-width="0.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                          </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>

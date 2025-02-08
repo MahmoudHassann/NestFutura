@@ -1,2 +1,5 @@
 <app-header [class.hidden]="isNavVisible"></app-header>
 <router-outlet></router-outlet>
+@if(isCartVisible){
+    <app-cart-drawer ></app-cart-drawer>
+}

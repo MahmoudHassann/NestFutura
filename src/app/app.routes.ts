@@ -5,11 +5,13 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { ProductService } from './product.service';
 import { inject, Injector } from '@angular/core';
 import { throwError } from 'rxjs';
+import { SolutionsComponent } from './solutions/solutions.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     { path: 'products', component: ProductsComponent },
+    { path: 'page/:category', component: SolutionsComponent },
     {
         path: 'product/:id', component: ProductDetailsComponent, /* resolve: {
           product: (route: ActivatedRouteSnapshot) => {

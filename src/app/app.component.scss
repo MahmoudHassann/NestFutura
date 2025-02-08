@@ -2,3 +2,12 @@ app-header.hidden {
     opacity: 0;
     pointer-events: none;
   }
+
+  app-cart-drawer{
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 999;
+  }

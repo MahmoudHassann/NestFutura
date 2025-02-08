@@ -4,7 +4,7 @@
 .navbar {
     display: block;
     margin-top: 15px;
-    position: sticky;
+    position: fixed; /* sticky */
     top: 0;
     transition: all 0.3s ease-out;
     width: 100%;

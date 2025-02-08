@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { PredictiveSearchComponent } from '../predictive-search/predictive-search.component';
+import { CartService } from '../cart.service';
 
 export interface SubmenuItem {
   href: string; // Link URL
@@ -44,7 +45,7 @@ export class HeaderComponent implements OnInit {
   resources: NavItem[] = [];
   knowledge_base: NavItem[] = [];
 
-  constructor(private eRef: ElementRef) {
+  constructor(private eRef: ElementRef,private cartService: CartService) {
 
   }
 
@@ -57,6 +58,9 @@ export class HeaderComponent implements OnInit {
   }
   onPredictiveSearchFocus(focus: boolean) {
     this.predictiveSearch = focus;
+  }
+  openCart() {
+    this.cartService.openCart();
   }
   ngOnInit(): void {
     this.Smart_Energy = [

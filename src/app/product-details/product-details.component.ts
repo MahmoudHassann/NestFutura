@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { ProjectCardComponent } from "../project-card/project-card.component";
 import { Project } from '../interface/project';
 import { isPlatformBrowser } from '@angular/common';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-product-details',
@@ -38,6 +39,7 @@ export class ProductDetailsComponent implements OnInit,AfterViewInit {
     private productService: ProductService,
     private title: Title,
     private meta: Meta,
+    private cartService: CartService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
     // Try to get product from navigation state
@@ -148,6 +150,10 @@ decreaseQuantity(): void {
   if (this.quantity > 1) {
     this.quantity--;
   }
+}
+
+addToCart(product: any) {
+  this.cartService.addToCart(product);
 }
 
   private async loadProduct(id: string) {
