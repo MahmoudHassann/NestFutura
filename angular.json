@@ -47,6 +47,7 @@
             ],
             "server": "src/main.server.ts",
             "outputMode": "server",
+            "prerender": true,
             "ssr": {
               "entry": "src/server.ts"
             }
@@ -71,7 +72,8 @@
                   "maximumError": "35kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "prerender": true
             },
             "development": {
               "optimization": false,
