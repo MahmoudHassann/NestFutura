@@ -7,6 +7,7 @@ import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { register } from 'swiper/element/bundle';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 register()
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideClientHydration(withEventReplay()),provideAnimationsAsync(),provideHttpClient(withFetch()),
@@ -14,5 +15,5 @@ export const appConfig: ApplicationConfig = {
         theme: {
             preset: Aura
         }
-    })]
+    }),{ provide: LocationStrategy, useClass: HashLocationStrategy },],
 };
