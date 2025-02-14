@@ -4,7 +4,7 @@ import { ProductsComponent } from './products/products.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductService } from './product.service';
 import { inject, Injector } from '@angular/core';
-import { throwError } from 'rxjs';
+import { catchError, throwError } from 'rxjs';
 import { SolutionsComponent } from './solutions/solutions.component';
 
 export const routes: Routes = [
@@ -21,8 +21,13 @@ export const routes: Routes = [
               return throwError(() => new Error('Product ID is required'));
             }
             const injector = inject(Injector);
-            const productService = injector.get(ProductService); // ✅ Correctly use Injector.get()
-            return productService.getProduct(id);
+            const productService = injector.get(ProductService);
+            return productService.getProduct(id).pipe(
+              catchError(err => {
+                console.error('Error fetching product:', err);
+                return throwError(() => new Error('Product not found'));
+              })
+            );
           }
         }
       }
