@@ -54,14 +54,7 @@ export class ProductDetailsComponent implements OnInit,AfterViewInit {
   
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      const productId = params.get('id');
-      if (productId) {
-        this.productService.getProduct(productId).subscribe(product => {
-          this.product = product; // Fetch from API if not in state
-        });
-      }
-    });
+
     this.productService.navVisible$.subscribe((isVisible) => {
       this.isNavVisible = isVisible;
     });
@@ -94,12 +87,12 @@ export class ProductDetailsComponent implements OnInit,AfterViewInit {
     ]
     this.projects = [...this.project]
     // If product not in state, fetch it
-    /* if (!this.product) {
+    if (!this.product) {
       const productId = this.route.snapshot.paramMap.get('id');
       if (productId) {
         this.loadProduct(productId);
       }
-    } */
+    }
   }
   ngAfterViewInit(): void {
       if (isPlatformBrowser(this.platformId)) {
