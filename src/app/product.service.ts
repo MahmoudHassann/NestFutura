@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, catchError, Observable, retry, shareReplay } from 'rxjs';
 import { environment } from '../environments/environment';
+import { isPlatformServer } from '@angular/common';
 
 
 @Injectable({
@@ -19,7 +20,10 @@ export class ProductService {
 
   private cache = new Map<string, Observable<any>>();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,@Inject(PLATFORM_ID) private platformId: Object) { 
+    console.log('Running on:', isPlatformServer(this.platformId) ? 'Server' : 'Browser');
+  console.log('API Base URL:', this.baseURL);
+  }
 
   getProduct(id: string): Observable<any> {
     const cacheKey = `product-${id}`;
