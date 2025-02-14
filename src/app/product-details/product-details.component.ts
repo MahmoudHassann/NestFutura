@@ -54,7 +54,14 @@ export class ProductDetailsComponent implements OnInit,AfterViewInit {
   
 
   ngOnInit() {
-    
+    this.route.paramMap.subscribe(params => {
+      const productId = params.get('id');
+      if (productId) {
+        this.productService.getProduct(productId).subscribe(product => {
+          this.product = product; // Fetch from API if not in state
+        });
+      }
+    });
     this.productService.navVisible$.subscribe((isVisible) => {
       this.isNavVisible = isVisible;
     });
