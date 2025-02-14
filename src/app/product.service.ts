@@ -22,7 +22,7 @@ export class ProductService {
 
   constructor(private http: HttpClient,@Inject(PLATFORM_ID) private platformId: Object) { 
     console.log('Running on:', isPlatformServer(this.platformId) ? 'Server' : 'Browser');
-  console.log('API Base URL:', this.baseURL);
+    console.log('API Base URL:', this.baseURL);
   }
 
   getProduct(id: string): Observable<any> {
