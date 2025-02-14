@@ -1,7 +1,7 @@
 <div class="product-card"  (mouseenter)="hoveredProduct = product" (mouseleave)="hoveredProduct = null">
     <div class="card-wrapper">
         <div class="card" style="--ratio-percent: 100%;">
-            <a [routerLink]="['/product', product.id]" 
+            <a [routerLink]="['/products', product.id]" 
             [state]="{ product: product }" class="card-inner rate" style="--ratio-percent: 100%;">
                 <div class="card-media has-custom-secondary-img">
                     <div class="media">
@@ -32,7 +32,7 @@
             <div class="card-contnet">
                 <div class="product-card-price-container-title-and-price">
                     <h3 class="card-heading">
-                        <a [routerLink]="['/product', product.id]" 
+                        <a [routerLink]="['/products', product.id]" 
                         [state]="{ product: product }"  class="card-link">{{ getProductDisplayName(product) }} </a>
                     </h3>
                     <div class="product-card-price-container">
