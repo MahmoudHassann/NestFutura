@@ -16,6 +16,7 @@ export const routes: Routes = [
         path: 'products/:id', component: ProductDetailsComponent, resolve: {
           product: (route: ActivatedRouteSnapshot) => {
             const id = route.paramMap.get('id');
+            console.log('Resolver fetching product with ID:', id);
             if (!id) {
               return throwError(() => new Error('Product ID is required'));
             }
