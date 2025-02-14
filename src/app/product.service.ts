@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, shareReplay } from 'rxjs';
+import { environment } from '../environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +10,7 @@ import { BehaviorSubject, Observable, shareReplay } from 'rxjs';
 export class ProductService {
   private navVisibleSubject = new BehaviorSubject<boolean>(false);
   navVisible$ = this.navVisibleSubject.asObservable();
+  private baseURL = environment.apiUrl;
 
   updateNavVisibility(isVisible: boolean) {
     this.navVisibleSubject.next(isVisible);
@@ -21,7 +24,7 @@ export class ProductService {
     // Check cache first
     if (!this.cache.has(id)) {
       // If not in cache, make the HTTP request and cache it
-      const request = this.http.get<any>(`/api/products/${id}`).pipe(
+      const request = this.http.get<any>(`${this.baseURL}products/${id}`).pipe(
         shareReplay(1)
       );
       this.cache.set(id, request);

@@ -13,7 +13,7 @@ export const routes: Routes = [
     { path: 'products', component: ProductsComponent },
     { path: 'page/:category', component: SolutionsComponent },
     {
-        path: 'product/:id', component: ProductDetailsComponent, /* resolve: {
+        path: 'product/:id', component: ProductDetailsComponent, resolve: {
           product: (route: ActivatedRouteSnapshot) => {
             const id = route.paramMap.get('id');
             if (!id) {
@@ -23,6 +23,6 @@ export const routes: Routes = [
             const productService = injector.get(ProductService); // ✅ Correctly use Injector.get()
             return productService.getProduct(id);
           }
-        } */
+        }
       }
 ];

@@ -48,7 +48,7 @@ export class FilterProductsComponent implements OnInit {
 
     this.products = [
       {
-        id:'1',
+        id:'48',
         name: 'Shelly Dimmer Gen3',
         price: '€46.75',
         totalprice: '€46.75',

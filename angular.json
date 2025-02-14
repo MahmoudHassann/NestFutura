@@ -20,8 +20,10 @@
             "outputPath": "dist/my-standalone-app",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "stylePreprocessorOptions":{
-              "includePaths": ["src/styles"]
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles"
+              ]
             },
             "polyfills": [
               "zone.js"
@@ -51,6 +53,12 @@
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
               "budgets": [
                 {
                   "type": "initial",
