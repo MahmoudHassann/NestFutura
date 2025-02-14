@@ -1,7 +1,7 @@
 import { Component, Input, Output,EventEmitter, OnInit } from '@angular/core';
 import { Product } from '../interface/product';
 import { Variant } from '../interface/variant';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-product-card',
@@ -21,6 +21,7 @@ export class ProductCardComponent implements OnInit {
   
   hoveredProduct: Product | null = null;
   
+  constructor(private router:Router){}
 
   ngOnInit(): void {
     
@@ -47,6 +48,11 @@ export class ProductCardComponent implements OnInit {
 
   selectVariant(product: Product, variant: Variant): void {
     this.variantSelected.emit({ product, variant });
+  }
+
+
+  Navigate(id:any){
+    this.router.navigate([`/products/${id}`])
   }
   
 }
