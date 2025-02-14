@@ -43,14 +43,18 @@ export class ProductDetailsComponent implements OnInit,AfterViewInit {
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
     // Try to get product from navigation state
-   /*  const navigation = this.router.getCurrentNavigation();
+    const navigation = this.router.getCurrentNavigation();
+    console.log(navigation);
+    
     if (navigation?.extras.state?.['product']) {
       this.product = navigation.extras.state?.['product'];
       this.updateMetaTags();
-    } */
+    }
   }
+  
 
   ngOnInit() {
+    
     this.productService.navVisible$.subscribe((isVisible) => {
       this.isNavVisible = isVisible;
     });
