@@ -13,7 +13,7 @@ export const routes: Routes = [
     { path: 'products', component: ProductsComponent },
     { path: 'page/:category', component: SolutionsComponent },
     {
-        path: 'product/:id', component: ProductDetailsComponent, resolve: {
+        path: 'products/:id', component: ProductDetailsComponent, resolve: {
           product: (route: ActivatedRouteSnapshot) => {
             const id = route.paramMap.get('id');
             if (!id) {
