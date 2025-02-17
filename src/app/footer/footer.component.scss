@@ -1,0 +1,140 @@
+@use "../../styles/variables" as *;
+@use "../../styles/media-queries.scss" as *;
+
+.footer {
+  background: #121519;
+}
+footer {
+  color: $primary-color;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  overflow-x: hidden;
+  padding-bottom: var(--padding-bottom-desktop);
+  padding-top: var(--padding-top-desktop);
+  width: 100%;
+
+  @include c-lg {
+    gap: 40px;
+    padding-bottom: var(--padding-bottom-mobile);
+    padding-top: var(--padding-top-mobile);
+  }
+
+  .footer-upper {
+    display: flex;
+    gap: 15rem;
+    justify-content: space-between;
+    @include c-lg {
+      flex-direction: column;
+      gap: 46px;
+    }
+
+    .footer-content-container {
+      display: flex;
+      flex-direction: column;
+      gap: 43px;
+      @include c-lg {
+        gap: 24px;
+      }
+      .nav-logo {
+        display: flex;
+        justify-content: center;
+        justify-self: center;
+        width: 100%;
+        max-width: 25rem;
+        @include c-lg {
+          align-items: center;
+          justify-self: flex-start;
+          max-width: 20rem;
+        }
+        img {
+          height: auto;
+          -o-object-fit: cover;
+          object-fit: cover;
+          align-items: center;
+          display: flex;
+          justify-content: center;
+          width: 100%;
+        }
+      }
+    }
+
+    .list-social {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      .link-social {
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+        color: rgb(18, 18, 18);
+        cursor: pointer;
+        display: inline-block;
+        font-family: inherit;
+        font-size: 1.4rem;
+        text-decoration: underline;
+        text-underline-offset: 0.3rem;
+      }
+    }
+    .footer-nav {
+      width: 100%;
+      ul {
+        display: flex;
+        gap: 50px;
+        margin: 0;
+        padding: 0;
+        justify-content: space-around;
+        @include c-lg {
+          flex-direction: column;
+        }
+
+        @media (min-width: 990px) and (max-width: 1279px) {
+          gap: 20px;
+        }
+        .footer-link {
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
+
+          .footer-header-item {
+            font-size: 20px;
+            font-weight: 700;
+          }
+
+          .footer-item {
+            .sub-footer-items {
+              display: flex;
+              flex-direction: column;
+              gap: 18px;
+              list-style-type: none;
+              padding: 0;
+
+              li {
+                .footer-child-link {
+                  text-decoration: none;
+                  transition: all 0.3s ease-out;
+                  color: #ecf1f5;
+                  font-size: 16px;
+                  font-weight: 500;
+                  line-height: 1.8;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .caption{
+display: flex;
+justify-content: center;
+align-items: center;
+color: $grey-dark-color;
+    .name {
+    color: $secondary-color;
+  }
+  }
+  
+}

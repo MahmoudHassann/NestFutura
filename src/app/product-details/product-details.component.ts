@@ -14,16 +14,24 @@ import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-product-details',
-  imports: [RouterLink, RouterLinkActive, ImageViewerComponent, TooltipModule, FormsModule,ProjectCardComponent],
+  imports: [
+    RouterLink,
+    RouterLinkActive,
+    ImageViewerComponent,
+    TooltipModule,
+    FormsModule,
+    ProjectCardComponent,
+  ],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   encapsulation: ViewEncapsulation.Emulated,
 })
-export class ProductDetailsComponent implements OnInit,AfterViewInit {
+export class ProductDetailsComponent implements OnInit, AfterViewInit {
   isNavVisible = false;
-    project :Project[] = [];
-    projects :Project[] = [];
+  isOpenArticle = true;
+  project: Project[] = [];
+  projects: Project[] = [];
   @ViewChild('swiperRef') swiperRef!: ElementRef;
   @ViewChild('featuresWrapper') featuresWrapper!: ElementRef;
   private lastScrollTop = 0;
@@ -45,47 +53,45 @@ export class ProductDetailsComponent implements OnInit,AfterViewInit {
     // Try to get product from navigation state
     const navigation = this.router.getCurrentNavigation();
     console.log(navigation);
-    
+
     if (navigation?.extras.state?.['product']) {
       this.product = navigation.extras.state?.['product'];
       this.updateMetaTags();
     }
   }
-  
 
   ngOnInit() {
-
     this.productService.navVisible$.subscribe((isVisible) => {
       this.isNavVisible = isVisible;
     });
 
     this.project = [
       {
-        name:"Smart Electric Car Charger",
-        author:"Mark Boyle 🇬🇧",
-        desc:"I automated my EV charger using a Shelly 1 to control charging times based on my night-time tariff, optimizing energy use for my Nissan Leaf.",
-        img:"https://www.shelly.com/cdn/shop/articles/shelly-ev-charger_500x.webp?v=1726740958"
+        name: 'Smart Electric Car Charger',
+        author: 'Mark Boyle 🇬🇧',
+        desc: 'I automated my EV charger using a Shelly 1 to control charging times based on my night-time tariff, optimizing energy use for my Nissan Leaf.',
+        img: 'https://www.shelly.com/cdn/shop/articles/shelly-ev-charger_500x.webp?v=1726740958',
       },
       {
-        name:"Smart Electric Car Charger",
-        author:"Mark Boyle 🇬🇧",
-        desc:"I automated my EV charger using a Shelly 1 to control charging times based on my night-time tariff, optimizing energy use for my Nissan Leaf.",
-        img:"https://www.shelly.com/cdn/shop/articles/shelly-ev-charger_500x.webp?v=1726740958"
+        name: 'Smart Electric Car Charger',
+        author: 'Mark Boyle 🇬🇧',
+        desc: 'I automated my EV charger using a Shelly 1 to control charging times based on my night-time tariff, optimizing energy use for my Nissan Leaf.',
+        img: 'https://www.shelly.com/cdn/shop/articles/shelly-ev-charger_500x.webp?v=1726740958',
       },
       {
-        name:"Smart Electric Car Charger",
-        author:"Mark Boyle 🇬🇧",
-        desc:"I automated my EV charger using a Shelly 1 to control charging times based on my night-time tariff, optimizing energy use for my Nissan Leaf.",
-        img:"https://www.shelly.com/cdn/shop/articles/shelly-ev-charger_500x.webp?v=1726740958"
+        name: 'Smart Electric Car Charger',
+        author: 'Mark Boyle 🇬🇧',
+        desc: 'I automated my EV charger using a Shelly 1 to control charging times based on my night-time tariff, optimizing energy use for my Nissan Leaf.',
+        img: 'https://www.shelly.com/cdn/shop/articles/shelly-ev-charger_500x.webp?v=1726740958',
       },
       {
-        name:"Smart Electric Car Charger",
-        author:"Mark Boyle 🇬🇧",
-        desc:"I automated my EV charger using a Shelly 1 to control charging times based on my night-time tariff, optimizing energy use for my Nissan Leaf.",
-        img:"https://www.shelly.com/cdn/shop/articles/shelly-ev-charger_500x.webp?v=1726740958"
+        name: 'Smart Electric Car Charger',
+        author: 'Mark Boyle 🇬🇧',
+        desc: 'I automated my EV charger using a Shelly 1 to control charging times based on my night-time tariff, optimizing energy use for my Nissan Leaf.',
+        img: 'https://www.shelly.com/cdn/shop/articles/shelly-ev-charger_500x.webp?v=1726740958',
       },
-    ]
-    this.projects = [...this.project]
+    ];
+    this.projects = [...this.project];
     // If product not in state, fetch it
     if (!this.product) {
       const productId = this.route.snapshot.paramMap.get('id');
@@ -95,44 +101,42 @@ export class ProductDetailsComponent implements OnInit,AfterViewInit {
     }
   }
   ngAfterViewInit(): void {
-      if (isPlatformBrowser(this.platformId)) {
-  
-        const swiperEl = this.swiperRef.nativeElement;
-        Object.assign(swiperEl, {
-          slidesPerView: 'auto',
-          spaceBetween: 12,
-          loop: false,
-          breakpoints: {
-            989: {
-              spaceBetween: 22
-            }
+    if (isPlatformBrowser(this.platformId)) {
+      const swiperEl = this.swiperRef.nativeElement;
+      Object.assign(swiperEl, {
+        slidesPerView: 'auto',
+        spaceBetween: 12,
+        loop: false,
+        breakpoints: {
+          989: {
+            spaceBetween: 22,
           },
-          observer: true,
-          navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-          },
-          on: {
-            init() {
-  
-            }
-          }
-        });
-        swiperEl.initialize();
-      }
+        },
+        observer: true,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        on: {
+          init() {},
+        },
+      });
+      swiperEl.initialize();
     }
+  }
 
   @HostListener('window:scroll', ['$event'])
   onScroll() {
     if (!this.featuresWrapper) return;
 
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    const elementTop = this.featuresWrapper.nativeElement.getBoundingClientRect().top;
+    const elementTop =
+      this.featuresWrapper.nativeElement.getBoundingClientRect().top;
     const windowHeight = window.innerHeight;
 
     // Check if the features wrapper is in view
-    const isFeatureWrapperVisible = 
-      elementTop <= windowHeight && 
+    const isFeatureWrapperVisible =
+      elementTop <= windowHeight &&
       elementTop + this.featuresWrapper.nativeElement.offsetHeight >= 0;
 
     if (isFeatureWrapperVisible) {
@@ -146,20 +150,22 @@ export class ProductDetailsComponent implements OnInit,AfterViewInit {
   }
   quantity: number = 1;
 
-increaseQuantity(): void {
-  this.quantity++;
-}
-
-decreaseQuantity(): void {
-  if (this.quantity > 1) {
-    this.quantity--;
+  increaseQuantity(): void {
+    this.quantity++;
   }
-}
 
-addToCart(product: any) {
-  this.cartService.addToCart(product);
-}
+  decreaseQuantity(): void {
+    if (this.quantity > 1) {
+      this.quantity--;
+    }
+  }
 
+  addToCart(product: any) {
+    this.cartService.addToCart(product);
+  }
+  openArticle(){
+    this.isOpenArticle = !this.isOpenArticle;
+  }
 
   private async loadProduct(id: string) {
     try {
@@ -175,10 +181,11 @@ addToCart(product: any) {
   private updateMetaTags() {
     if (this.product) {
       this.title.setTitle(`${this.product.name} - Your Store`);
-      this.meta.updateTag({ name: 'description', content: this.product.description });
+      this.meta.updateTag({
+        name: 'description',
+        content: this.product.description,
+      });
       // Add more meta tags as needed
     }
   }
-
-
 }

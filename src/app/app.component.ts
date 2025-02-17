@@ -4,10 +4,11 @@ import { HeaderComponent } from './header/header.component';
 import { ProductService } from './product.service';
 import { CartDrawerComponent } from "./cart-drawer/cart-drawer.component";
 import { CartService } from './cart.service';
+import { FooterComponent } from "./footer/footer.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, CartDrawerComponent],
+  imports: [RouterOutlet, HeaderComponent, CartDrawerComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
