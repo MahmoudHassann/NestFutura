@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, HostListener,Inject,OnInit,PLATFORM_ID,ViewChild, ViewEncapsulation } from '@angular/core';
-import { Product } from '../interface/product';
+import { Product, Productqq } from '../interface/product';
 import { ActivatedRoute, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
 import { ProductService } from '../product.service';
@@ -9,8 +9,9 @@ import { TooltipModule } from 'primeng/tooltip';
 import { FormsModule } from '@angular/forms';
 import { ProjectCardComponent } from "../project-card/project-card.component";
 import { Project } from '../interface/project';
-import { isPlatformBrowser } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { CartService } from '../cart.service';
+import { log } from 'node:console';
 
 @Component({
   selector: 'app-product-details',
@@ -29,13 +30,13 @@ import { CartService } from '../cart.service';
 })
 export class ProductDetailsComponent implements OnInit, AfterViewInit {
   isNavVisible = false;
-  isOpenArticle = true;
+  isOpenArticle = false;
   project: Project[] = [];
   projects: Project[] = [];
   @ViewChild('swiperRef') swiperRef!: ElementRef;
   @ViewChild('featuresWrapper') featuresWrapper!: ElementRef;
   private lastScrollTop = 0;
-  product!: Product;
+  product!: Productqq;
   productImages = [
     'https://www.shelly.com/cdn/shop/files/Shelly-2PM-Gen3-main-image.png?v=1727359896&width=1100',
     'https://www.shelly.com/cdn/shop/files/2pmphoto3.webp?v=1727356333&width=1100',
@@ -52,8 +53,6 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
   ) {
     // Try to get product from navigation state
     const navigation = this.router.getCurrentNavigation();
-    console.log(navigation);
-
     if (navigation?.extras.state?.['product']) {
       this.product = navigation.extras.state?.['product'];
       this.updateMetaTags();
@@ -170,7 +169,10 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
   private async loadProduct(id: string) {
     try {
       // Using firstValueFrom instead of toPromise
-      this.product = await firstValueFrom(this.productService.getProduct(id));
+      const response = await firstValueFrom(this.productService.getProduct(id));
+      this.product = response.data
+      console.log(this.product);
+      
       this.updateMetaTags();
     } catch (error) {
       console.error('Error loading product:', error);
@@ -180,10 +182,10 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
 
   private updateMetaTags() {
     if (this.product) {
-      this.title.setTitle(`${this.product.name} - Your Store`);
+      this.title.setTitle(`${this.product.title} - Your Store`);
       this.meta.updateTag({
         name: 'description',
-        content: this.product.description,
+        content: this.product.desc,
       });
       // Add more meta tags as needed
     }

@@ -1,30 +1,27 @@
 import { Component, Input, Output,EventEmitter, OnInit } from '@angular/core';
-import { Product } from '../interface/product';
+import { Product, Productqq } from '../interface/product';
 import { Variant } from '../interface/variant';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-product-card',
-  standalone:true,
+  standalone: true,
   imports: [RouterLink],
   templateUrl: './product-card.component.html',
-  styleUrl: './product-card.component.scss'
+  styleUrl: './product-card.component.scss',
 })
 export class ProductCardComponent implements OnInit {
   @Input() product!: Product;
   @Input() selectedVariants: Map<string, Variant> = new Map();
   /* @Input() products: Product[] = []; */
   @Input() selectedProperty: string = '';
-  
+
   @Output() variantSelected = new EventEmitter<any>();
   @Output() filterUpdated = new EventEmitter<any>();
-  
-  hoveredProduct: Product | null = null;
-  
 
-  ngOnInit(): void {
-    
-  }
+  hoveredProduct: Product | null = null;
+
+  ngOnInit(): void {}
 
   isVariantSelected(product: Product, variant: Variant): boolean {
     const selectedVariant = this.selectedVariants.get(product.name);
@@ -43,10 +40,7 @@ export class ProductCardComponent implements OnInit {
     return selectedVariant?.image || product.images.default;
   }
 
-  
-
   selectVariant(product: Product, variant: Variant): void {
     this.variantSelected.emit({ product, variant });
   }
-  
 }

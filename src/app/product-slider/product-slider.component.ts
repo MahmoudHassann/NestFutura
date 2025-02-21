@@ -5,12 +5,13 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ProductCardComponent } from '../product-card/product-card.component';
 import { Variant } from '../interface/variant';
 import { Product } from '../interface/product';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-product-slider',
   standalone: true,
-  imports: [ProductCardComponent],
+  imports: [ProductCardComponent,RouterLink],
   templateUrl: './product-slider.component.html',
   styleUrl: './product-slider.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

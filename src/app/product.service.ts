@@ -1,18 +1,18 @@
-import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, catchError, Observable, retry, shareReplay } from 'rxjs';
 import { environment } from '../environments/environment';
-import { isPlatformServer } from '@angular/common';
+
+
 
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductService {
   private navVisibleSubject = new BehaviorSubject<boolean>(false);
   navVisible$ = this.navVisibleSubject.asObservable();
   private baseURL = environment.apiUrl;
-
 
   updateNavVisibility(isVisible: boolean) {
     this.navVisibleSubject.next(isVisible);
@@ -20,10 +20,7 @@ export class ProductService {
 
   private cache = new Map<string, Observable<any>>();
 
-  constructor(private http: HttpClient,@Inject(PLATFORM_ID) private platformId: Object) { 
-    console.log('Running on:', isPlatformServer(this.platformId) ? 'Server' : 'Browser');
-    console.log('API Base URL:', this.baseURL);
-  }
+  constructor(private http: HttpClient) {}
 
   getProduct(id: string): Observable<any> {
     const cacheKey = `product-${id}`;
@@ -43,8 +40,41 @@ export class ProductService {
     return this.cache.get(cacheKey)!;
   }
 
+  getAllProducts(page: number = 1): Observable<any> {
+    return this.http.get<any>(`${this.baseURL}products?page=${page}`);
+  }
+  getFilteredProducts(
+    page: number,
+    filters: {
+      categories?: number[];
+      types?: number[];
+      technologies?: number[];
+      using?: number[];
+      sort?: string;
+    }
+  ): Observable<any> {
+    let params: any = { page };
+
+    if (filters.categories?.length) {
+      params.categories = filters.categories.join(',');
+    }
+    if (filters.types?.length) {
+      params.types = filters.types.join(',');
+    }
+    if (filters.technologies?.length) {
+      params.technologies = filters.technologies.join(',');
+    }
+    if (filters.using?.length) {
+      params.using = filters.using.join(',');
+    }
+    if (filters.sort) {
+      params.sort = filters.sort;
+    }
+
+    return this.http.get(`${this.baseURL}products`, { params });
+  }
+
   clearCache() {
     this.cache.clear();
   }
-
 }

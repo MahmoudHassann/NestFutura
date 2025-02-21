@@ -1,17 +1,19 @@
 <div class="product-container page-width">
+    @if(product){
     <nav class="product-breadcrmbs">
         <a [routerLink]="['/home']">Home</a>
         <a [routerLink]="['/products']">All Products</a>
-        <a [routerLink]="['/products/48']" routerLinkActive="active">Shelly 1 Gen3</a>
+        <a [routerLink]="['/products',product.id]" routerLinkActive="active">{{product.title}}</a>
     </nav>
+    
     <div class="product-title show-on-mobile">
-        <h2>Shelly 1 Gen3</h2>
+        <h2>{{product.title}}</h2>
     </div>
     <div class="price-container show-on-mobile">
         <div class="price">
             <div class="price-regular">
                 <span class="visually-hidden">Regular Price</span>
-                <span class="price-item">€18,76</span>
+                <span class="price-item">€{{product.price}}</span>
             </div>
             <!--  <div class="price-sale">
                 <span class="visually-hidden">Sale Price</span>
@@ -629,6 +631,7 @@
             </div>
         </div>
     </div>
+    }
 </div>
 <div class="local-navigation" [class.shown]="isNavVisible">
     <div class="fixed-bar">

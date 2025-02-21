@@ -38,7 +38,7 @@ export class PredictiveSearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.outsideClickListener = this.renderer.listen('document', 'mousedown', this.handleOutsideClick.bind(this));
-    this.products = [
+   /*  this.products = [
       {
         name: 'Shelly Dimmer Gen3',
         price: '€46.75',
@@ -208,7 +208,7 @@ export class PredictiveSearchComponent implements OnInit {
           },
         ],
       },
-    ];
+    ]; */
   }
 
   ngOnDestroy(): void {
