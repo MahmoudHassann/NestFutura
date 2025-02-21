@@ -51,12 +51,6 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
     private cartService: CartService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
-    // Try to get product from navigation state
-    const navigation = this.router.getCurrentNavigation();
-    if (navigation?.extras.state?.['product']) {
-      this.product = navigation.extras.state?.['product'];
-      this.updateMetaTags();
-    }
   }
 
   ngOnInit() {
@@ -92,7 +86,12 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
     ];
     this.projects = [...this.project];
     // If product not in state, fetch it
-    if (!this.product) {
+    const navigation = this.router.getCurrentNavigation();
+    if (navigation?.extras.state?.['product']) {
+      this.product = navigation.extras.state['product'];
+      this.updateMetaTags();
+    } else {
+      // If product is not in state, fetch it using the route ID
       const productId = this.route.snapshot.paramMap.get('id');
       if (productId) {
         this.loadProduct(productId);
@@ -171,8 +170,6 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
       // Using firstValueFrom instead of toPromise
       const response = await firstValueFrom(this.productService.getProduct(id));
       this.product = response.data
-      console.log(this.product);
-      
       this.updateMetaTags();
     } catch (error) {
       console.error('Error loading product:', error);
