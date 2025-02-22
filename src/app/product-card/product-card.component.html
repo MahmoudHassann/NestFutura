@@ -1,6 +1,6 @@
 <div class="product-card"  (mouseenter)="hoveredProduct = product" (mouseleave)="hoveredProduct = null">
     <div class="card-wrapper">
-        <div class="card" style="--ratio-percent: 100%;">
+        <div class="card" style="--ratio-percent: 100%;" [id]="product.id">
             <a [routerLink]="['/products', product.id]" 
             [state]="{ product: product }" class="card-inner rate" style="--ratio-percent: 100%;">
                 <div class="card-media has-custom-secondary-img">
