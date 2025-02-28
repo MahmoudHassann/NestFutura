@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, HostListener,Inject,OnInit,PLATFORM_ID,ViewChild, ViewEncapsulation } from '@angular/core';
-import { Product, Productqq } from '../interface/product';
+import { Product } from '../interface/product';
 import { ActivatedRoute, Router, RouterLink, RouterLinkActive } from '@angular/router';
-import { Meta, Title } from '@angular/platform-browser';
+import {  Meta, Title } from '@angular/platform-browser';
 import { ProductService } from '../product.service';
 import { firstValueFrom } from 'rxjs';
 import { ImageViewerComponent } from '../image-viewer/image-viewer.component';
@@ -11,7 +11,7 @@ import { ProjectCardComponent } from "../project-card/project-card.component";
 import { Project } from '../interface/project';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { CartService } from '../cart.service';
-import { log } from 'node:console';
+
 
 @Component({
   selector: 'app-product-details',
@@ -36,12 +36,8 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
   @ViewChild('swiperRef') swiperRef!: ElementRef;
   @ViewChild('featuresWrapper') featuresWrapper!: ElementRef;
   private lastScrollTop = 0;
-  product!: Productqq;
-  productImages = [
-    'https://www.shelly.com/cdn/shop/files/Shelly-2PM-Gen3-main-image.png?v=1727359896&width=1100',
-    'https://www.shelly.com/cdn/shop/files/2pmphoto3.webp?v=1727356333&width=1100',
-    'https://www.shelly.com/cdn/shop/files/2pmproduct2.webp?v=1727356333&width=1100',
-  ];
+  product!: Product;
+  productImages = [''];
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -89,6 +85,7 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
     const navigation = this.router.getCurrentNavigation();
     if (navigation?.extras.state?.['product']) {
       this.product = navigation.extras.state['product'];
+      this.productImages = [...this.product.images];
       this.updateMetaTags();
     } else {
       // If product is not in state, fetch it using the route ID
@@ -170,6 +167,7 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
       // Using firstValueFrom instead of toPromise
       const response = await firstValueFrom(this.productService.getProduct(id));
       this.product = response.data
+      this.productImages = [...this.product.images];
       this.updateMetaTags();
     } catch (error) {
       console.error('Error loading product:', error);
@@ -179,7 +177,7 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
 
   private updateMetaTags() {
     if (this.product) {
-      this.title.setTitle(`${this.product.title} - Your Store`);
+      this.title.setTitle(`${this.product.title} - Nestfuturra`);
       this.meta.updateTag({
         name: 'description',
         content: this.product.desc,

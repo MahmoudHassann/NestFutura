@@ -1,5 +1,5 @@
 import { Component, Input, Output,EventEmitter, OnInit } from '@angular/core';
-import { Product, Productqq } from '../interface/product';
+import { Products } from '../interface/product';
 import { Variant } from '../interface/variant';
 import { RouterLink } from '@angular/router';
 
@@ -11,7 +11,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './product-card.component.scss',
 })
 export class ProductCardComponent implements OnInit {
-  @Input() product!: Product;
+  @Input() product!: Products;
   @Input() selectedVariants: Map<string, Variant> = new Map();
   /* @Input() products: Product[] = []; */
   @Input() selectedProperty: string = '';
@@ -19,28 +19,28 @@ export class ProductCardComponent implements OnInit {
   @Output() variantSelected = new EventEmitter<any>();
   @Output() filterUpdated = new EventEmitter<any>();
 
-  hoveredProduct: Product | null = null;
+  hoveredProduct: Products | null = null;
 
   ngOnInit(): void {}
 
-  isVariantSelected(product: Product, variant: Variant): boolean {
-    const selectedVariant = this.selectedVariants.get(product.name);
+  isVariantSelected(product: Products, variant: Variant): boolean {
+    const selectedVariant = this.selectedVariants.get(product.title);
     return selectedVariant?.id === variant.id;
   }
 
-  getProductDisplayName(product: Product): string {
-    const selectedVariant = this.selectedVariants.get(product.name);
+  getProductDisplayName(product: Products): string {
+    const selectedVariant = this.selectedVariants.get(product.title);
     return selectedVariant
-      ? `${product.name} - ${selectedVariant.name}`
-      : product.name;
+      ? `${product.title} - ${selectedVariant.name}`
+      : product.title;
   }
 
-  getProductImage(product: Product): string {
-    const selectedVariant = this.selectedVariants.get(product.name);
-    return selectedVariant?.image || product.images.default;
+  getProductImage(product: Products): string {
+    const selectedVariant = this.selectedVariants.get(product.title);
+    return selectedVariant?.image || product.snippet_image;
   }
 
-  selectVariant(product: Product, variant: Variant): void {
+  selectVariant(product: Products, variant: Variant): void {
     this.variantSelected.emit({ product, variant });
   }
 }

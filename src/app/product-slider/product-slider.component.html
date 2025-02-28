@@ -14,9 +14,9 @@
     <div class="products-filter">
         <div class="product-filter-badge">
             @for (property of availableProperties; track $index) {
-            <button class="filter-badge" (click)="filterProducts(property)">
-                <div class="badge" [class.active]="selectedProperty === property">
-                    <div class="badge-text">{{property}}</div>
+            <button class="filter-badge" (click)="filterProducts(property.title)" [id]="property.id">
+                <div class="badge" [class.active]="selectedProperty === property.title">
+                    <div class="badge-text">{{property.title}}</div>
                 </div>
             </button>
             }

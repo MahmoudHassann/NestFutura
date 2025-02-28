@@ -1,6 +1,6 @@
 import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
 import { ProductCardComponent } from '../product-card/product-card.component';
-import { Product } from '../interface/product';
+import { Products } from '../interface/product';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Variant } from '../interface/variant';
 import { FormsModule } from '@angular/forms';
@@ -15,11 +15,11 @@ import { CommonModule } from '@angular/common';
 })
 export class PredictiveSearchComponent implements OnInit {
   searchInput: string = '';
-  filteredProducts: Product[] = [];
+  filteredProducts: Products[] = [];
   showPopularSearches: boolean = true;
   showProductSuggestions: boolean = false;
   selectedVariants = new Map<string, Variant>();
-  products !: Product[]
+  products !: Products[]
   @Output() focusStateChange = new EventEmitter<boolean>();
   @ViewChild('search', { static: false }) searchInputElement!: ElementRef<HTMLInputElement>;
   @ViewChild('searchContainer', { static: false }) searchContainer!: ElementRef;
@@ -241,9 +241,9 @@ export class PredictiveSearchComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustHtml(svg);
   }
 
-  onVariantSelected(event: { product: Product; variant: Variant }) {
+  onVariantSelected(event: { product: Products; variant: Variant }) {
     console.log('Variant selected:', event);
-    this.selectedVariants.set(event.product.name, event.variant);
+    this.selectedVariants.set(event.product.title, event.variant);
   }
 
   onInputChange(event: Event) {
@@ -286,7 +286,7 @@ export class PredictiveSearchComponent implements OnInit {
 
   filterProducts(query: string) {
     this.filteredProducts = this.products.filter(product =>
-      product.name.toLowerCase().includes(query.toLowerCase())
+      product.title.toLowerCase().includes(query.toLowerCase())
     );
   }
 

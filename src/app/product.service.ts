@@ -74,6 +74,10 @@ export class ProductService {
     return this.http.get(`${this.baseURL}products`, { params });
   }
 
+  getFilters(): Observable<any> {
+    return this.http.get(`${this.baseURL}producs-filter`);
+  }
+
   clearCache() {
     this.cache.clear();
   }

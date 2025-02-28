@@ -1,7 +1,7 @@
 import { SafeHtml } from "@angular/platform-browser";
 import { Variant } from "./variant";
 
-export interface Product {
+/* export interface Product {
   id?: string;
   name: string;
   price: string;
@@ -20,66 +20,99 @@ export interface Product {
   connectivity: { type: string; icon: SafeHtml }[];
   variants?: Variant[];
   variantType?: 'color' | 'regular';
-}
+} */
 // interface/product.ts
-export interface Productqq {
+export interface Products {
   id: number;
   title: string;
   desc: string;
   price: string;
+  discount: boolean;
+  variants?: Variant[];
+  variantType?: 'color' | 'regular';
   stock: string;
-  name: string; // Added for compatibility with existing code
-  product_categories: ProductCategory[];
-  product_types: ProductType[];
-  product_technologies: ProductTechnology[];
-  product_using: ProductUsing[];
-  filter_by_types: FilterOption[];
-  filter_by_technologies: FilterOption[];
-  filter_by_using: FilterOption[];
-  filter_by_categories: FilterOption[];
-  sort_by: string[];
+  product_categories: Category[];
+  product_types: Type[];
+  product_technologies: Technology[];
+  product_using: Usage[];
+  snippet_image: string;
+  images: string[];
 }
-
-interface ProductCategory {
+export interface Product {
+  id: number;
   title: string;
   desc: string;
-  icon: string;
+  long_desc: string;
+  price: string;
+  stock: string;  
+  created_at: string;
+  updated_at: string;
+  product_categories: Category[];
+  product_types: Type[];
+  product_technologies: Technology[];
+  product_using: Usage[];
+  features: Feature[];
+  articles: Article[];
+  snippet_image: string;
+  images: string[];
 }
 
-interface ProductType {
+export interface Category {
   title: string;
-  icon: string;
+  desc: string;
+  icon: string | null;
 }
 
-interface ProductTechnology {
+export interface Type {
   title: string;
-  icon: string;
+  icon: string | null;
 }
 
-interface ProductUsing {
+export interface Technology {
   title: string;
-  icon: string;
+  icon: string | null;
 }
 
-interface FilterOption {
-  id: number;
-  title: {
-    en: string;
-    ar: string;
-  };
+export interface Usage {
+  title: string;
+  icon: string | null;
+}
+
+export interface ApiResponse {
+  data: Products[];
+  links: PaginationLinks;
+  meta: PaginationMeta;
+}
+
+export interface PaginationLinks {
+  first: string;
+  last: string;
+  prev: string | null;
+  next: string | null;
 }
 
 export interface PaginationMeta {
   current_page: number;
   from: number;
   last_page: number;
-  links: {
-    url: string | null;
-    label: string;
-    active: boolean;
-  }[];
+  links: PaginationLink[];
   path: string;
   per_page: number;
   to: number;
   total: number;
 }
+
+export interface PaginationLink {
+  url: string | null;
+  label: string;
+  active: boolean;
+}
+
+export interface Feature {
+  title: string;
+}
+export interface Article {
+  title: string;
+  desc:string;
+}
+

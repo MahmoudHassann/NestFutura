@@ -5,10 +5,10 @@
             [state]="{ product: product }" class="card-inner rate" style="--ratio-percent: 100%;">
                 <div class="card-media has-custom-secondary-img">
                     <div class="media">
-                        <picture><img [src]="product.images.default" [alt]="product.name" loading="lazy"
+                        <picture><img [src]="product.snippet_image" [alt]="product.title" loading="lazy"
                                 class="card-media-featured" width="300" height="300">
                         </picture>
-                        <picture><img [src]="product.images.hover" [alt]="product.name" loading="lazy"
+                        <picture><img [src]="product.images[0]" [alt]="product.title" loading="lazy"
                                 class="card-media-secondary" width="300" height="300">
                         </picture>
                     </div>
@@ -16,13 +16,13 @@
                 <div class="card-contnet">
                     <div class="card-badge card-badge-custom top right">
                         <div class="badge"
-                            [style.color]="product.status === 'Out of stock' ? '#121519' : '#cd9b2e'"
-                            [style.borderColor]="product.status === 'Out of stock' ? '#121519' : '#cd9b2e'">
-                            <div class="badge-text">{{product.status}}</div>
+                            [style.color]="product.stock === 'in stock' ? '#cd9b2e' : '#121519'"
+                            [style.borderColor]="product.stock === 'in stock' ? '#cd9b2e' : '#121519'">
+                            <div class="badge-text">{{product.stock}}</div>
                         </div>
                     </div>
                     <div class="card-feature-icons-container">
-                        @for (feature of product.connectivity; track $index) {
+                        @for (feature of product.product_technologies; track $index) {
                         <div class="card-feature-icon" [innerHTML]="feature.icon">
                         </div>
                         }
@@ -43,7 +43,7 @@
                                     <div class="price-regular">
                                         <span class="visually-hidden visually-hidden-inline">Regular
                                             Price</span>
-                                        <span class="price-item">{{product.totalprice}}</span>
+                                        <span class="price-item">{{product.price}}</span>
                                     </div>
                                 </ng-container>
                                 }
@@ -52,7 +52,7 @@
                                     <div class="product-sale">
                                         <span class="visually-hidden visually-hidden-inline">sale
                                             Price</span>
-                                        <span class="price-item">{{product.totalprice}}</span>
+                                        <span class="price-item">{{product.price}}</span>
                                         <span class="visually-hidden visually-hidden-inline">Regular
                                             Price</span>
                                     </div>
@@ -61,8 +61,7 @@
 
                             </div>
                             <div class="product-card-description-container">
-                                <div class="product-card-description caption">
-                                    {{product.description}}
+                                <div class="product-card-description caption" [innerHTML]="product.desc">
                                 </div>
                             </div>
                         </div>
@@ -70,7 +69,7 @@
                 </div>
                 <div class="product-card-content-container">
                     <div class="product-card-typicaly-used-for">
-                        @for (property of product.properties; track $index) {
+                        @for (property of product.product_types; track $index) {
                         <div class="badge">
                             <div class="badge-icon"><svg width="10" height="7" viewBox="0 0 10 7"
                                     fill="none" xmlns="http://www.w3.org/2000/svg">

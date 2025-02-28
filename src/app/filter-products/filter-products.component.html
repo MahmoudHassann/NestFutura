@@ -24,7 +24,7 @@
   </div>
   <div class="counter-products">
     <div class="product-count-txt">
-      <h5>99 Products</h5>
+      <h5>{{products.length}} Products</h5>
     </div>
   </div>
   <div class="col-2 dropdown">
@@ -78,179 +78,77 @@
                   <p-accordion-header>Technology Types</p-accordion-header>
                   <p-accordion-content>
                     <ul>
+                      @for (type of filterByTechnology; track $index) {
                       <li class="list">
                         <div class="form-check">
                           <input
                             class="form-check-input"
                             type="checkbox"
                             value=""
-                            id="flexCheckChecked"
+                            [id]="type.id"
                           />
                           <label
                             class="form-check-label"
-                            for="flexCheckChecked"
+                            [for]="type.id"
                           >
-                            Checked checkbox
+                            {{type.title}}
                           </label>
                           <span class="filter-item-count">53</span>
                         </div>
                       </li>
-                      <li class="list">
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckChecked"
-                          />
-                          <label
-                            class="form-check-label"
-                            for="flexCheckChecked"
-                          >
-                            Checked checkbox
-                          </label>
-                          <span class="filter-item-count">53</span>
-                        </div>
-                      </li>
-                      <li class="list">
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckChecked"
-                          />
-                          <label
-                            class="form-check-label"
-                            for="flexCheckChecked"
-                          >
-                            Accessories & Merchandise
-                          </label>
-                          <span class="filter-item-count">
-                            <span>53</span>
-                          </span>
-                        </div>
-                      </li>
+                      }
                     </ul>
                   </p-accordion-content>
                 </p-accordion-panel>
                 <p-accordion-panel value="1">
-                  <p-accordion-header>Product Type</p-accordion-header>
+                  <p-accordion-header>Product Types</p-accordion-header>
                   <p-accordion-content>
                     <ul>
+                      @for (type of filterByTypes; track $index) {
                       <li class="list">
                         <div class="form-check">
                           <input
                             class="form-check-input"
                             type="checkbox"
                             value=""
-                            id="flexCheckChecked"
+                            [id]="type.id"
                           />
                           <label
                             class="form-check-label"
-                            for="flexCheckChecked"
+                            [for]="type.id"
                           >
-                            Checked checkbox
+                            {{type.title}}
                           </label>
                           <span class="filter-item-count">53</span>
                         </div>
                       </li>
-                      <li class="list">
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckChecked"
-                          />
-                          <label
-                            class="form-check-label"
-                            for="flexCheckChecked"
-                          >
-                            Checked checkbox
-                          </label>
-                          <span class="filter-item-count">53</span>
-                        </div>
-                      </li>
-                      <li class="list">
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckChecked"
-                          />
-                          <label
-                            class="form-check-label"
-                            for="flexCheckChecked"
-                          >
-                            Accessories & Merchandise
-                          </label>
-                          <span class="filter-item-count">
-                            <span>53</span>
-                          </span>
-                        </div>
-                      </li>
+                      }
                     </ul>
                   </p-accordion-content>
                 </p-accordion-panel>
                 <p-accordion-panel value="2">
-                  <p-accordion-header>Product Type</p-accordion-header>
+                  <p-accordion-header>Product Using</p-accordion-header>
                   <p-accordion-content>
                     <ul>
+                      @for (type of filterByUsing; track $index) {
                       <li class="list">
                         <div class="form-check">
                           <input
                             class="form-check-input"
                             type="checkbox"
                             value=""
-                            id="flexCheckChecked"
+                            [id]="type.id"
                           />
                           <label
                             class="form-check-label"
-                            for="flexCheckChecked"
+                            [for]="type.id"
                           >
-                            Checked checkbox
+                           {{type.title}}
                           </label>
                           <span class="filter-item-count">53</span>
                         </div>
                       </li>
-                      <li class="list">
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckChecked"
-                          />
-                          <label
-                            class="form-check-label"
-                            for="flexCheckChecked"
-                          >
-                            Checked checkbox
-                          </label>
-                          <span class="filter-item-count">53</span>
-                        </div>
-                      </li>
-                      <li class="list">
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckChecked"
-                          />
-                          <label
-                            class="form-check-label"
-                            for="flexCheckChecked"
-                          >
-                            Accessories & Merchandise
-                          </label>
-                          <span class="filter-item-count">
-                            <span>53</span>
-                          </span>
-                        </div>
-                      </li>
+                      }
                     </ul>
                   </p-accordion-content>
                 </p-accordion-panel>

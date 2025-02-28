@@ -191,7 +191,7 @@
         @include large {
             display: flex;
             flex-direction: column;
-            width: 26rem;
+            width: 21rem;
         }
 
         .wrapper {
@@ -246,8 +246,7 @@
             }
 
             @include c-lg {
-                position: absolute;
-                bottom: 0;
+                padding-top: 80px;
                 overflow: visible;
                 width: 100%;
             }
@@ -258,7 +257,6 @@
 
             @include c-lg {
                 width: 100vw;
-                height: 100vh;
             }
         }
 
