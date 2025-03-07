@@ -1,0 +1,29 @@
+{
+  "header": {
+    "menu": {
+      "home": "Home",
+      "about": "About",
+      "services": "Services",
+      "contact": "Contact"
+    }
+  },
+  "footer": {
+    "copyright": "© All Rights Reserved NestFuturra 2025.",
+    "author":"By MaHmOuD"
+  },
+  "solutions": {
+    "intro": "Introduction",
+    "title": "Lights for Every Activity",
+    "description": "Smart lighting can make your home more comfortable, safe, and enjoyable while saving energy. With Shelly, you can easily control your lights remotely, set smart schedules and timers, reducing energy waste and lowering your electricity bills. Additionally, lighting accounts for 7% of a home's carbon footprint, so making your lighting smarter is a simple way to help the environment too."
+  },
+  "products": {
+    "heading": "Products",
+    "shopAll": "Shop All Products"
+  },
+  "language": {
+    "english": "English",
+    "arabic": "Arabic",
+    "switchPrompt": "Choose your preferred language"
+  }
+}
+

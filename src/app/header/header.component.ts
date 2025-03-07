@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { PredictiveSearchComponent } from '../predictive-search/predictive-search.component';
 import { CartService } from '../cart.service';
+import { LanguageService } from '../language.service';
 
 export interface SubmenuItem {
   href: string; // Link URL
@@ -25,9 +26,9 @@ export interface NavItem {
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule,PredictiveSearchComponent],
+  imports: [CommonModule, PredictiveSearchComponent],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
 })
 export class HeaderComponent implements OnInit {
   drawerOpen: boolean = false;
@@ -45,9 +46,11 @@ export class HeaderComponent implements OnInit {
   resources: NavItem[] = [];
   knowledge_base: NavItem[] = [];
 
-  constructor(private eRef: ElementRef,private cartService: CartService) {
-
-  }
+  constructor(
+    private eRef: ElementRef,
+    private cartService: CartService,
+    private languageService: LanguageService
+  ) {}
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: Event) {
@@ -66,84 +69,97 @@ export class HeaderComponent implements OnInit {
     this.Smart_Energy = [
       {
         href: '/smart-lighting',
-        imgSrc: 'https://www.shelly.com/cdn/shop/files/solutions-1_80x.jpg?v=1724848094',
+        imgSrc:
+          'https://www.shelly.com/cdn/shop/files/solutions-1_80x.jpg?v=1724848094',
         imgAlt: 'Smart Lighting Icon',
         title: 'Professional smart energy  control & monitoring',
         description: 'Optimize and track your energy usage with precision',
       },
       {
         href: '/smart-lighting',
-        imgSrc: 'https://www.shelly.com/cdn/shop/files/solutions-2_80x.jpg?v=1724848093',
+        imgSrc:
+          'https://www.shelly.com/cdn/shop/files/solutions-2_80x.jpg?v=1724848093',
         imgAlt: 'Smart Lighting Icon',
         title: 'PV Solutions / Industrial',
-        description: 'For your solar solutions or other industrial applications',
+        description:
+          'For your solar solutions or other industrial applications',
       },
       {
         href: '/smart-lighting',
-        imgSrc: 'https://www.shelly.com/cdn/shop/files/solutions-3_80x.jpg?v=1724848093',
+        imgSrc:
+          'https://www.shelly.com/cdn/shop/files/solutions-3_80x.jpg?v=1724848093',
         imgAlt: 'Smart Lighting Icon',
         title: 'Energy efficient home',
         description: 'Create a sustainable and cost-effective smart home',
       },
-    ]
+    ];
 
     this.Guide = [
       {
         href: '/smart-lighting',
-        imgSrc: 'https://www.shelly.com/cdn/shop/files/help-1_80x.jpg?v=1724853957',
+        imgSrc:
+          'https://www.shelly.com/cdn/shop/files/help-1_80x.jpg?v=1724853957',
         imgAlt: 'Smart Lighting Icon',
         title: 'Customer projects',
-        description: 'Discover innovative ideas and get inspiration from other Shelly users',
+        description:
+          'Discover innovative ideas and get inspiration from other Shelly users',
       },
       {
         href: '/smart-lighting',
-        imgSrc: 'https://www.shelly.com/cdn/shop/files/help-3_80x.jpg?v=1724853957',
+        imgSrc:
+          'https://www.shelly.com/cdn/shop/files/help-3_80x.jpg?v=1724853957',
         imgAlt: 'Smart Lighting Icon',
         title: 'Shelly Academy',
         description: 'The ultimate academy to learn scripting basics',
       },
       {
         href: '/smart-lighting',
-        imgSrc: 'https://www.shelly.com/cdn/shop/files/Smart-Home-Guide-menu-asset_80x.jpg?v=1734388259',
+        imgSrc:
+          'https://www.shelly.com/cdn/shop/files/Smart-Home-Guide-menu-asset_80x.jpg?v=1734388259',
         imgAlt: 'Smart Lighting Icon',
         title: 'Smart Home Guide',
-        description: 'Learn how and with which products you can transform your space into a Smart Home.',
+        description:
+          'Learn how and with which products you can transform your space into a Smart Home.',
       },
-    ]
-
+    ];
 
     this.submenuItems = [
       {
         href: '/smart-lighting',
         iconAlt: 'Smart Lighting Icon',
         title: 'Smart Lighting',
-        description: 'Make your lights smart and control them from anywhere, easily and affordably',
+        description:
+          'Make your lights smart and control them from anywhere, easily and affordably',
       },
       {
         href: '/smart-sensors',
         iconAlt: 'Smart Sensors Icon',
         title: 'Smart doors, gates, roller covers & blinds',
-        description: 'Automate your garage doors and gates for comfort and security. Control your blinds and shades from anywhere.',
+        description:
+          'Automate your garage doors and gates for comfort and security. Control your blinds and shades from anywhere.',
       },
       {
         href: '/Monitor-energy',
         iconAlt: 'Smart Monitor Icon',
         title: 'Monitoring & Saving Energy',
-        description: 'Track energy use in real-time and lower your costs by 40%.',
+        description:
+          'Track energy use in real-time and lower your costs by 40%.',
       },
       {
         href: '/Monitor-energy',
         iconAlt: 'Smart Heating Icon',
         title: 'Smart Heating & Climate Control',
-        description: 'Automate your heating and cooling while minimizing energy waste',
+        description:
+          'Automate your heating and cooling while minimizing energy waste',
       },
       {
         href: '/Monitor-energy',
         iconAlt: 'Smart safety Icon',
         title: 'Safety & Security',
-        description: 'Keep your home safe with smart sensors and monitor it from anywhere.',
+        description:
+          'Keep your home safe with smart sensors and monitor it from anywhere.',
       },
-    ]
+    ];
 
     this.navItems = [
       {
@@ -174,153 +190,149 @@ export class HeaderComponent implements OnInit {
         href: '/smart-switches',
         title: 'Accessories & Merchandise',
       },
-    ]
+    ];
 
     this.techItems = [
       {
         href: '/tech',
-        title: 'Wi-Fi'
+        title: 'Wi-Fi',
       },
       {
         href: '/tech',
-        title: 'Bluetooth'
+        title: 'Bluetooth',
       },
       {
         href: '/tech',
-        title: 'Z-wave'
+        title: 'Z-wave',
       },
       {
         href: '/tech',
-        title: 'LAN'
+        title: 'LAN',
       },
       {
         href: '/tech',
-        title: 'KNX/IP'
+        title: 'KNX/IP',
       },
-    ]
+    ];
 
     this.newProducts = [
       {
         href: '/tech',
-        title: 'Z-wave'
+        title: 'Z-wave',
       },
       {
         href: '/tech',
-        title: 'LAN'
+        title: 'LAN',
       },
-    ]
+    ];
 
     this.solutions_smart_home = [
       {
         href: '/tech',
-        title: 'Retrofit & Existing Home'
+        title: 'Retrofit & Existing Home',
       },
       {
         href: '/tech',
-        title: 'New smart home'
+        title: 'New smart home',
       },
       {
         href: '/tech',
-        title: 'Outdoor'
+        title: 'Outdoor',
       },
-    ]
+    ];
 
     this.solutions_Smart_Building = [
       {
         href: '/tech',
-        title: 'Office'
+        title: 'Office',
       },
       {
         href: '/tech',
-        title: 'Restaurants'
+        title: 'Restaurants',
       },
       {
         href: '/tech',
-        title: 'Hotels'
+        title: 'Hotels',
       },
-    ]
+    ];
 
     this.solutions_Use_cases = [
       {
         href: '/tech',
-        title: 'Energy efficient building'
+        title: 'Energy efficient building',
       },
       {
         href: '/tech',
-        title: 'Smart lighting'
+        title: 'Smart lighting',
       },
       {
         href: '/tech',
-        title: 'Smart comfort & Automation'
+        title: 'Smart comfort & Automation',
       },
       {
         href: '/tech',
-        title: 'Smart Safety & Security'
+        title: 'Smart Safety & Security',
       },
-    ]
+    ];
     this.support = [
       {
         href: '/tech',
-        title: 'Open a support ticket'
+        title: 'Open a support ticket',
       },
       {
         href: '/tech',
-        title: 'Shelly Community Forum'
+        title: 'Shelly Community Forum',
       },
       {
         href: '/tech',
-        title: 'Shelly Facebook Group'
+        title: 'Shelly Facebook Group',
       },
       {
         href: '/tech',
-        title: 'FAQ'
+        title: 'FAQ',
       },
-    ]
+    ];
     this.resources = [
       {
         href: '/tech',
-        title: 'Blog'
+        title: 'Blog',
       },
       {
         href: '/tech',
-        title: 'Media center'
+        title: 'Media center',
       },
       {
         href: '/tech',
-        title: 'Media kit'
+        title: 'Media kit',
       },
-    ]
+    ];
     this.knowledge_base = [
       {
         href: '/tech',
-        title: 'Installation videos'
+        title: 'Installation videos',
       },
       {
         href: '/tech',
-        title: 'KB documentation'
+        title: 'KB documentation',
       },
       {
         href: '/tech',
-        title: 'Product Catalog'
+        title: 'Product Catalog',
       },
       {
         href: '/tech',
-        title: 'Developers API'
+        title: 'Developers API',
       },
       {
         href: '/tech',
-        title: 'Scripts Knowledge Base'
+        title: 'Scripts Knowledge Base',
       },
       {
         href: '/tech',
-        title: 'Shelly Device Finder'
+        title: 'Shelly Device Finder',
       },
-    ]
-
+    ];
   }
-
-
-
 
   @ViewChild(PredictiveSearchComponent, { static: false })
   predictiveSearchComponent!: PredictiveSearchComponent;
@@ -328,8 +340,8 @@ export class HeaderComponent implements OnInit {
     this.drawerOpen = !this.drawerOpen;
   }
 
-  toggleSearch(){
-    this.predictiveSearch = !this.predictiveSearch
+  toggleSearch() {
+    this.predictiveSearch = !this.predictiveSearch;
     this.predictiveSearchComponent.focusInput();
   }
 
@@ -337,35 +349,41 @@ export class HeaderComponent implements OnInit {
     event.preventDefault();
     const target = event.currentTarget as HTMLElement;
     const parentContainer = target.closest('.nav-item-container');
-    
+
     if (!parentContainer) return;
 
     // Handle menu open click
     if (target.classList.contains('menu-mobile-open')) {
       // Remove active class from all other menus
       const allMenus = document.querySelectorAll('.menu-mobile-open.active');
-      allMenus.forEach(menu => menu.classList.remove('active'));
-      
+      allMenus.forEach((menu) => menu.classList.remove('active'));
+
       // Add active class to clicked menu
       target.classList.add('active');
 
       // Find and activate the corresponding megamenu/dropdown
       const megaMenu = parentContainer.querySelector('.nav-item-megamenu');
-      const dropdownMenu = parentContainer.querySelector('.nav-item-dropdown-link-container');
-      
+      const dropdownMenu = parentContainer.querySelector(
+        '.nav-item-dropdown-link-container'
+      );
+
       if (megaMenu) {
         // Deactivate all other megamenus
-        const allMegaMenus = document.querySelectorAll('.nav-item-megamenu.active');
-        allMegaMenus.forEach(menu => menu.classList.remove('active'));
-        
+        const allMegaMenus = document.querySelectorAll(
+          '.nav-item-megamenu.active'
+        );
+        allMegaMenus.forEach((menu) => menu.classList.remove('active'));
+
         megaMenu.classList.add('active');
       }
-      
+
       if (dropdownMenu) {
         // Deactivate all other dropdowns
-        const allDropdowns = document.querySelectorAll('.nav-item-dropdown-link-container.active');
-        allDropdowns.forEach(menu => menu.classList.remove('active'));
-        
+        const allDropdowns = document.querySelectorAll(
+          '.nav-item-dropdown-link-container.active'
+        );
+        allDropdowns.forEach((menu) => menu.classList.remove('active'));
+
         dropdownMenu.classList.add('active');
       }
     }
@@ -374,12 +392,14 @@ export class HeaderComponent implements OnInit {
     if (target.classList.contains('menu-mobile-close')) {
       // Find and remove active class from parent megamenu/dropdown
       const megaMenu = parentContainer.querySelector('.nav-item-megamenu');
-      const dropdownMenu = parentContainer.querySelector('.nav-item-dropdown-link-container');
-      
+      const dropdownMenu = parentContainer.querySelector(
+        '.nav-item-dropdown-link-container'
+      );
+
       if (megaMenu) {
         megaMenu.classList.remove('active');
       }
-      
+
       if (dropdownMenu) {
         dropdownMenu.classList.remove('active');
       }
@@ -390,5 +410,10 @@ export class HeaderComponent implements OnInit {
         openButton.classList.remove('active');
       }
     }
+  }
+
+  changeLanguage(lang: 'en' | 'ar') {
+    this.languageService.setLanguage(lang);
+    location.reload(); // Reload to apply changes
   }
 }

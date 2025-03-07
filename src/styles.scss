@@ -22,6 +22,10 @@
 body {
     font-family: "Manrope", serif;
 }
+.rtl body {
+  /* direction: rtl; */
+  text-align: right;
+}
 
 .no-scroll {
     overflow: hidden;

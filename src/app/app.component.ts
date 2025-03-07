@@ -6,6 +6,7 @@ import { CartDrawerComponent } from "./cart-drawer/cart-drawer.component";
 import { CartService } from './cart.service';
 import { FooterComponent } from "./footer/footer.component";
 import { isPlatformBrowser } from '@angular/common';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -27,8 +28,17 @@ export class AppComponent implements OnInit {
     private productService: ProductService,
     private cartService: CartService,
     private router: Router,
-    @Inject(PLATFORM_ID) private platformId: object
-  ) {}
+    @Inject(PLATFORM_ID) private platformId: object,
+    translate: TranslateService
+  ) {
+    translate.onLangChange.subscribe((event) => {
+      /* document.documentElement.setAttribute(
+        'dir',
+        event.lang === 'ar' ? 'rtl' : 'ltr'
+      ); */
+      document.documentElement.classList.toggle('rtl', event.lang === 'ar');
+    });
+  }
 
   ngOnInit() {
     this.productService.navVisible$.subscribe((isVisible) => {
