@@ -3,12 +3,15 @@ import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular
 import { PredictiveSearchComponent } from '../predictive-search/predictive-search.component';
 import { CartService } from '../cart.service';
 import { LanguageService } from '../language.service';
+import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 export interface SubmenuItem {
-  href: string; // Link URL
-  iconAlt: string; // Icon alt text
+  id:number;
+  products: string; // Link URL
+  icon: string; // Icon alt text
   title: string; // Title of the submenu
-  description: string; // Description of the submenu
+  desc: string; // Description of the submenu
 }
 export interface Solutions {
   href: string; // Link URL
@@ -18,7 +21,9 @@ export interface Solutions {
   description: string; // Description of the submenu
 }
 export interface NavItem {
-  href: string; // Link URL
+  id:number;
+  products: string; // Link URL
+  icon: string; 
   title: string; // Title of the nav item
 }
 
@@ -26,7 +31,7 @@ export interface NavItem {
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, PredictiveSearchComponent],
+  imports: [CommonModule, PredictiveSearchComponent,RouterLink],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
@@ -43,13 +48,14 @@ export class HeaderComponent implements OnInit {
   solutions_Smart_Building: NavItem[] = [];
   solutions_Use_cases: NavItem[] = [];
   support: NavItem[] = [];
+  projects:any[] =[];
   resources: NavItem[] = [];
   knowledge_base: NavItem[] = [];
 
   constructor(
     private eRef: ElementRef,
     private cartService: CartService,
-    private languageService: LanguageService
+    private languageService: LanguageService,private _httpClient:HttpClient,private _router:Router,private route:ActivatedRoute
   ) {}
 
   @HostListener('document:click', ['$event'])
@@ -65,7 +71,29 @@ export class HeaderComponent implements OnInit {
   openCart() {
     this.cartService.openCart();
   }
+  loadNavData(){
+    this._httpClient.get(`https://shelly.xdev-test.site/api/navbar`).subscribe({
+      next:(res:any)=>{
+        console.log(res['data']);
+        this.submenuItems = res['data']['Products']['Shop by solution']
+        this.navItems = res['data']['Products']['Shop by product type']
+        this.techItems = res['data']['Products']['Shop by technology']
+        this.solutions_smart_home = res['data']["Solutions"]['Start your smart home']
+        this.projects = res['data']["Projects"]
+        
+      } 
+    })
+  }
+
+navigateWithFilter(id: number, filterKey: 'filter_by_categories' | 'filter_by_types' | 'filter_by_technologies'): void {
+  this._router.navigate(['/products'], {
+    queryParams: {
+      [filterKey]: id
+    }
+  });
+}
   ngOnInit(): void {
+    this.loadNavData()
     this.Smart_Energy = [
       {
         href: '/smart-lighting',
@@ -123,7 +151,7 @@ export class HeaderComponent implements OnInit {
       },
     ];
 
-    this.submenuItems = [
+    /* this.submenuItems = [
       {
         href: '/smart-lighting',
         iconAlt: 'Smart Lighting Icon',
@@ -159,9 +187,9 @@ export class HeaderComponent implements OnInit {
         description:
           'Keep your home safe with smart sensors and monitor it from anywhere.',
       },
-    ];
+    ]; */
 
-    this.navItems = [
+   /*  this.navItems = [
       {
         href: '/smart-lighting',
         title: 'Smart Switches and Dimmers',
@@ -190,9 +218,9 @@ export class HeaderComponent implements OnInit {
         href: '/smart-switches',
         title: 'Accessories & Merchandise',
       },
-    ];
+    ]; */
 
-    this.techItems = [
+    /* this.techItems = [
       {
         href: '/tech',
         title: 'Wi-Fi',
@@ -213,9 +241,9 @@ export class HeaderComponent implements OnInit {
         href: '/tech',
         title: 'KNX/IP',
       },
-    ];
+    ]; */
 
-    this.newProducts = [
+    /* this.newProducts = [
       {
         href: '/tech',
         title: 'Z-wave',
@@ -331,7 +359,7 @@ export class HeaderComponent implements OnInit {
         href: '/tech',
         title: 'Shelly Device Finder',
       },
-    ];
+    ]; */
   }
 
   @ViewChild(PredictiveSearchComponent, { static: false })

@@ -11,7 +11,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './product-card.component.scss',
 })
 export class ProductCardComponent implements OnInit {
-  @Input() product!: Products;
+  @Input() product!: any;
   @Input() selectedVariants: Map<string, Variant> = new Map();
   /* @Input() products: Product[] = []; */
   @Input() selectedProperty: string = '';

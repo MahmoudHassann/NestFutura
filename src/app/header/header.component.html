@@ -57,15 +57,16 @@
                             <div class="submenu-content" style="--grid:2; --size:40px;">
                                 <div class="submenu-txt">
                                     @for (item of submenuItems; track $index) {
-                                    <a [href]="item.href" class="nav-item submenu-icon-txt">
-                                        @if(item.title == 'Smart Lighting'){
+                                    <a (click)="navigateWithFilter(item.id, 'filter_by_categories')" class="nav-item submenu-icon-txt">
                                             <div class="submenu-icon">
-                                                <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 40 40" height="40" width="40">
+                                                <!-- <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 40 40" height="40" width="40">
                                                     <path fill="#cd9b2e" d="M19.2796 6.425C19.2796 6.83333 19.5879 7.13333 19.9961 7.13333C20.4044 7.13333 20.6877 6.85 20.721 6.43333V1C20.721 0.683334 20.6793 0.291667 20.2794 0.016667L20.2544 0H19.7129L19.6296 0.0750001C19.4546 0.233333 19.2546 0.416666 19.2546 0.733333V6.43333L19.2796 6.425ZM30.5854 19.825C30.5687 18.9417 30.4854 18.2417 30.3438 17.6C29.6773 14.6917 27.9193 12.275 25.3949 10.8C22.8372 9.3 19.8212 8.94167 16.8968 9.8C12.7978 11 9.74015 14.7917 9.45688 19.025C9.25692 22.0167 10.1817 24.675 12.2063 26.9083C13.281 28.1083 13.9808 29.375 14.3141 30.7833C14.5557 31.7917 14.5557 32.8417 14.564 33.8583V34.2C14.564 35.7 15.4555 36.775 16.9302 37.0833C17.1218 37.125 17.1635 37.1667 17.1718 37.3583C17.2634 38.8417 18.5048 40 20.0211 40C21.5291 40 22.7705 38.8417 22.8538 37.375C22.8622 37.1667 22.9038 37.1167 23.1204 37.075C24.3618 36.8167 25.2449 35.9333 25.4199 34.7667C25.4866 34.325 25.4782 33.8583 25.4616 33.4167V33.2417C25.4032 30.7583 26.2031 28.65 27.8943 26.8C29.6523 24.8833 30.5604 22.5333 30.5937 19.825H30.5854ZM20.0211 38.5583C19.313 38.5583 18.6381 37.9917 18.5965 37.3167C18.5965 37.2083 18.5965 37.1667 18.6215 37.1583C18.6298 37.15 18.6631 37.1333 18.7464 37.1333H18.7714C19.0547 37.1417 19.3463 37.1333 19.6296 37.1333H21.2459C21.3375 37.1333 21.3625 37.1417 21.3792 37.1583C21.3958 37.175 21.4042 37.225 21.3958 37.3083C21.3625 37.9667 20.721 38.55 20.0211 38.5583ZM24.0369 32.1583C23.9702 32.625 23.9786 33.1083 23.9869 33.5667V34.1917C23.9702 35.125 23.4037 35.6917 22.4622 35.6917H17.5217C16.5803 35.6917 16.0137 35.1333 15.9971 34.1917V33.5667C15.9971 33.0833 16.0054 32.5833 15.9471 32.0833C15.9387 31.9833 15.9471 31.95 15.9554 31.9417C15.9721 31.9167 16.047 31.9167 16.1304 31.9167H23.7786C23.8703 31.9167 23.9869 31.9167 24.0202 31.9583C24.0369 31.975 24.0536 32.0333 24.0369 32.1583ZM24.3285 30.2917C24.2868 30.4667 24.2285 30.475 24.0452 30.475H15.9637C15.7721 30.475 15.7138 30.475 15.6721 30.3C15.2889 28.7417 14.4724 27.275 13.181 25.8167C11.0065 23.35 10.315 20.05 11.3231 16.9917C12.3479 13.8917 14.914 11.6333 18.1799 10.95C20.596 10.4417 23.1621 10.975 25.2366 12.4167C27.2778 13.8417 28.6525 16.0333 29.0108 18.4333C29.419 21.2167 28.6858 23.7 26.8196 25.8083C25.5282 27.275 24.7117 28.7417 24.3285 30.2917ZM10.49 28.4167C10.0817 28.2583 9.79013 28.4833 9.60684 28.6667C8.91533 29.3583 8.22383 30.0417 7.53232 30.725C6.81581 31.4333 6.09931 32.15 5.3828 32.8583C5.19118 33.05 5.08287 33.2667 5.08287 33.475C5.08287 33.65 5.15786 33.8167 5.29949 33.9583C5.44113 34.1 5.61609 34.175 5.79105 34.175C5.99933 34.175 6.21595 34.0833 6.40757 33.8833C7.26571 33.0333 8.12385 32.1833 8.98199 31.325L10.6649 29.6583C10.7899 29.5417 10.9482 29.35 10.9399 29.1167C10.9399 28.775 10.7899 28.5333 10.49 28.4167ZM30.4271 28.7083C30.3355 28.625 30.2521 28.5333 30.1438 28.4667C30.035 28.395 29.9076 28.3568 29.7772 28.3568C29.6469 28.3568 29.5195 28.395 29.4107 28.4667C29.1607 28.6083 29.0441 28.8417 29.0524 29.1417C29.0691 29.375 29.194 29.5333 29.3357 29.675L31.1519 31.4667L33.6014 33.8917C33.693 33.9833 33.7847 34.05 33.8763 34.0917C33.9763 34.1417 34.0846 34.1667 34.1929 34.1667C34.3262 34.1667 34.4595 34.1333 34.5762 34.0583C34.7844 33.925 34.9177 33.7083 34.9177 33.4583C34.9177 33.1417 34.7095 32.9417 34.5595 32.7917L30.4354 28.7083H30.4271ZM6.20762 6.75L6.25761 6.8C7.49899 8.025 8.73204 9.25833 9.97342 10.4833L10.0068 10.5083C10.0901 10.5917 10.1817 10.6833 10.2817 10.75C10.4067 10.8333 10.5316 10.8667 10.6566 10.8667C10.7732 10.8667 10.8899 10.8333 11.0149 10.775C11.2398 10.65 11.3731 10.45 11.3898 10.1833C11.3898 9.86667 11.2315 9.68333 11.0482 9.51667L7.22405 5.725C7.14907 5.65 7.06575 5.56667 6.96578 5.50833C6.65751 5.325 6.34925 5.35 6.09098 5.6C5.82437 5.85833 5.78271 6.18333 5.98267 6.5C6.04932 6.6 6.13263 6.675 6.20762 6.75833V6.75ZM29.3357 10.85H29.3773C29.6273 10.85 29.8022 10.6917 29.9689 10.5333C30.6187 9.89167 31.2686 9.25 31.9184 8.6L33.0682 7.45833C33.3431 7.18333 33.6264 6.90833 33.9013 6.625C34.1429 6.375 34.2012 6.09167 34.0763 5.80833C34.0235 5.6829 33.9357 5.57532 33.8234 5.49847C33.7111 5.42162 33.5791 5.37876 33.4431 5.375C33.1265 5.35833 32.9265 5.55833 32.7682 5.725C32.1517 6.33333 31.5435 6.94167 30.9353 7.55C30.2855 8.2 29.6273 8.84167 28.9774 9.49167C28.8858 9.58333 28.7858 9.68333 28.7108 9.81667C28.5942 10.0333 28.6025 10.2833 28.7192 10.4917C28.8441 10.7083 29.0774 10.8417 29.344 10.85H29.3357ZM6.34092 20.1083C6.64085 20.1083 6.87413 20.025 7.03243 19.8667C7.1574 19.7417 7.21572 19.575 7.21572 19.3833C7.21572 18.9583 6.85747 18.675 6.35758 18.675H0.867167C0.575567 18.675 0.333954 18.7583 0.183988 18.9167C0.0590167 19.0417 -0.00763426 19.2167 0.000697175 19.4083C0.000697175 19.85 0.342286 20.1083 0.892161 20.1167H6.34092V20.1083ZM39.8 18.9083C39.65 18.75 39.4251 18.675 39.1584 18.675H33.6347C33.1265 18.675 32.7932 18.9667 32.7849 19.3917C32.7849 19.6083 32.8682 19.7833 33.0182 19.9167C33.1681 20.0417 33.3764 20.1083 33.6264 20.1083H39.1501C39.6667 20.1083 39.9916 19.825 39.9999 19.4C40.0026 19.2174 39.9338 19.0409 39.8083 18.9083H39.8Z"/>
-                                                    </svg></span>
+                                                    </svg></span> -->
+                                                    <span>
+                                                        <img [src]="item.icon" alt="Smart Lighting Icon" class="submenu-img" />
+                                                    </span>
                                             </div>    
-                                        }
-                                        @else if(item.title == 'Smart doors, gates, roller covers & blinds'){
+                                       <!--  @else if(item.title == 'Smart doors, gates, roller covers & blinds'){
                                             <div class="submenu-icon">
                                                 <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 38 40" height="40" width="40">
                                                     <path fill="#cd9b2e" d="M0.742188 39.4392C0.742188 39.1295 1.02856 38.8784 1.38182 38.8784H37.1119C37.4652 38.8784 37.7515 39.1295 37.7515 39.4392C37.7515 39.7489 37.4652 39.9999 37.1119 39.9999H1.38182C1.02856 39.9999 0.742188 39.7489 0.742188 39.4392Z" clip-rule="evenodd" fill-rule="evenodd"/>
@@ -126,16 +127,16 @@
                                                     </defs>
                                                     </svg></span>
                                             </div>    
-                                        }
+                                        } -->
                                         <div class="submenu-txt-info">
                                             <div class="submenu-txt-title">{{item.title}}</div>
-                                            <div class="submenu-txt-desc caption">{{item.description}}</div>
+                                            <div class="submenu-txt-desc caption">{{item.desc}}</div>
                                         </div>
                                     </a>
                                     }
                                 </div>
                                 <div class="submenu-button">
-                                    <a href="all-products" class="btn btn-filled"> Shop all Products</a>
+                                    <a [routerLink]="['/products']" class="btn btn-filled"> Shop all Products</a>
                                 </div>
                             </div>
                         </div>
@@ -145,22 +146,15 @@
                                 <ul class="nav-link-list submenu-link-list">
                                     <li class="nav-item-link-list submenu-item-link-list">
                                         <div class="nav-item-submenu-title">Shop by Product Type</div>
-                                        <ul class="nav-link-list submenu-link-list-cild caption">
+                                        <ul class="nav-link-list submenu-link-list-cild">
                                             @for (item of navItems; track $index) {
                                             <li class="nav-item-link-list submenu-item-link-list-child">
-                                                <a [href]="item.href" class="nav-item">
-                                                    @if(item.title == 'Smart Switches and Dimmers'){
-                                                        <span class="nav-item-icon"><svg width="50" height="51" viewBox="0 0 50 51" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M45.8243 13.5427V9.75292C45.8243 7.63027 44.5181 6.3584 42.3352 6.3584H29.9948H25.0619H20.2408C15.987 6.3584 11.7417 6.3584 7.48779 6.3584C5.67452 6.3584 4.24797 7.76777 4.23938 9.56385V10.6381C4.19641 18.0974 4.15344 25.8146 4.17063 33.4027C4.17063 34.0646 4.52296 34.8981 5.0214 35.4223C7.61669 38.155 10.0487 40.6214 12.455 42.9589C12.9877 43.4745 13.8729 43.8441 14.612 43.8527C18.0666 43.8785 21.5213 43.8956 24.9244 43.8956C28.3275 43.8956 31.8079 43.8785 35.1681 43.8527C35.9502 43.8527 36.8954 43.466 37.4627 42.9331C40.0493 40.5098 42.5156 38.0777 44.7931 35.7058C45.3775 35.1044 45.7812 34.1075 45.79 33.291C45.8414 26.7083 45.8329 20.0224 45.8329 13.5513L45.8243 13.5427ZM43.461 33.3254C43.461 33.6177 43.2031 34.0731 42.8337 34.4425C40.2125 37.0808 38.1846 39.066 36.2508 40.8879C35.89 41.2316 35.2798 41.4808 34.8071 41.4893C28.0439 41.541 21.4354 41.541 15.1706 41.4893C14.6635 41.4893 13.9932 41.2058 13.6151 40.8362C11.2346 38.5418 8.90575 36.1527 6.91202 34.0902C6.60265 33.7723 6.37921 33.3512 6.37921 33.0762C6.34484 28.9941 6.34484 24.9123 6.35342 20.7614V17.8224H43.4954V20.8559C43.4954 25.1442 43.4954 29.1919 43.461 33.3339V33.3254ZM6.58546 15.2185C6.58546 13.0013 6.61983 9.84744 6.63702 9.46931C6.64561 9.23729 7.11827 8.75604 7.77998 8.68729C10.9596 8.6615 20.9885 8.6701 30.6821 8.6701H41.5187C42.4727 8.6701 43.0656 8.68729 43.2718 8.89354C43.4781 9.09979 43.4954 9.71854 43.4954 10.7154C43.4954 11.2224 43.5039 11.9185 43.5125 12.6232C43.5298 13.5255 43.5383 14.6943 43.5298 15.2185H6.59404H6.58546Z" fill="#cd9b2e"></path>
-                                                            <path d="M10.9598 10.3457C9.88555 10.3887 9.30117 10.9988 9.24961 12.0645C9.20663 13.0785 10.0574 13.9465 11.0371 13.8691C12.0769 13.7832 12.6441 13.1472 12.773 12.2621C12.7902 11.1277 11.9738 10.3113 10.9511 10.3543L10.9598 10.3457Z" fill="#cd9b2e"></path>
-                                                            <path d="M15.712 10.3545C14.6464 10.3201 14.0104 10.8873 13.9073 11.9529C13.8128 12.9756 14.5776 13.8264 15.5745 13.8693C16.5112 13.9123 17.4737 13.0271 17.4221 12.0904C17.362 11.0506 16.7862 10.3889 15.712 10.3545Z" fill="#cd9b2e"></path>
-                                                            <path d="M24.8732 10.3544C23.7989 10.4317 23.2145 11.0504 23.2232 12.1161C23.2403 13.1903 23.8849 13.7832 24.9247 13.8606C25.8614 13.9379 26.7639 13.0012 26.7551 12.0645C26.738 11.0676 25.9045 10.277 24.8732 10.3544Z" fill="#cd9b2e"></path>
-                                                            <path d="M29.6254 10.3543C28.5339 10.3457 27.9839 10.9902 27.8464 11.9871C27.9066 13.1129 28.4652 13.7488 29.5223 13.8519C30.4589 13.9465 31.4473 13.0012 31.3785 12.0558C31.3098 11.0074 30.7081 10.3543 29.6254 10.3457V10.3543Z" fill="#cd9b2e"></path>
-                                                            <path d="M34.3862 10.3289C33.312 10.3977 32.6674 10.9391 32.5558 11.9961C32.4527 12.9414 33.3722 13.9383 34.3174 13.8609C35.3572 13.7836 36.0447 13.1734 36.062 12.1164C36.0791 11.0508 35.426 10.4664 34.3862 10.3203V10.3289Z" fill="#cd9b2e"></path>
-                                                            <path d="M38.9238 10.3546C37.8411 10.3632 37.2996 11.0335 37.1792 11.9015C37.1621 13.0272 37.9355 13.8522 38.8636 13.8694C39.809 13.8866 40.7715 12.9757 40.694 12.039C40.6082 10.9905 39.998 10.346 38.9238 10.3546Z" fill="#cd9b2e"></path>
-                                                            </svg></span> 
-                                                    }
-                                                   @else if(item.title == 'Smart Plugs'){
+                                                <a (click)="navigateWithFilter(item.id, 'filter_by_types')" class="nav-item">
+                                                            <span class="nav-item-icon">
+                                                        <img [src]="item.icon" alt="Smart Lighting Icon" class="submenu-img" />
+                                                    </span>
+
+                                                  <!--  @else if(item.title == 'Smart Plugs'){
                                                         <span class="nav-item-icon"><svg width="50" height="51" viewBox="0 0 50 51" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M40.6438 38.6962C44.1198 34.8791 45.8577 30.2623 45.835 24.9597C45.8121 19.2685 43.7311 14.3316 39.6375 10.2861C35.7042 6.40052 30.8331 4.36633 25.1846 4.2749H24.8873C19.4674 4.2749 14.7565 6.12624 10.8917 9.7375C6.5009 13.8516 4.2369 18.9714 4.16829 24.9825C4.09969 30.3537 6.31794 35.7249 10.2742 39.7246C14.2305 43.7245 19.3988 45.9416 24.8187 45.9416C31.0161 45.9416 36.3217 43.4958 40.6438 38.7191V38.6962ZM22.8291 6.05768H27.2656V13.0973H22.8291V6.05768ZM27.2656 44.1588H22.8291V37.1191H27.2656V44.1588ZM33.6461 41.5532L33.3715 41.6904C32.2281 42.2617 30.9931 42.7417 29.7125 43.0846L28.9809 43.2903V37.0048C28.9809 36.8905 28.9809 36.7533 28.9809 36.6392C28.8665 35.8163 28.4319 35.4278 27.54 35.4278H24.8644C24.064 35.4278 23.2407 35.4278 22.4175 35.4278C21.983 35.4278 21.6171 35.5648 21.3884 35.7934C21.1826 35.9991 21.0911 36.3192 21.0911 36.7306C21.1368 38.1475 21.114 39.5418 21.0911 41.0274V43.2445L20.405 43.0846C14.5278 41.7589 7.69006 35.9306 6.5695 27.7709C6.29508 25.8283 6.31794 23.9083 6.63811 22.0569C6.82106 20.8913 7.11836 19.7256 7.55286 18.6057C7.75867 18.0571 7.98735 17.5314 8.23892 17.0286C10.6173 12.046 15.191 8.34329 20.405 7.13191L21.114 6.97192V13.7373C21.114 14.3544 21.5713 14.7887 22.2116 14.7887H24.6586C25.5963 14.7887 26.5567 14.7887 27.5171 14.8344C27.9059 14.8344 28.2719 14.743 28.5463 14.4916C28.8206 14.2173 28.9809 13.8059 28.9809 13.3488V6.94906L29.6896 7.13191C33.3488 8.09187 36.4817 9.98893 38.9515 12.7774C42.0617 16.2743 43.6396 20.457 43.6167 25.234C43.6167 26.3082 43.5252 27.4053 43.3194 28.5024C42.7477 31.6794 41.3527 34.582 39.1573 37.1191C37.5336 38.9933 35.6813 40.4789 33.6231 41.5761L33.6461 41.5532Z" fill="#cd9b2e"></path>
                                                             <path d="M18.9183 27.9082C19.6501 27.1538 20.016 26.1939 19.9931 25.1882C19.9017 22.7655 18.3695 21.3027 15.8997 21.3027H15.6024C14.7105 21.3713 13.8415 21.7827 13.224 22.4455C12.6981 22.9941 12.1035 23.9998 12.1949 25.5997C12.1949 25.8054 12.2407 26.0111 12.2864 26.2168C12.6752 27.6567 14.1388 29.1423 15.8997 29.1423C16.1512 29.1423 16.2656 29.1423 16.3799 29.0967H16.5171C16.7001 29.0738 16.7458 29.0738 16.7915 29.0509C17.6148 28.891 18.3237 28.4796 18.8954 27.9082H18.9183ZM16.0826 27.5882C14.7791 27.5882 13.7043 26.514 13.7043 25.1882C13.7043 23.8626 14.7791 22.7884 16.0826 22.7884C17.3861 22.7884 18.4609 23.8626 18.4609 25.1882C18.4609 26.514 17.3861 27.5882 16.0826 27.5882Z" fill="#cd9b2e"></path>
@@ -228,7 +222,7 @@
                                                             <path d="M4.16663 25.073C4.16663 19.4328 4.16663 13.8279 4.16663 8.18776C4.16663 5.79069 5.6837 4.2749 8.0828 4.2749C19.3374 4.2749 30.6273 4.2749 41.8818 4.2749C44.3162 4.2749 45.8333 5.79069 45.8333 8.22301C45.8333 19.5033 45.8333 30.7836 45.8333 42.0992C45.8333 43.9323 44.8102 45.3423 43.1872 45.8006C42.8344 45.9063 42.4816 45.9416 42.1288 45.9416C30.7331 45.9416 19.3021 45.9416 7.90639 45.9416C5.75426 45.9416 4.16663 44.3553 4.16663 42.205C4.16663 36.4943 4.16663 30.8189 4.16663 25.1082L4.16663 25.073ZM43.8576 25.1435C43.8576 19.5033 43.8576 13.8632 43.8576 8.22301C43.8576 6.91873 43.2225 6.28421 41.9171 6.28421C30.6625 6.28421 19.3727 6.28421 8.11808 6.28421C6.81269 6.28421 6.17763 6.91873 6.17763 8.22301C6.17763 19.4681 6.17763 30.7484 6.17763 41.9935C6.17763 43.2977 6.81269 43.9323 8.11808 43.9323C19.3727 43.9323 30.6625 43.9323 41.9171 43.9323C43.2225 43.9323 43.8576 43.2977 43.8576 41.9935C43.8576 36.3886 43.8576 30.7484 43.8576 25.1435Z" fill="#cd9b2e"></path>
                                                             <path d="M25.0174 10.902C29.3216 10.902 33.6259 10.902 37.9654 10.902C38.918 10.902 39.2355 11.2192 39.2355 12.2062C39.2355 20.8075 39.2355 29.444 39.2355 38.0452C39.2355 38.9617 38.8827 39.3142 37.9654 39.3142C29.3216 39.3142 20.6778 39.3142 12.034 39.3142C11.1167 39.3142 10.7639 38.9617 10.7639 38.0452C10.7639 29.4087 10.7639 20.7722 10.7639 12.1357C10.7639 11.2192 11.1167 10.8667 11.9987 10.8667C16.3383 10.8667 20.6425 10.8667 24.9821 10.8667L25.0174 10.902ZM12.8102 12.876V37.2697H23.9942V12.876H12.8102ZM37.2245 37.3049V12.9113H26.0405V37.3049H37.2245Z" fill="#cd9b2e"></path>
                                                           </svg></span> 
-                                                    }
+                                                    } -->
                                                     <span class="nav-item-title">{{item.title}}</span>
                                                 </a>
                                             </li>
@@ -237,11 +231,14 @@
                                     </li>
                                     <li class="nav-item-link-list submenu-item-link-list">
                                         <div class="nav-item-submenu-title">Shop by Technology</div>
-                                        <ul class="nav-link-list submenu-link-list-cild caption">
+                                        <ul class="nav-link-list submenu-link-list-cild">
                                             @for (item of techItems; track $index) {
                                             <li class="nav-item-link-list submenu-item-link-list-child">
-                                                <a [href]="item.href" class="nav-item">
-                                                    @if(item.title == 'Wi-Fi'){
+                                                <a (click)="navigateWithFilter(item.id, 'filter_by_technologies')" class="nav-item">
+                                                    <span class="nav-item-icon">
+                                                        <img [src]="item.icon" alt="Smart Lighting Icon" class="submenu-img" />
+                                                    </span>
+                                                   <!--  @if(item.title == 'Wi-Fi'){
                                                     <span class="nav-item-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0323 5.13207C8.6125 5.13207 5.46023 6.24102 2.90093 8.11894C2.64889 8.30388 2.29465 8.24949 2.10971 7.99745C1.92478 7.74541 1.97917 7.39116 2.23121 7.20623C4.97783 5.19085 8.3632 4 12.0323 4C15.701 4 19.0337 5.17331 21.7665 7.15715C22.0194 7.3408 22.0756 7.69476 21.892 7.94774C21.7083 8.20072 21.3544 8.25692 21.1014 8.07328C18.5541 6.22411 15.4525 5.13207 12.0323 5.13207Z" fill="#cd9b2e"></path>
                                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0277 9.89965C9.75732 9.89965 7.6477 10.6111 5.91795 11.8215C5.66182 12.0008 5.30889 11.9384 5.12966 11.6823C4.95043 11.4262 5.01277 11.0732 5.2689 10.894C7.18266 9.55484 9.5176 8.76758 12.0277 8.76758C14.5358 8.76758 16.7472 9.51047 18.6326 10.7855C18.8916 10.9607 18.9596 11.3126 18.7844 11.5715C18.6093 11.8305 18.2574 11.8984 17.9985 11.7233C16.2921 10.5694 14.3001 9.89965 12.0277 9.89965Z" fill="#cd9b2e"></path>
@@ -289,7 +286,7 @@
                                                         </clipPath>
                                                         </defs>
                                                         </svg></span>
-                                                    }
+                                                    } -->
                                                     <span class="nav-item-title">{{item.title}}</span>
                                                 </a>
                                             </li>
@@ -321,11 +318,14 @@
                             <div class="submenu-link-list-container" style="--grid:1">
                                 <ul class="nav-link-list submenu-link-list">
                                     <li class="nav-item-link-list submenu-item-link-list">
-                                        <ul class="nav-link-list submenu-link-list-cild caption">
+                                        <ul class="nav-link-list submenu-link-list-cild">
                                             @for (item of newProducts; track $index) {
                                             <li class="nav-item-link-list submenu-item-link-list-child">
-                                                <a [href]="item.href" class="nav-item">
-                                                    @if(item.title == 'Z-wave'){
+                                                <a  class="nav-item">
+                                                    <span class="nav-item-icon">
+                                                        <img [src]="item.icon" alt="Smart Lighting Icon" class="submenu-img" />
+                                                    </span>
+                                                   <!--  @if(item.title == 'Z-wave'){
                                                         <span class="nav-item-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M16.2886 3.92664V2C8.41068 2 2 8.4107 2 16.2887H3.92664C3.92664 9.47344 9.47341 3.92664 16.2886 3.92664Z" fill="#cd9b2e"></path>
                                                             <path d="M16.2885 10.5773C13.1346 10.5773 10.5771 13.1348 10.5771 16.2887C10.5771 19.4426 13.1346 22 16.2885 22C19.4424 22 21.9999 19.4426 21.9999 16.2887C21.9999 13.1348 19.4424 10.5773 16.2885 10.5773ZM17.9957 19.0655H13.1551L15.7743 14.9585H13.2649L14.355 13.217H19.1271L16.5833 17.2691H19.1271L18.0026 19.0655H17.9957Z" fill="#cd9b2e"></path>
@@ -339,7 +339,7 @@
                                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5015 3.74097V8.49441H11.333V3.74097H12.5015Z" fill="#cd9b2e"></path>
                                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M16.8667 3.74097V8.49441H15.6982V3.74097H16.8667Z" fill="#cd9b2e"></path>
                                                             </svg></span>
-                                                    }
+                                                    } -->
                                                     <span class="nav-item-title">{{item.title}}</span>
                                                 </a>
                                             </li>
@@ -355,7 +355,7 @@
 
             <!-- Solutions -->
 
-            <div class="nav-item-container nav-item-megamenu-container">
+            <!-- <div class="nav-item-container nav-item-megamenu-container">
                 <a href="" class="nav-item menu-mobile-click menu-mobile-open">
                     <span class="nav-item-title">Solutions</span>
                     <span class="nav-item-arrow">
@@ -385,10 +385,13 @@
                                 <ul class="nav-link-list submenu-link-list">
                                     <li class="nav-item-link-list submenu-item-link-list">
                                         <div class="nav-item-submenu-title">Start Your Smart Home</div>
-                                        <ul class="nav-link-list submenu-link-list-cild caption">
+                                        <ul class="nav-link-list submenu-link-list-cild">
                                             @for (item of solutions_smart_home; track $index) {
                                             <li class="nav-item-link-list submenu-item-link-list-child">
-                                                <a [href]="item.href" class="nav-item">
+                                                <a  class="nav-item">
+                                                    <span class="nav-item-icon">
+                                                        <img [src]="item.icon" alt="Smart Lighting Icon" class="submenu-img" />
+                                                    </span>
                                                     @if(item.title == 'Retrofit & Existing Home'){
                                                         <span class="nav-item-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <g clip-path="url(#clip0_2609_32225)">
@@ -442,10 +445,13 @@
                                     </li>
                                     <li class="nav-item-link-list submenu-item-link-list">
                                         <div class="nav-item-submenu-title">Smart Building & Facilities</div>
-                                        <ul class="nav-link-list submenu-link-list-cild caption">
+                                        <ul class="nav-link-list submenu-link-list-cild">
                                             @for (item of solutions_Smart_Building; track $index) {
                                             <li class="nav-item-link-list submenu-item-link-list-child">
-                                                <a [href]="item.href" class="nav-item">
+                                                <a (click)="navigateWithFilter(item.id)" class="nav-item">
+                                                    <span class="nav-item-icon">
+                                                        <img [src]="item.icon" alt="Smart Lighting Icon" class="submenu-img" />
+                                                    </span>
                                                     @if(item.title == 'Office'){
                                                         <span class="nav-item-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <g clip-path="url(#clip0_2609_32261)">
@@ -494,10 +500,13 @@
                                     </li>
                                     <li class="nav-item-link-list submenu-item-link-list">
                                         <div class="nav-item-submenu-title">Use Cases And Applications</div>
-                                        <ul class="nav-link-list submenu-link-list-cild caption">
+                                        <ul class="nav-link-list submenu-link-list-cild">
                                             @for (item of solutions_Use_cases; track $index) {
                                             <li class="nav-item-link-list submenu-item-link-list-child">
-                                                <a [href]="item.href" class="nav-item">
+                                                <a (click)="navigateWithFilter(item.id)" class="nav-item">
+                                                    <span class="nav-item-icon">
+                                                        <img [src]="item.icon" alt="Smart Lighting Icon" class="submenu-img" />
+                                                    </span>
                                                     @if(item.title == 'Energy efficient building'){
                                                         <span class="nav-item-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <g clip-path="url(#clip0_2609_32322)">
@@ -603,21 +612,87 @@
                         </div>
                     </div>
                 </div>
+            </div> -->
+
+           <div class="nav-item-container nav-item-dropdown-container">
+                <a href="" class="nav-item menu-mobile-click menu-mobile-open">
+                    <span class="nav-item-title">Solutions</span>
+                    <span class="nav-item-arrow">
+                        <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M1.3379 12.139L1.19459 11.9957L6.40788 6.7824L6.69072 6.49956L6.40788 6.21672L1.19459 1.00343L1.3379 0.860119L6.97734 6.49956L1.3379 12.139Z"
+                                fill="#1A1918" stroke="#656669" stroke-width="0.8" />
+                        </svg>
+                    </span>
+                </a>
+                 <div class="nav-item-dropdown-link-container">
+                    <a href="" class="nav-item menu-mobile-click menu-mobile-close">
+                        <span class="nav-item-title">Solutions</span>
+                        <span class="nav-item-arrow">
+                            <svg width="8" height="13" viewBox="0 0 8 13" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M1.3379 12.139L1.19459 11.9957L6.40788 6.7824L6.69072 6.49956L6.40788 6.21672L1.19459 1.00343L1.3379 0.860119L6.97734 6.49956L1.3379 12.139Z"
+                                    fill="#1A1918" stroke="#656669" stroke-width="0.8" />
+                            </svg>
+                        </span>
+                    </a>
+                    <div class="nav-item-dropdown-link">
+                        <ul class="nav-link-list">
+                            @for (item of solutions_smart_home; track $index) {
+                            <li class="nav-item-link-list">
+                                <a [routerLink]="['/page', item.id]" class="nav-item">
+                                    <span class="nav-item-title">{{item.title}}</span>
+                                </a>
+                            </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
             </div>
-
-           
-
-            <div class="nav-item-container nav-item-link-container">
+            <div class="nav-item-container nav-item-dropdown-container">
                 <a href="" class="nav-item menu-mobile-click menu-mobile-open">
                     <span class="nav-item-title">Projects</span>
+                    <span class="nav-item-arrow">
+                        <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M1.3379 12.139L1.19459 11.9957L6.40788 6.7824L6.69072 6.49956L6.40788 6.21672L1.19459 1.00343L1.3379 0.860119L6.97734 6.49956L1.3379 12.139Z"
+                                fill="#1A1918" stroke="#656669" stroke-width="0.8" />
+                        </svg>
+                    </span>
                 </a>
+                 <div class="nav-item-dropdown-link-container">
+                    <a href="" class="nav-item menu-mobile-click menu-mobile-close">
+                        <span class="nav-item-title">Projects</span>
+                        <span class="nav-item-arrow">
+                            <svg width="8" height="13" viewBox="0 0 8 13" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M1.3379 12.139L1.19459 11.9957L6.40788 6.7824L6.69072 6.49956L6.40788 6.21672L1.19459 1.00343L1.3379 0.860119L6.97734 6.49956L1.3379 12.139Z"
+                                    fill="#1A1918" stroke="#656669" stroke-width="0.8" />
+                            </svg>
+                        </span>
+                    </a>
+                    <div class="nav-item-dropdown-link">
+                        <ul class="nav-link-list">
+                            @for (item of projects; track $index) {
+                            <li class="nav-item-link-list">
+                                <a [routerLink]="['/projects', item.slug]" class="nav-item">
+                                    <span class="nav-item-title">{{item.name}}</span>
+                                </a>
+                            </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
             </div>
+
         </div>
         <a href="/" class="nav-logo" [class.active]="predictiveSearch">
             <img src="/img/logo.png" alt="logo image" class="img-fluid">
         </a>
         <div class="nav-menu menu-right" [class.active]="predictiveSearch">
-            <div class="nav-item-container nav-item-dropdown-container">
+            <!--<div class="nav-item-container nav-item-dropdown-container">
                 <a href="" class="nav-item menu-mobile-click menu-mobile-open">
                     <span class="nav-item-title">Partners</span>
                     <span class="nav-item-arrow">
@@ -628,7 +703,7 @@
                         </svg>
                     </span>
                 </a>
-                <div class="nav-item-dropdown-link-container">
+                 <div class="nav-item-dropdown-link-container">
                     <a href="" class="nav-item menu-mobile-click menu-mobile-close">
                         <span class="nav-item-title">Partners</span>
                         <span class="nav-item-arrow">
@@ -655,7 +730,7 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="nav-item-container nav-item-dropdown-container">
                 <a href="" class="nav-item menu-mobile-click menu-mobile-open">
                     <span class="nav-item-title">Languages</span>
@@ -729,7 +804,7 @@
                                 <ul class="nav-link-list submenu-link-list">
                                     <li class="nav-item-link-list submenu-item-link-list">
                                         <div class="nav-item-submenu-title">Support</div>
-                                        <ul class="nav-link-list submenu-link-list-cild caption">
+                                        <ul class="nav-link-list submenu-link-list-cild">
                                             @for (item of support; track $index) {
                                             <li class="nav-item-link-list submenu-item-link-list-child">
                                                 <a [href]="item.href" class="nav-item">
@@ -786,7 +861,7 @@
                                     </li>
                                     <li class="nav-item-link-list submenu-item-link-list">
                                         <div class="nav-item-submenu-title">Resources</div>
-                                        <ul class="nav-link-list submenu-link-list-cild caption">
+                                        <ul class="nav-link-list submenu-link-list-cild">
                                             @for (item of resources; track $index) {
                                             <li class="nav-item-link-list submenu-item-link-list-child">
                                                 <a [href]="item.href" class="nav-item">
@@ -856,7 +931,7 @@
                                     </li>
                                     <li class="nav-item-link-list submenu-item-link-list">
                                         <div class="nav-item-submenu-title">Kmowledge Base</div>
-                                        <ul class="nav-link-list submenu-link-list-cild caption">
+                                        <ul class="nav-link-list submenu-link-list-cild">
                                             @for (item of knowledge_base; track $index) {
                                             <li class="nav-item-link-list submenu-item-link-list-child">
                                                 <a [href]="item.href" class="nav-item">
@@ -1101,15 +1176,13 @@
                                 <div class="submenu-content" style="--grid:2; --size:40px;">
                                     <div class="submenu-txt">
                                         @for (item of submenuItems; track $index) {
-                                        <a [href]="item.href" class="nav-item submenu-icon-txt">
-                                            @if(item.title == 'Smart Lighting'){
+                                        <a (click)="navigateWithFilter(item.id, 'filter_by_categories')" class="nav-item submenu-icon-txt">
                                                 <div class="submenu-icon">
-                                                    <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 40 40" height="40" width="40">
-                                                        <path fill="#cd9b2e" d="M19.2796 6.425C19.2796 6.83333 19.5879 7.13333 19.9961 7.13333C20.4044 7.13333 20.6877 6.85 20.721 6.43333V1C20.721 0.683334 20.6793 0.291667 20.2794 0.016667L20.2544 0H19.7129L19.6296 0.0750001C19.4546 0.233333 19.2546 0.416666 19.2546 0.733333V6.43333L19.2796 6.425ZM30.5854 19.825C30.5687 18.9417 30.4854 18.2417 30.3438 17.6C29.6773 14.6917 27.9193 12.275 25.3949 10.8C22.8372 9.3 19.8212 8.94167 16.8968 9.8C12.7978 11 9.74015 14.7917 9.45688 19.025C9.25692 22.0167 10.1817 24.675 12.2063 26.9083C13.281 28.1083 13.9808 29.375 14.3141 30.7833C14.5557 31.7917 14.5557 32.8417 14.564 33.8583V34.2C14.564 35.7 15.4555 36.775 16.9302 37.0833C17.1218 37.125 17.1635 37.1667 17.1718 37.3583C17.2634 38.8417 18.5048 40 20.0211 40C21.5291 40 22.7705 38.8417 22.8538 37.375C22.8622 37.1667 22.9038 37.1167 23.1204 37.075C24.3618 36.8167 25.2449 35.9333 25.4199 34.7667C25.4866 34.325 25.4782 33.8583 25.4616 33.4167V33.2417C25.4032 30.7583 26.2031 28.65 27.8943 26.8C29.6523 24.8833 30.5604 22.5333 30.5937 19.825H30.5854ZM20.0211 38.5583C19.313 38.5583 18.6381 37.9917 18.5965 37.3167C18.5965 37.2083 18.5965 37.1667 18.6215 37.1583C18.6298 37.15 18.6631 37.1333 18.7464 37.1333H18.7714C19.0547 37.1417 19.3463 37.1333 19.6296 37.1333H21.2459C21.3375 37.1333 21.3625 37.1417 21.3792 37.1583C21.3958 37.175 21.4042 37.225 21.3958 37.3083C21.3625 37.9667 20.721 38.55 20.0211 38.5583ZM24.0369 32.1583C23.9702 32.625 23.9786 33.1083 23.9869 33.5667V34.1917C23.9702 35.125 23.4037 35.6917 22.4622 35.6917H17.5217C16.5803 35.6917 16.0137 35.1333 15.9971 34.1917V33.5667C15.9971 33.0833 16.0054 32.5833 15.9471 32.0833C15.9387 31.9833 15.9471 31.95 15.9554 31.9417C15.9721 31.9167 16.047 31.9167 16.1304 31.9167H23.7786C23.8703 31.9167 23.9869 31.9167 24.0202 31.9583C24.0369 31.975 24.0536 32.0333 24.0369 32.1583ZM24.3285 30.2917C24.2868 30.4667 24.2285 30.475 24.0452 30.475H15.9637C15.7721 30.475 15.7138 30.475 15.6721 30.3C15.2889 28.7417 14.4724 27.275 13.181 25.8167C11.0065 23.35 10.315 20.05 11.3231 16.9917C12.3479 13.8917 14.914 11.6333 18.1799 10.95C20.596 10.4417 23.1621 10.975 25.2366 12.4167C27.2778 13.8417 28.6525 16.0333 29.0108 18.4333C29.419 21.2167 28.6858 23.7 26.8196 25.8083C25.5282 27.275 24.7117 28.7417 24.3285 30.2917ZM10.49 28.4167C10.0817 28.2583 9.79013 28.4833 9.60684 28.6667C8.91533 29.3583 8.22383 30.0417 7.53232 30.725C6.81581 31.4333 6.09931 32.15 5.3828 32.8583C5.19118 33.05 5.08287 33.2667 5.08287 33.475C5.08287 33.65 5.15786 33.8167 5.29949 33.9583C5.44113 34.1 5.61609 34.175 5.79105 34.175C5.99933 34.175 6.21595 34.0833 6.40757 33.8833C7.26571 33.0333 8.12385 32.1833 8.98199 31.325L10.6649 29.6583C10.7899 29.5417 10.9482 29.35 10.9399 29.1167C10.9399 28.775 10.7899 28.5333 10.49 28.4167ZM30.4271 28.7083C30.3355 28.625 30.2521 28.5333 30.1438 28.4667C30.035 28.395 29.9076 28.3568 29.7772 28.3568C29.6469 28.3568 29.5195 28.395 29.4107 28.4667C29.1607 28.6083 29.0441 28.8417 29.0524 29.1417C29.0691 29.375 29.194 29.5333 29.3357 29.675L31.1519 31.4667L33.6014 33.8917C33.693 33.9833 33.7847 34.05 33.8763 34.0917C33.9763 34.1417 34.0846 34.1667 34.1929 34.1667C34.3262 34.1667 34.4595 34.1333 34.5762 34.0583C34.7844 33.925 34.9177 33.7083 34.9177 33.4583C34.9177 33.1417 34.7095 32.9417 34.5595 32.7917L30.4354 28.7083H30.4271ZM6.20762 6.75L6.25761 6.8C7.49899 8.025 8.73204 9.25833 9.97342 10.4833L10.0068 10.5083C10.0901 10.5917 10.1817 10.6833 10.2817 10.75C10.4067 10.8333 10.5316 10.8667 10.6566 10.8667C10.7732 10.8667 10.8899 10.8333 11.0149 10.775C11.2398 10.65 11.3731 10.45 11.3898 10.1833C11.3898 9.86667 11.2315 9.68333 11.0482 9.51667L7.22405 5.725C7.14907 5.65 7.06575 5.56667 6.96578 5.50833C6.65751 5.325 6.34925 5.35 6.09098 5.6C5.82437 5.85833 5.78271 6.18333 5.98267 6.5C6.04932 6.6 6.13263 6.675 6.20762 6.75833V6.75ZM29.3357 10.85H29.3773C29.6273 10.85 29.8022 10.6917 29.9689 10.5333C30.6187 9.89167 31.2686 9.25 31.9184 8.6L33.0682 7.45833C33.3431 7.18333 33.6264 6.90833 33.9013 6.625C34.1429 6.375 34.2012 6.09167 34.0763 5.80833C34.0235 5.6829 33.9357 5.57532 33.8234 5.49847C33.7111 5.42162 33.5791 5.37876 33.4431 5.375C33.1265 5.35833 32.9265 5.55833 32.7682 5.725C32.1517 6.33333 31.5435 6.94167 30.9353 7.55C30.2855 8.2 29.6273 8.84167 28.9774 9.49167C28.8858 9.58333 28.7858 9.68333 28.7108 9.81667C28.5942 10.0333 28.6025 10.2833 28.7192 10.4917C28.8441 10.7083 29.0774 10.8417 29.344 10.85H29.3357ZM6.34092 20.1083C6.64085 20.1083 6.87413 20.025 7.03243 19.8667C7.1574 19.7417 7.21572 19.575 7.21572 19.3833C7.21572 18.9583 6.85747 18.675 6.35758 18.675H0.867167C0.575567 18.675 0.333954 18.7583 0.183988 18.9167C0.0590167 19.0417 -0.00763426 19.2167 0.000697175 19.4083C0.000697175 19.85 0.342286 20.1083 0.892161 20.1167H6.34092V20.1083ZM39.8 18.9083C39.65 18.75 39.4251 18.675 39.1584 18.675H33.6347C33.1265 18.675 32.7932 18.9667 32.7849 19.3917C32.7849 19.6083 32.8682 19.7833 33.0182 19.9167C33.1681 20.0417 33.3764 20.1083 33.6264 20.1083H39.1501C39.6667 20.1083 39.9916 19.825 39.9999 19.4C40.0026 19.2174 39.9338 19.0409 39.8083 18.9083H39.8Z"/>
-                                                        </svg></span>
+                                                    <span>
+                                                        <img [src]="item.icon" alt="Smart Lighting Icon" class="submenu-img" />
+                                                    </span>
                                                 </div>    
-                                            }
-                                            @else if(item.title == 'Smart doors, gates, roller covers & blinds'){
+                                           <!--  @else if(item.title == 'Smart doors, gates, roller covers & blinds'){
                                                 <div class="submenu-icon">
                                                     <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 38 40" height="40" width="40">
                                                         <path fill="#cd9b2e" d="M0.742188 39.4392C0.742188 39.1295 1.02856 38.8784 1.38182 38.8784H37.1119C37.4652 38.8784 37.7515 39.1295 37.7515 39.4392C37.7515 39.7489 37.4652 39.9999 37.1119 39.9999H1.38182C1.02856 39.9999 0.742188 39.7489 0.742188 39.4392Z" clip-rule="evenodd" fill-rule="evenodd"/>
@@ -1170,10 +1243,10 @@
                                                         </defs>
                                                         </svg></span>
                                                 </div>    
-                                            }
+                                            } -->
                                             <div class="submenu-txt-info">
                                                 <div class="submenu-txt-title">{{item.title}}</div>
-                                                <div class="submenu-txt-desc caption hide-mobile">{{item.description}}
+                                                <div class="submenu-txt-desc caption hide-mobile">{{item.desc}}
                                                 </div>
                                             </div>
                                         </a>
@@ -1190,11 +1263,14 @@
                                     <ul class="nav-link-list submenu-link-list">
                                         <li class="nav-item-link-list submenu-item-link-list">
                                             <div class="nav-item-submenu-title">Shop by Product Type</div>
-                                            <ul class="nav-link-list submenu-link-list-cild caption">
+                                            <ul class="nav-link-list submenu-link-list-cild">
                                                 @for (item of navItems; track $index) {
                                                 <li class="nav-item-link-list submenu-item-link-list-child">
-                                                    <a [href]="item.href" class="nav-item">
-                                                        @if(item.title == 'Smart Switches and Dimmers'){
+                                                    <a (click)="navigateWithFilter(item.id, 'filter_by_types')" class="nav-item">
+                                                        <span class="nav-item-icon">
+                                                        <img [src]="item.icon" alt="Smart Lighting Icon" class="submenu-img" />
+                                                    </span>
+                                                        <!-- @if(item.title == 'Smart Switches and Dimmers'){
                                                             <span class="nav-item-icon"><svg width="50" height="51" viewBox="0 0 50 51" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                 <path d="M45.8243 13.5427V9.75292C45.8243 7.63027 44.5181 6.3584 42.3352 6.3584H29.9948H25.0619H20.2408C15.987 6.3584 11.7417 6.3584 7.48779 6.3584C5.67452 6.3584 4.24797 7.76777 4.23938 9.56385V10.6381C4.19641 18.0974 4.15344 25.8146 4.17063 33.4027C4.17063 34.0646 4.52296 34.8981 5.0214 35.4223C7.61669 38.155 10.0487 40.6214 12.455 42.9589C12.9877 43.4745 13.8729 43.8441 14.612 43.8527C18.0666 43.8785 21.5213 43.8956 24.9244 43.8956C28.3275 43.8956 31.8079 43.8785 35.1681 43.8527C35.9502 43.8527 36.8954 43.466 37.4627 42.9331C40.0493 40.5098 42.5156 38.0777 44.7931 35.7058C45.3775 35.1044 45.7812 34.1075 45.79 33.291C45.8414 26.7083 45.8329 20.0224 45.8329 13.5513L45.8243 13.5427ZM43.461 33.3254C43.461 33.6177 43.2031 34.0731 42.8337 34.4425C40.2125 37.0808 38.1846 39.066 36.2508 40.8879C35.89 41.2316 35.2798 41.4808 34.8071 41.4893C28.0439 41.541 21.4354 41.541 15.1706 41.4893C14.6635 41.4893 13.9932 41.2058 13.6151 40.8362C11.2346 38.5418 8.90575 36.1527 6.91202 34.0902C6.60265 33.7723 6.37921 33.3512 6.37921 33.0762C6.34484 28.9941 6.34484 24.9123 6.35342 20.7614V17.8224H43.4954V20.8559C43.4954 25.1442 43.4954 29.1919 43.461 33.3339V33.3254ZM6.58546 15.2185C6.58546 13.0013 6.61983 9.84744 6.63702 9.46931C6.64561 9.23729 7.11827 8.75604 7.77998 8.68729C10.9596 8.6615 20.9885 8.6701 30.6821 8.6701H41.5187C42.4727 8.6701 43.0656 8.68729 43.2718 8.89354C43.4781 9.09979 43.4954 9.71854 43.4954 10.7154C43.4954 11.2224 43.5039 11.9185 43.5125 12.6232C43.5298 13.5255 43.5383 14.6943 43.5298 15.2185H6.59404H6.58546Z" fill="#cd9b2e"></path>
                                                                 <path d="M10.9598 10.3457C9.88555 10.3887 9.30117 10.9988 9.24961 12.0645C9.20663 13.0785 10.0574 13.9465 11.0371 13.8691C12.0769 13.7832 12.6441 13.1472 12.773 12.2621C12.7902 11.1277 11.9738 10.3113 10.9511 10.3543L10.9598 10.3457Z" fill="#cd9b2e"></path>
@@ -1273,7 +1349,7 @@
                                                                 <path d="M4.16663 25.073C4.16663 19.4328 4.16663 13.8279 4.16663 8.18776C4.16663 5.79069 5.6837 4.2749 8.0828 4.2749C19.3374 4.2749 30.6273 4.2749 41.8818 4.2749C44.3162 4.2749 45.8333 5.79069 45.8333 8.22301C45.8333 19.5033 45.8333 30.7836 45.8333 42.0992C45.8333 43.9323 44.8102 45.3423 43.1872 45.8006C42.8344 45.9063 42.4816 45.9416 42.1288 45.9416C30.7331 45.9416 19.3021 45.9416 7.90639 45.9416C5.75426 45.9416 4.16663 44.3553 4.16663 42.205C4.16663 36.4943 4.16663 30.8189 4.16663 25.1082L4.16663 25.073ZM43.8576 25.1435C43.8576 19.5033 43.8576 13.8632 43.8576 8.22301C43.8576 6.91873 43.2225 6.28421 41.9171 6.28421C30.6625 6.28421 19.3727 6.28421 8.11808 6.28421C6.81269 6.28421 6.17763 6.91873 6.17763 8.22301C6.17763 19.4681 6.17763 30.7484 6.17763 41.9935C6.17763 43.2977 6.81269 43.9323 8.11808 43.9323C19.3727 43.9323 30.6625 43.9323 41.9171 43.9323C43.2225 43.9323 43.8576 43.2977 43.8576 41.9935C43.8576 36.3886 43.8576 30.7484 43.8576 25.1435Z" fill="#cd9b2e"></path>
                                                                 <path d="M25.0174 10.902C29.3216 10.902 33.6259 10.902 37.9654 10.902C38.918 10.902 39.2355 11.2192 39.2355 12.2062C39.2355 20.8075 39.2355 29.444 39.2355 38.0452C39.2355 38.9617 38.8827 39.3142 37.9654 39.3142C29.3216 39.3142 20.6778 39.3142 12.034 39.3142C11.1167 39.3142 10.7639 38.9617 10.7639 38.0452C10.7639 29.4087 10.7639 20.7722 10.7639 12.1357C10.7639 11.2192 11.1167 10.8667 11.9987 10.8667C16.3383 10.8667 20.6425 10.8667 24.9821 10.8667L25.0174 10.902ZM12.8102 12.876V37.2697H23.9942V12.876H12.8102ZM37.2245 37.3049V12.9113H26.0405V37.3049H37.2245Z" fill="#cd9b2e"></path>
                                                               </svg></span> 
-                                                        }
+                                                        } -->
                                                         <span class="nav-item-title">{{item.title}}</span>
                                                     </a>
                                                 </li>
@@ -1282,11 +1358,14 @@
                                         </li>
                                         <li class="nav-item-link-list submenu-item-link-list">
                                             <div class="nav-item-submenu-title">Shop by Technology</div>
-                                            <ul class="nav-link-list submenu-link-list-cild caption">
+                                            <ul class="nav-link-list submenu-link-list-cild">
                                                 @for (item of techItems; track $index) {
                                                 <li class="nav-item-link-list submenu-item-link-list-child">
-                                                    <a [href]="item.href" class="nav-item">
-                                                        @if(item.title == 'Wi-Fi'){
+                                                    <a (click)="navigateWithFilter(item.id, 'filter_by_technologies')" class="nav-item">
+                                                        <span class="nav-item-icon">
+                                                        <img [src]="item.icon" alt="Smart Lighting Icon" class="submenu-img" />
+                                                    </span>
+                                                       <!--  @if(item.title == 'Wi-Fi'){
                                                             <span class="nav-item-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0323 5.13207C8.6125 5.13207 5.46023 6.24102 2.90093 8.11894C2.64889 8.30388 2.29465 8.24949 2.10971 7.99745C1.92478 7.74541 1.97917 7.39116 2.23121 7.20623C4.97783 5.19085 8.3632 4 12.0323 4C15.701 4 19.0337 5.17331 21.7665 7.15715C22.0194 7.3408 22.0756 7.69476 21.892 7.94774C21.7083 8.20072 21.3544 8.25692 21.1014 8.07328C18.5541 6.22411 15.4525 5.13207 12.0323 5.13207Z" fill="#cd9b2e"></path>
                                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0277 9.89965C9.75732 9.89965 7.6477 10.6111 5.91795 11.8215C5.66182 12.0008 5.30889 11.9384 5.12966 11.6823C4.95043 11.4262 5.01277 11.0732 5.2689 10.894C7.18266 9.55484 9.5176 8.76758 12.0277 8.76758C14.5358 8.76758 16.7472 9.51047 18.6326 10.7855C18.8916 10.9607 18.9596 11.3126 18.7844 11.5715C18.6093 11.8305 18.2574 11.8984 17.9985 11.7233C16.2921 10.5694 14.3001 9.89965 12.0277 9.89965Z" fill="#cd9b2e"></path>
@@ -1334,7 +1413,7 @@
                                                                 </clipPath>
                                                                 </defs>
                                                                 </svg></span>
-                                                            }
+                                                            } -->
                                                         <span class="nav-item-title">{{item.title}}</span>
                                                     </a>
                                                 </li>
@@ -1366,11 +1445,14 @@
                                 <div class="submenu-link-list-container" style="--grid:1">
                                     <ul class="nav-link-list submenu-link-list">
                                         <li class="nav-item-link-list submenu-item-link-list">
-                                            <ul class="nav-link-list submenu-link-list-cild caption">
+                                            <ul class="nav-link-list submenu-link-list-cild">
                                                 @for (item of newProducts; track $index) {
                                                 <li class="nav-item-link-list submenu-item-link-list-child">
-                                                    <a [href]="item.href" class="nav-item">
-                                                        @if(item.title == 'Z-wave'){
+                                                    <a  class="nav-item">
+                                                        <span class="nav-item-icon">
+                                                        <img [src]="item.icon" alt="Smart Lighting Icon" class="submenu-img" />
+                                                    </span>
+                                                       <!--  @if(item.title == 'Z-wave'){
                                                             <span class="nav-item-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                 <path d="M16.2886 3.92664V2C8.41068 2 2 8.4107 2 16.2887H3.92664C3.92664 9.47344 9.47341 3.92664 16.2886 3.92664Z" fill="#cd9b2e"></path>
                                                                 <path d="M16.2885 10.5773C13.1346 10.5773 10.5771 13.1348 10.5771 16.2887C10.5771 19.4426 13.1346 22 16.2885 22C19.4424 22 21.9999 19.4426 21.9999 16.2887C21.9999 13.1348 19.4424 10.5773 16.2885 10.5773ZM17.9957 19.0655H13.1551L15.7743 14.9585H13.2649L14.355 13.217H19.1271L16.5833 17.2691H19.1271L18.0026 19.0655H17.9957Z" fill="#cd9b2e"></path>
@@ -1384,7 +1466,7 @@
                                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5015 3.74097V8.49441H11.333V3.74097H12.5015Z" fill="#cd9b2e"></path>
                                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M16.8667 3.74097V8.49441H15.6982V3.74097H16.8667Z" fill="#cd9b2e"></path>
                                                                 </svg></span>
-                                                        }
+                                                        } -->
                                                         <span class="nav-item-title">{{item.title}}</span>
                                                     </a>
                                                 </li>
@@ -1397,7 +1479,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="nav-item-container nav-item-megamenu-container">
+                <!-- <div class="nav-item-container nav-item-megamenu-container">
                     <a href="" class="nav-item menu-mobile-click menu-mobile-open"
                         (click)="handleMobileMenuClick($event)">
                         <span class="nav-item-title">Solutions</span>
@@ -1430,10 +1512,13 @@
                                     <ul class="nav-link-list submenu-link-list">
                                         <li class="nav-item-link-list submenu-item-link-list">
                                             <div class="nav-item-submenu-title">Start Your Smart Home</div>
-                                            <ul class="nav-link-list submenu-link-list-cild caption">
+                                            <ul class="nav-link-list submenu-link-list-cild">
                                                 @for (item of solutions_smart_home; track $index) {
                                                 <li class="nav-item-link-list submenu-item-link-list-child">
-                                                    <a [href]="item.href" class="nav-item">
+                                                    <a  class="nav-item">
+                                                        <span class="nav-item-icon">
+                                                        <img [src]="item.icon" alt="Smart Lighting Icon" class="submenu-img" />
+                                                    </span>
                                                         @if(item.title == 'Retrofit & Existing Home'){
                                                             <span class="nav-item-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                 <g clip-path="url(#clip0_2609_32225)">
@@ -1487,10 +1572,13 @@
                                         </li>
                                         <li class="nav-item-link-list submenu-item-link-list">
                                             <div class="nav-item-submenu-title">Smart Building & Facilities</div>
-                                            <ul class="nav-link-list submenu-link-list-cild caption">
+                                            <ul class="nav-link-list submenu-link-list-cild">
                                                 @for (item of solutions_Smart_Building; track $index) {
                                                 <li class="nav-item-link-list submenu-item-link-list-child">
-                                                    <a [href]="item.href" class="nav-item">
+                                                    <a (click)="navigateWithFilter(item.id)" class="nav-item">
+                                                        <span class="nav-item-icon">
+                                                        <img [src]="item.icon" alt="Smart Lighting Icon" class="submenu-img" />
+                                                    </span>
                                                         @if(item.title == 'Office'){
                                                             <span class="nav-item-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                 <g clip-path="url(#clip0_2609_32261)">
@@ -1539,10 +1627,13 @@
                                         </li>
                                         <li class="nav-item-link-list submenu-item-link-list">
                                             <div class="nav-item-submenu-title">Use Cases And Applications</div>
-                                            <ul class="nav-link-list submenu-link-list-cild caption">
+                                            <ul class="nav-link-list submenu-link-list-cild">
                                                 @for (item of solutions_Use_cases; track $index) {
                                                 <li class="nav-item-link-list submenu-item-link-list-child">
-                                                    <a [href]="item.href" class="nav-item">
+                                                    <a (click)="navigateWithFilter(item.id)" class="nav-item">
+                                                        <span class="nav-item-icon">
+                                                        <img [src]="item.icon" alt="Smart Lighting Icon" class="submenu-img" />
+                                                    </span>
                                                         @if(item.title == 'Energy efficient building'){
                                                             <span class="nav-item-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                 <g clip-path="url(#clip0_2609_32322)">
@@ -1648,16 +1739,88 @@
                             </div>
                         </div>
                     </div>
+                </div> -->
+                
+                <div class="nav-item-container nav-item-dropdown-container">
+                    <a href="" class="nav-item menu-mobile-click menu-mobile-open"
+                        (click)="handleMobileMenuClick($event)">
+                        <span class="nav-item-title">Solutions</span>
+                        <span class="nav-item-arrow">
+                            <svg width="8" height="13" viewBox="0 0 8 13" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M1.3379 12.139L1.19459 11.9957L6.40788 6.7824L6.69072 6.49956L6.40788 6.21672L1.19459 1.00343L1.3379 0.860119L6.97734 6.49956L1.3379 12.139Z"
+                                    fill="#1A1918" stroke="#656669" stroke-width="0.8" />
+                            </svg>
+                        </span>
+                    </a>
+                    <div class="nav-item-dropdown-link-container">
+                        <a href="" class="nav-item menu-mobile-click menu-mobile-close"
+                            (click)="handleMobileMenuClick($event)">
+                            <span class="nav-item-title">Solutions</span>
+                            <span class="nav-item-arrow">
+                                <svg width="8" height="13" viewBox="0 0 8 13" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M1.3379 12.139L1.19459 11.9957L6.40788 6.7824L6.69072 6.49956L6.40788 6.21672L1.19459 1.00343L1.3379 0.860119L6.97734 6.49956L1.3379 12.139Z"
+                                        fill="#1A1918" stroke="#656669" stroke-width="0.8" />
+                                </svg>
+                            </span>
+                        </a>
+                        <div class="nav-item-dropdown-link">
+                            <ul class="nav-link-list">
+                                @for (item of solutions_smart_home; track $index) {
+                                <li class="nav-item-link-list">
+                                    <a [routerLink]="['/page', item.id]"  class="nav-item">
+                                        <span class="nav-item-title">{{item.title}}</span>
+                                    </a>
+                                </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="nav-item-container nav-item-link-container">
+                <div class="nav-item-container nav-item-dropdown-container">
                     <a href="" class="nav-item menu-mobile-click menu-mobile-open"
                         (click)="handleMobileMenuClick($event)">
                         <span class="nav-item-title">Projects</span>
+                        <span class="nav-item-arrow">
+                            <svg width="8" height="13" viewBox="0 0 8 13" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M1.3379 12.139L1.19459 11.9957L6.40788 6.7824L6.69072 6.49956L6.40788 6.21672L1.19459 1.00343L1.3379 0.860119L6.97734 6.49956L1.3379 12.139Z"
+                                    fill="#1A1918" stroke="#656669" stroke-width="0.8" />
+                            </svg>
+                        </span>
                     </a>
+                    <div class="nav-item-dropdown-link-container">
+                        <a href="" class="nav-item menu-mobile-click menu-mobile-close"
+                            (click)="handleMobileMenuClick($event)">
+                            <span class="nav-item-title">Projects</span>
+                            <span class="nav-item-arrow">
+                                <svg width="8" height="13" viewBox="0 0 8 13" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M1.3379 12.139L1.19459 11.9957L6.40788 6.7824L6.69072 6.49956L6.40788 6.21672L1.19459 1.00343L1.3379 0.860119L6.97734 6.49956L1.3379 12.139Z"
+                                        fill="#1A1918" stroke="#656669" stroke-width="0.8" />
+                                </svg>
+                            </span>
+                        </a>
+                        <div class="nav-item-dropdown-link">
+                            <ul class="nav-link-list">
+                                @for (item of projects; track $index) {
+                                <li class="nav-item-link-list">
+                                    <a [routerLink]="['/projects',item.slug]" class="nav-item">
+                                        <span class="nav-item-title">{{item.name}}</span>
+                                    </a>
+                                </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="nav-item-container nav-item-dropdown-container">
+                <!-- <div class="nav-item-container nav-item-dropdown-container">
                     <a href="" class="nav-item menu-mobile-click menu-mobile-open"
                         (click)="handleMobileMenuClick($event)">
                         <span class="nav-item-title">Partners</span>
@@ -1698,7 +1861,7 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="nav-item-container nav-item-dropdown-container">
                     <a href="" class="nav-item menu-mobile-click menu-mobile-open"
                         (click)="handleMobileMenuClick($event)">
@@ -1777,7 +1940,7 @@
                                     <ul class="nav-link-list submenu-link-list">
                                         <li class="nav-item-link-list submenu-item-link-list">
                                             <div class="nav-item-submenu-title">Support</div>
-                                            <ul class="nav-link-list submenu-link-list-cild caption">
+                                            <ul class="nav-link-list submenu-link-list-cild">
                                                 @for (item of support; track $index) {
                                                 <li class="nav-item-link-list submenu-item-link-list-child">
                                                     <a [href]="item.href" class="nav-item">
@@ -1834,7 +1997,7 @@
                                         </li>
                                         <li class="nav-item-link-list submenu-item-link-list">
                                             <div class="nav-item-submenu-title">Resources</div>
-                                            <ul class="nav-link-list submenu-link-list-cild caption">
+                                            <ul class="nav-link-list submenu-link-list-cild">
                                                 @for (item of resources; track $index) {
                                                 <li class="nav-item-link-list submenu-item-link-list-child">
                                                     <a [href]="item.href" class="nav-item">
@@ -1904,7 +2067,7 @@
                                         </li>
                                         <li class="nav-item-link-list submenu-item-link-list">
                                             <div class="nav-item-submenu-title">Kmowledge Base</div>
-                                            <ul class="nav-link-list submenu-link-list-cild caption">
+                                            <ul class="nav-link-list submenu-link-list-cild">
                                                 @for (item of knowledge_base; track $index) {
                                                 <li class="nav-item-link-list submenu-item-link-list-child">
                                                     <a [href]="item.href" class="nav-item">

@@ -5,10 +5,10 @@
             [state]="{ product: product }" class="card-inner rate" style="--ratio-percent: 100%;">
                 <div class="card-media has-custom-secondary-img">
                     <div class="media">
-                        <picture><img [src]="product.snippet_image" [alt]="product.title" loading="lazy"
+                        <picture><img [src]="product.snippet_image?product.snippet_image:product.images.default" [alt]="product.title" loading="lazy"
                                 class="card-media-featured" width="300" height="300">
                         </picture>
-                        <picture><img [src]="product.images[0]" [alt]="product.title" loading="lazy"
+                        <picture><img [src]="product.images[0]?product.images[0]:product.images.hover" [alt]="product.title" loading="lazy"
                                 class="card-media-secondary" width="300" height="300">
                         </picture>
                     </div>
@@ -16,14 +16,15 @@
                 <div class="card-contnet">
                     <div class="card-badge card-badge-custom top right">
                         <div class="badge"
-                            [style.color]="product.stock === 'in stock' ? '#cd9b2e' : '#121519'"
-                            [style.borderColor]="product.stock === 'in stock' ? '#cd9b2e' : '#121519'">
-                            <div class="badge-text">{{product.stock}}</div>
+                            [style.color]="product.stock?product.stock:product.status === 'in stock' ? '#cd9b2e' : '#121519'"
+                            [style.borderColor]="product.stock?product.stock:product.status === 'in stock' ? '#cd9b2e' : '#121519'">
+                            <div class="badge-text">{{product.stock?product.stock:product.status}}</div>
                         </div>
                     </div>
                     <div class="card-feature-icons-container">
                         @for (feature of product.product_technologies; track $index) {
-                        <div class="card-feature-icon" [innerHTML]="feature.icon">
+                        <div class="card-feature-icon">
+                            <span> <img [src]="feature.icon" alt="feature-icon"></span>
                         </div>
                         }
                     </div>
@@ -61,7 +62,7 @@
 
                             </div>
                             <div class="product-card-description-container">
-                                <div class="product-card-description caption" [innerHTML]="product.desc">
+                                <div class="product-card-description caption" [innerHTML]="product.desc?product.desc:product.description">
                                 </div>
                             </div>
                         </div>

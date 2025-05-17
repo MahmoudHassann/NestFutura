@@ -46,23 +46,23 @@ export class ProductService {
   getFilteredProducts(
     page: number,
     filters: {
-      categories?: number[];
-      types?: number[];
-      technologies?: number[];
+      filter_by_categories?: number[];
+      filter_by_types?: number[];
+      filter_by_technologies?: number[];
       using?: number[];
       sort?: string;
     }
   ): Observable<any> {
     let params: any = { page };
 
-    if (filters.categories?.length) {
-      params.categories = filters.categories.join(',');
+    if (filters.filter_by_categories?.length) {
+      params.filter_by_categories = filters.filter_by_categories.join(',');
     }
-    if (filters.types?.length) {
-      params.types = filters.types.join(',');
+    if (filters.filter_by_types?.length) {
+      params.filter_by_types = filters.filter_by_types.join(',');
     }
-    if (filters.technologies?.length) {
-      params.technologies = filters.technologies.join(',');
+    if (filters.filter_by_technologies?.length) {
+      params.filter_by_technologies = filters.filter_by_technologies.join(',');
     }
     if (filters.using?.length) {
       params.using = filters.using.join(',');

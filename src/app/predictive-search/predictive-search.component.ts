@@ -19,7 +19,7 @@ export class PredictiveSearchComponent implements OnInit {
   showPopularSearches: boolean = true;
   showProductSuggestions: boolean = false;
   selectedVariants = new Map<string, Variant>();
-  products !: Products[]
+  products !: any[]
   @Output() focusStateChange = new EventEmitter<boolean>();
   @ViewChild('search', { static: false }) searchInputElement!: ElementRef<HTMLInputElement>;
   @ViewChild('searchContainer', { static: false }) searchContainer!: ElementRef;
@@ -38,7 +38,7 @@ export class PredictiveSearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.outsideClickListener = this.renderer.listen('document', 'mousedown', this.handleOutsideClick.bind(this));
-   /*  this.products = [
+    this.products = [
       {
         name: 'Shelly Dimmer Gen3',
         price: '€46.75',
@@ -208,7 +208,7 @@ export class PredictiveSearchComponent implements OnInit {
           },
         ],
       },
-    ]; */
+    ];
   }
 
   ngOnDestroy(): void {
@@ -286,7 +286,7 @@ export class PredictiveSearchComponent implements OnInit {
 
   filterProducts(query: string) {
     this.filteredProducts = this.products.filter(product =>
-      product.title.toLowerCase().includes(query.toLowerCase())
+      product.name.toLowerCase().includes(query.toLowerCase())
     );
   }
 
