@@ -1,4 +1,4 @@
 export const environment = {
     production: false,
-    apiUrl: 'https://shelly.xdev-test.site/api/'
+    apiUrl: 'https://back.nestfuturra.com/api/'
   };

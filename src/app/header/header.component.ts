@@ -5,6 +5,7 @@ import { CartService } from '../cart.service';
 import { LanguageService } from '../language.service';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 export interface SubmenuItem {
   id:number;
@@ -72,7 +73,7 @@ export class HeaderComponent implements OnInit {
     this.cartService.openCart();
   }
   loadNavData(){
-    this._httpClient.get(`https://shelly.xdev-test.site/api/navbar`).subscribe({
+    this._httpClient.get(`${environment.apiUrl}navbar`).subscribe({
       next:(res:any)=>{
         console.log(res['data']);
         this.submenuItems = res['data']['Products']['Shop by solution']
